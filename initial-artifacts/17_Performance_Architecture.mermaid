@@ -1,0 +1,41 @@
+graph TB
+    subgraph "Performance Optimization"
+        CDN[CDN<br/>Static Content]
+        LB[Load Balancer]
+        CACHE[Cache Layer<br/>Redis]
+        READ_REPLICA[Read Replicas]
+        AUTO_SCALE[Auto-Scaling<br/>HPA]
+    end
+
+    subgraph "Application"
+        APP1[App Instance 1]
+        APP2[App Instance 2]
+        APPN[App Instance N]
+    end
+
+    subgraph "Database"
+        DB_PRIMARY[(Primary DB)]
+        DB_REPLICA1[(Replica 1)]
+        DB_REPLICA2[(Replica 2)]
+    end
+
+    CDN --> LB
+    LB --> APP1
+    LB --> APP2
+    LB --> APPN
+
+    APP1 --> CACHE
+    APP2 --> CACHE
+
+    APP1 -->|Write| DB_PRIMARY
+    APP1 -.Read.-> DB_REPLICA1
+    APP2 -.Read.-> DB_REPLICA2
+
+    AUTO_SCALE -.Scale.-> APP1
+    AUTO_SCALE -.Scale.-> APP2
+    AUTO_SCALE -.Scale.-> APPN
+
+    style CDN fill:#95A5A6
+    style LB fill:#50C878
+    style CACHE fill:#E67E22
+    style DB_PRIMARY fill:#3498DB

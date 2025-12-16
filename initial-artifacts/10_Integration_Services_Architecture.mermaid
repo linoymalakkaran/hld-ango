@@ -1,0 +1,37 @@
+graph LR
+    subgraph "JUL Services"
+        DECL[Declaration Service]
+        TRACK[Track Service]
+        LICENSE[License Service]
+    end
+
+    subgraph "Integration Layer"
+        ESB[ESB/Message Broker]
+        ADAPTER[Protocol Adapters]
+        TRANSFORM[Data Transformer]
+    end
+
+    subgraph "External Systems"
+        ASYCUDA[ASYCUDA<br/>SOAP/XML]
+        SINTECE[SINTECE<br/>REST/JSON]
+        JUP[JUP<br/>REST/JSON]
+        TOS[TOS<br/>REST/JSON]
+        BANKS[Banks<br/>BANSTA EDI]
+    end
+
+    DECL --> ESB
+    TRACK --> ESB
+    LICENSE --> ESB
+
+    ESB --> ADAPTER
+    ADAPTER --> TRANSFORM
+
+    TRANSFORM --> ASYCUDA
+    TRANSFORM --> SINTECE
+    TRANSFORM --> JUP
+    TRANSFORM --> TOS
+    TRANSFORM --> BANKS
+
+    style DECL fill:#4A90E2
+    style ESB fill:#9B59B6
+    style ASYCUDA fill:#E74C3C

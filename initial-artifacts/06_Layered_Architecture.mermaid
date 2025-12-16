@@ -1,0 +1,59 @@
+graph TB
+    subgraph "Presentation Layer"
+        UI[User Interface<br/>Angular Components]
+        MOBILE_UI[Mobile UI<br/>React Native]
+    end
+
+    subgraph "API Layer"
+        REST[REST API<br/>Controllers]
+        GRAPHQL[GraphQL API]
+        WEBSOCKET[WebSocket<br/>Real-time]
+    end
+
+    subgraph "Business Logic Layer"
+        SERVICES[Business Services]
+        DOMAIN[Domain Models]
+        RULES[Business Rules Engine<br/>Drools]
+        WORKFLOW[Workflow Engine<br/>Camunda]
+    end
+
+    subgraph "Data Access Layer"
+        REPOS[Repositories]
+        ORM[ORM - JPA/Hibernate]
+        CACHE_ACCESS[Cache Access]
+        QUEUE_ACCESS[Queue Access]
+    end
+
+    subgraph "Data Layer"
+        DB[(Database<br/>PostgreSQL)]
+        CACHE[(Cache<br/>Redis)]
+        QUEUE[(Message Queue<br/>RabbitMQ)]
+        STORAGE[(Object Storage)]
+    end
+
+    UI --> REST
+    MOBILE_UI --> REST
+    UI --> WEBSOCKET
+
+    REST --> SERVICES
+    GRAPHQL --> SERVICES
+
+    SERVICES --> DOMAIN
+    SERVICES --> RULES
+    SERVICES --> WORKFLOW
+
+    SERVICES --> REPOS
+    REPOS --> ORM
+    REPOS --> CACHE_ACCESS
+    REPOS --> QUEUE_ACCESS
+
+    ORM --> DB
+    CACHE_ACCESS --> CACHE
+    QUEUE_ACCESS --> QUEUE
+    REPOS --> STORAGE
+
+    style UI fill:#4A90E2
+    style REST fill:#50C878
+    style SERVICES fill:#F39C12
+    style REPOS fill:#9B59B6
+    style DB fill:#E74C3C

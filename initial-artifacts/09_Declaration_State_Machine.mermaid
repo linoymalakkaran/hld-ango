@@ -1,0 +1,23 @@
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Submitted
+    Submitted --> Validating
+    Validating --> ValidationFailed
+    Validating --> SentToCustoms
+    ValidationFailed --> Draft
+    SentToCustoms --> CustomsReceived
+    CustomsReceived --> UnderAssessment
+    UnderAssessment --> Assessed
+    UnderAssessment --> InspectionRequired
+    InspectionRequired --> UnderInspection
+    UnderInspection --> InspectionComplete
+    InspectionComplete --> Assessed
+    Assessed --> PendingPayment
+    PendingPayment --> PaymentReceived
+    PaymentReceived --> PaymentVerified
+    PaymentVerified --> Cleared
+    Cleared --> Released
+    Released --> [*]
+    
+    UnderAssessment --> Rejected
+    Rejected --> [*]

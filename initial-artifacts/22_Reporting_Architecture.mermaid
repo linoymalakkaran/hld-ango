@@ -1,0 +1,37 @@
+graph TB
+    subgraph "Reporting Layer"
+        JASPER[JasperReports]
+        GRAFANA[Grafana Dashboards]
+        KIBANA[Kibana Analytics]
+        CUSTOM[Custom Report Engine]
+    end
+
+    subgraph "Data Sources"
+        OLTP[(OLTP Database<br/>PostgreSQL)]
+        ANALYTICS[(Analytics DB<br/>Data Warehouse)]
+        LOGS[(Log Store<br/>Elasticsearch)]
+        METRICS[(Metrics Store<br/>Prometheus)]
+    end
+
+    subgraph "Report Types"
+        OPERATIONAL[Operational Reports<br/>Daily Transactions]
+        ANALYTICAL[Analytical Reports<br/>Trade Statistics]
+        COMPLIANCE[Compliance Reports<br/>Audit & Regulatory]
+        DASHBOARD[Real-time Dashboards]
+    end
+
+    JASPER --> OLTP
+    JASPER --> ANALYTICS
+    GRAFANA --> METRICS
+    KIBANA --> LOGS
+    CUSTOM --> ANALYTICS
+
+    JASPER --> OPERATIONAL
+    JASPER --> COMPLIANCE
+    CUSTOM --> ANALYTICAL
+    GRAFANA --> DASHBOARD
+
+    style JASPER fill:#E74C3C
+    style GRAFANA fill:#F39C12
+    style OLTP fill:#3498DB
+    style ANALYTICAL fill:#50C878

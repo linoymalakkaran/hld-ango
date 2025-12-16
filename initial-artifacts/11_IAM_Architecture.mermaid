@@ -1,0 +1,39 @@
+graph TB
+    USERS[Users]
+
+    subgraph "Keycloak IAM"
+        LOGIN[Login Service]
+        MFA[Multi-Factor Auth]
+        SSO[Single Sign-On]
+        RBAC[Role-Based Access]
+        TOKEN[Token Management]
+        SESSION[Session Management]
+    end
+
+    subgraph "Identity Providers"
+        LDAP[LDAP/AD]
+        CERT[Certificate Auth]
+    end
+
+    subgraph "Data Stores"
+        KC_DB[(Keycloak DB)]
+        REDIS_SESSION[(Session Cache)]
+    end
+
+    USERS --> LOGIN
+    LOGIN --> MFA
+    MFA --> TOKEN
+    TOKEN --> SESSION
+
+    LOGIN --> LDAP
+    LOGIN --> CERT
+
+    LOGIN --> KC_DB
+    SESSION --> REDIS_SESSION
+
+    TOKEN -.JWT.-> USERS
+
+    style LOGIN fill:#4A90E2
+    style MFA fill:#F39C12
+    style TOKEN fill:#9B59B6
+    style KC_DB fill:#3498DB

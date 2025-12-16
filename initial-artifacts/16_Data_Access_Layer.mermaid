@@ -1,0 +1,39 @@
+graph TB
+    subgraph "Application Services"
+        SERVICE[Business Services]
+    end
+
+    subgraph "Data Access Layer"
+        REPO[Repositories]
+        CONN_POOL[Connection Pool<br/>HikariCP]
+        CACHE_MGR[Cache Manager]
+        TX_MGR[Transaction Manager]
+    end
+
+    subgraph "ORM Layer"
+        JPA[JPA/Hibernate]
+        QUERY[Query Builder]
+    end
+
+    subgraph "Data Stores"
+        PG_PRIMARY[(PostgreSQL Primary)]
+        PG_REPLICA[(PostgreSQL Replica)]
+        REDIS[(Redis Cache)]
+    end
+
+    SERVICE --> REPO
+    REPO --> CONN_POOL
+    REPO --> CACHE_MGR
+    REPO --> TX_MGR
+
+    CONN_POOL --> JPA
+    JPA --> QUERY
+
+    QUERY --> PG_PRIMARY
+    QUERY -.Read.-> PG_REPLICA
+    CACHE_MGR --> REDIS
+
+    style SERVICE fill:#4A90E2
+    style REPO fill:#50C878
+    style PG_PRIMARY fill:#3498DB
+    style REDIS fill:#E67E22

@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant API_Gateway
+    participant Keycloak
+    participant Redis
+
+    User->>Browser: 1. Enter Credentials
+    Browser->>API_Gateway: 2. POST /login
+    API_Gateway->>Keycloak: 3. Authenticate
+    Keycloak->>Keycloak: 4. Validate Password
+    Keycloak->>User: 5. Request 2FA Code
+    User->>Keycloak: 6. Submit OTP
+    Keycloak->>Keycloak: 7. Validate OTP
+    Keycloak->>Keycloak: 8. Generate JWT
+    Keycloak->>Redis: 9. Store Session
+    Keycloak-->>API_Gateway: 10. Return Tokens
+    API_Gateway-->>Browser: 11. Access + Refresh Token
+    Browser->>Browser: 12. Store Tokens
+    
+    Note over User,Redis: Subsequent Requests
+    Browser->>API_Gateway: 13. API Call + JWT
+    API_Gateway->>Keycloak: 14. Validate Token
+    Keycloak-->>API_Gateway: 15. Token Valid
+    API_Gateway-->>Browser: 16. API Response

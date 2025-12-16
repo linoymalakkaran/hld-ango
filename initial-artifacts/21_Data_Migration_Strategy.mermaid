@@ -1,0 +1,51 @@
+graph TB
+    subgraph "Source Systems"
+        LEGACY[Legacy System]
+        EXCEL[Excel Files]
+        ASYCUDA_OLD[ASYCUDA Data]
+    end
+
+    subgraph "ETL Process"
+        EXTRACT[Extract Data]
+        TRANSFORM[Transform & Map]
+        VALIDATE[Validate Data]
+        LOAD[Load to Target]
+    end
+
+    subgraph "Target System"
+        JUL_DB[(JUL Database)]
+        MASTER_DATA[(Master Data)]
+        COMPANY_DATA[(Company Data)]
+        DECL_DATA[(Declaration Data)]
+    end
+
+    subgraph "Validation"
+        QUALITY_CHECK[Quality Checks]
+        RECONCILE[Reconciliation]
+        ERROR_HANDLE[Error Handling]
+    end
+
+    LEGACY --> EXTRACT
+    EXCEL --> EXTRACT
+    ASYCUDA_OLD --> EXTRACT
+
+    EXTRACT --> TRANSFORM
+    TRANSFORM --> VALIDATE
+
+    VALIDATE --> QUALITY_CHECK
+    QUALITY_CHECK --> RECONCILE
+    RECONCILE --> LOAD
+
+    VALIDATE -.Errors.-> ERROR_HANDLE
+
+    LOAD --> MASTER_DATA
+    LOAD --> COMPANY_DATA
+    LOAD --> DECL_DATA
+
+    MASTER_DATA --> JUL_DB
+    COMPANY_DATA --> JUL_DB
+    DECL_DATA --> JUL_DB
+
+    style EXTRACT fill:#4A90E2
+    style VALIDATE fill:#F39C12
+    style JUL_DB fill:#3498DB

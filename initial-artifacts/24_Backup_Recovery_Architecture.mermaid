@@ -1,0 +1,53 @@
+graph TB
+    subgraph "Production Systems"
+        APP[Applications]
+        DB_PRIMARY[(Primary Database)]
+        STORAGE[Object Storage]
+    end
+
+    subgraph "Backup Strategy"
+        FULL[Full Backup<br/>Daily 2AM]
+        INCREMENTAL[Incremental<br/>Every 6 hours]
+        WAL[WAL Archive<br/>Continuous]
+        CONFIG[Config Backup]
+    end
+
+    subgraph "Backup Storage"
+        ONLINE[Online Backup<br/>30 days]
+        ARCHIVE[Archive Storage<br/>7 years]
+        OFFSITE[Offsite Backup]
+    end
+
+    subgraph "DR Site"
+        DR_DB[(Standby Database)]
+        DR_STORAGE[DR Storage]
+        DR_APP[Cold Standby Apps]
+    end
+
+    subgraph "Recovery"
+        RESTORE[Restore Process]
+        VERIFY[Verification]
+        FAILOVER[Failover Procedure]
+    end
+
+    DB_PRIMARY --> FULL
+    DB_PRIMARY --> INCREMENTAL
+    DB_PRIMARY --> WAL
+    APP --> CONFIG
+
+    FULL --> ONLINE
+    INCREMENTAL --> ONLINE
+    ONLINE --> ARCHIVE
+    ONLINE --> OFFSITE
+
+    DB_PRIMARY -.Replication.-> DR_DB
+    STORAGE -.Sync.-> DR_STORAGE
+
+    ONLINE --> RESTORE
+    RESTORE --> VERIFY
+    DR_DB --> FAILOVER
+
+    style DB_PRIMARY fill:#3498DB
+    style FULL fill:#27AE60
+    style ARCHIVE fill:#95A5A6
+    style DR_DB fill:#E67E22

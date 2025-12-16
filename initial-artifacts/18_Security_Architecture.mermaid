@@ -1,0 +1,52 @@
+graph TB
+    subgraph "Perimeter Security"
+        DDOS[DDoS Protection]
+        WAF[Web Firewall]
+        IDS[Intrusion Detection]
+    end
+
+    subgraph "Application Security"
+        API_SEC[API Security<br/>OAuth 2.0]
+        INPUT_VAL[Input Validation]
+        OUTPUT_ENC[Output Encoding]
+    end
+
+    subgraph "Data Security"
+        TLS[TLS 1.3<br/>In Transit]
+        AES[AES-256<br/>At Rest]
+        FIELD_ENC[Field Encryption]
+        KEY_VAULT[Key Management<br/>Vault]
+    end
+
+    subgraph "IAM"
+        AUTH[Authentication<br/>2FA]
+        AUTHZ[Authorization<br/>RBAC]
+    end
+
+    subgraph "Monitoring"
+        SIEM[SIEM<br/>Log Analysis]
+        AUDIT[Audit Logging]
+    end
+
+    DDOS --> WAF
+    WAF --> IDS
+    IDS --> API_SEC
+
+    API_SEC --> INPUT_VAL
+    INPUT_VAL --> OUTPUT_ENC
+
+    OUTPUT_ENC --> TLS
+    TLS --> AES
+    AES --> FIELD_ENC
+    FIELD_ENC --> KEY_VAULT
+
+    API_SEC --> AUTH
+    AUTH --> AUTHZ
+
+    API_SEC -.Logs.-> SIEM
+    AUTH -.Events.-> AUDIT
+
+    style DDOS fill:#E74C3C
+    style API_SEC fill:#50C878
+    style AES fill:#3498DB
+    style AUTH fill:#F39C12

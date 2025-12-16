@@ -1,0 +1,58 @@
+graph TB
+    subgraph "External Network"
+        INTERNET[Internet]
+        VPN_NET[VPN Clients]
+    end
+
+    subgraph "DMZ - 172.16.1.0/24"
+        LB1[External LB<br/>172.16.1.10]
+        WAF1[WAF<br/>172.16.1.20]
+        FW_DMZ[Firewall DMZ]
+    end
+
+    subgraph "Application Zone - 10.10.0.0/16"
+        FW_APP[Firewall App]
+        K8S_NET[Kubernetes Network<br/>10.10.0.0/16]
+        API_GW[API Gateway<br/>10.10.1.x]
+        APP_PODS[Application Pods<br/>10.10.2.x-10.10.9.x]
+    end
+
+    subgraph "Data Zone - 10.20.0.0/16"
+        FW_DATA[Firewall Data]
+        DB_NET[Database Network<br/>10.20.1.0/24]
+        CACHE_NET[Cache Network<br/>10.20.2.0/24]
+        STORAGE_NET[Storage Network<br/>10.20.3.0/24]
+    end
+
+    subgraph "Management Zone - 10.30.0.0/16"
+        BASTION[Bastion Host<br/>10.30.1.10]
+        MONITOR[Monitoring<br/>10.30.2.x]
+        LOGGING[Logging<br/>10.30.3.x]
+    end
+
+    INTERNET -->|HTTPS 443| LB1
+    VPN_NET -->|VPN| FW_DMZ
+    LB1 -->|HTTPS| WAF1
+    WAF1 -->|HTTP 8080| FW_DMZ
+    FW_DMZ --> FW_APP
+
+    FW_APP --> K8S_NET
+    K8S_NET --> API_GW
+    API_GW --> APP_PODS
+
+    APP_PODS -->|DB:5432| FW_DATA
+    APP_PODS -->|Redis:6379| FW_DATA
+    FW_DATA --> DB_NET
+    FW_DATA --> CACHE_NET
+
+    BASTION -->|SSH:22| APP_PODS
+    BASTION -->|Admin| DB_NET
+
+    APP_PODS -.Metrics.-> MONITOR
+    APP_PODS -.Logs.-> LOGGING
+
+    style INTERNET fill:#95A5A6
+    style LB1 fill:#E74C3C
+    style K8S_NET fill:#50C878
+    style DB_NET fill:#3498DB
+    style BASTION fill:#F39C12

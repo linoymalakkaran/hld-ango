@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant Trader
+    participant Portal
+    participant API
+    participant DeclService
+    participant DocService
+    participant ASYCUDA
+    participant PaymentService
+    participant Bank
+
+    Trader->>Portal: 1. Create Declaration
+    Portal->>API: 2. Submit Declaration
+    API->>DeclService: 3. Validate & Save
+    DeclService->>DocService: 4. Validate Documents
+    DeclService->>ASYCUDA: 5. Send CUSDEC
+    ASYCUDA-->>DeclService: 6. CUSRES Assessment
+    DeclService->>PaymentService: 7. Generate Invoice
+    Trader->>Portal: 8. Make Payment
+    Portal->>PaymentService: 9. Process Payment
+    PaymentService->>Bank: 10. Payment Request
+    Bank-->>PaymentService: 11. Payment Confirmed
+    PaymentService->>DeclService: 12. Update Status
+    DeclService->>ASYCUDA: 13. Request Clearance
+    ASYCUDA-->>DeclService: 14. Clearance Certificate
+    DeclService-->>Portal: 15. Notify Cleared
+    Portal-->>Trader: 16. Release Cargo

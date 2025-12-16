@@ -1,0 +1,37 @@
+graph TB
+    CLIENTS[Clients<br/>Web/Mobile/External]
+    
+    subgraph "Kong API Gateway"
+        AUTH[Authentication<br/>OAuth 2.0/JWT]
+        RATE[Rate Limiting]
+        ROUTE[Routing]
+        TRANSFORM[Request/Response<br/>Transformation]
+        CACHE[Response Caching]
+        LOG[Logging & Metrics]
+    end
+
+    subgraph "Backend Services"
+        SVC1[Company Service]
+        SVC2[Declaration Service]
+        SVC3[Payment Service]
+        SVC4[Track Service]
+    end
+
+    CLIENTS --> AUTH
+    AUTH --> RATE
+    RATE --> ROUTE
+    ROUTE --> TRANSFORM
+    TRANSFORM --> CACHE
+
+    CACHE --> SVC1
+    CACHE --> SVC2
+    CACHE --> SVC3
+    CACHE --> SVC4
+
+    TRANSFORM -.Log.-> LOG
+
+    style CLIENTS fill:#95A5A6
+    style AUTH fill:#E74C3C
+    style RATE fill:#F39C12
+    style ROUTE fill:#50C878
+    style SVC1 fill:#4A90E2

@@ -1,0 +1,57 @@
+graph TB
+    subgraph "Internet"
+        USERS[External Users]
+        EXT_SYS[External Systems]
+    end
+
+    subgraph "DMZ"
+        LB[Load Balancer<br/>HA Pair]
+        WAF[Web Firewall]
+    end
+
+    subgraph "Kubernetes Cluster"
+        MASTER[Control Plane<br/>3 nodes]
+        WORKERS[Worker Nodes<br/>10+ nodes]
+        INGRESS[Ingress Controller]
+    end
+
+    subgraph "Data Zone"
+        PG_CLUSTER[PostgreSQL Cluster<br/>Primary + 2 Replicas]
+        MONGO_CLUSTER[MongoDB Cluster<br/>3 nodes]
+        REDIS_CLUSTER[Redis Cluster<br/>6 nodes]
+        STORAGE[Object Storage<br/>50 TB]
+    end
+
+    subgraph "Management"
+        MONITOR[Monitoring<br/>Prometheus/Grafana]
+        LOGGING[Logging<br/>ELK Stack]
+        BACKUP[Backup Service]
+    end
+
+    subgraph "DR Site"
+        DR_DB[(Standby DB)]
+        DR_STORAGE[Backup Storage]
+    end
+
+    USERS --> LB
+    EXT_SYS --> WAF
+    LB --> WAF
+    WAF --> INGRESS
+    INGRESS --> WORKERS
+    WORKERS --> PG_CLUSTER
+    WORKERS --> MONGO_CLUSTER
+    WORKERS --> REDIS_CLUSTER
+    WORKERS --> STORAGE
+
+    WORKERS -.Metrics.-> MONITOR
+    WORKERS -.Logs.-> LOGGING
+    PG_CLUSTER -.Backup.-> BACKUP
+
+    PG_CLUSTER -.Replication.-> DR_DB
+    STORAGE -.Sync.-> DR_STORAGE
+
+    style LB fill:#E74C3C
+    style WAF fill:#E74C3C
+    style WORKERS fill:#50C878
+    style PG_CLUSTER fill:#3498DB
+    style MONITOR fill:#F39C12

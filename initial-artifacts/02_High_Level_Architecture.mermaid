@@ -1,0 +1,72 @@
+graph TB
+    subgraph "Presentation Layer"
+        WEB[Web Portal<br/>Angular SPA]
+        MOBILE[Mobile Apps<br/>React Native]
+        API_CONSOLE[API Console<br/>Swagger UI]
+    end
+
+    subgraph "API Gateway Layer"
+        KONG[Kong API Gateway]
+    end
+
+    subgraph "Application Layer"
+        subgraph "Core Services"
+            COMPANY[Company Service]
+            LICENSE[License Service]
+            AGENT[Agent Service]
+            DECL[Declaration Service]
+            DOC[Document Service]
+            TRACK[Track & Trace]
+            PAYMENT[Payment Service]
+            MASTER[Master Data]
+        end
+
+        subgraph "Integration Services"
+            ASYCUDA_INT[ASYCUDA Integration]
+            SINTECE_INT[SINTECE Integration]
+            JUP_INT[JUP Integration]
+            TOS_INT[TOS Integration]
+            OGA_INT[OGA Integration]
+        end
+
+        subgraph "Cross-Cutting"
+            IAM_SVC[IAM Keycloak]
+            NOTIF[Notification]
+            WF[Workflow Camunda]
+            AUDIT[Audit Logging]
+            REPORT[Reporting]
+        end
+    end
+
+    subgraph "Data Layer"
+        PG[(PostgreSQL)]
+        MONGO[(MongoDB)]
+        REDIS[(Redis)]
+        QUEUE[(RabbitMQ)]
+    end
+
+    WEB --> KONG
+    MOBILE --> KONG
+    API_CONSOLE --> KONG
+
+    KONG --> COMPANY
+    KONG --> LICENSE
+    KONG --> DECL
+
+    DECL --> ASYCUDA_INT
+    DECL --> SINTECE_INT
+    TRACK --> JUP_INT
+
+    COMPANY --> PG
+    DECL --> PG
+    DOC --> MONGO
+    COMPANY --> REDIS
+
+    COMPANY --> IAM_SVC
+    DECL --> WF
+
+    style WEB fill:#4A90E2
+    style KONG fill:#50C878
+    style PG fill:#E74C3C
+    style REDIS fill:#E67E22
+    style IAM_SVC fill:#F39C12

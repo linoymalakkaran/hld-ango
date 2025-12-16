@@ -1,0 +1,31 @@
+graph TB
+    subgraph "Integration Patterns"
+        SYNC[Synchronous<br/>Request-Reply]
+        ASYNC[Asynchronous<br/>Pub-Sub]
+        FILE[File-Based<br/>FTP/SFTP]
+        EDI[EDI Integration<br/>UN/EDIFACT]
+    end
+
+    subgraph "Protocol Adapters"
+        REST_ADAPTER[REST Adapter]
+        SOAP_ADAPTER[SOAP Adapter]
+        EDI_ADAPTER[EDI Adapter]
+        FILE_ADAPTER[File Adapter]
+    end
+
+    subgraph "Message Queue"
+        QUEUE[RabbitMQ/Kafka]
+        DLQ[Dead Letter Queue]
+    end
+
+    SYNC --> REST_ADAPTER
+    SYNC --> SOAP_ADAPTER
+    ASYNC --> QUEUE
+    FILE --> FILE_ADAPTER
+    EDI --> EDI_ADAPTER
+
+    QUEUE --> DLQ
+
+    style SYNC fill:#50C878
+    style ASYNC fill:#9B59B6
+    style QUEUE fill:#E67E22

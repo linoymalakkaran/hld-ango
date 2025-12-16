@@ -1,0 +1,42 @@
+graph TB
+    subgraph "Core Business Services"
+        COMPANY[Company Service:8081]
+        LICENSE[License Service:8082]
+        AGENT[Agent Service:8083]
+        DECLARATION[Declaration Service:8084]
+        DOCUMENT[Document Service:8085]
+        TRACK[Track & Trace:8086]
+        PAYMENT[Payment Service:8087]
+        MASTER[Master Data:8088]
+    end
+
+    subgraph "Integration Services"
+        ASYCUDA[ASYCUDA Integration:9081]
+        SINTECE[SINTECE Integration:9082]
+        JUP[JUP Integration:9083]
+        TOS[TOS Integration:9084]
+        OGA[OGA Integration:9085]
+    end
+
+    subgraph "Cross-Cutting Services"
+        IAM[IAM Keycloak:8080]
+        NOTIFICATION[Notification:8089]
+        WORKFLOW[Workflow Camunda:8090]
+        AUDIT[Audit & Logging:8091]
+        REPORTING[Reporting:8092]
+    end
+
+    DECLARATION --> ASYCUDA
+    DECLARATION --> SINTECE
+    TRACK --> JUP
+    TRACK --> TOS
+    LICENSE --> OGA
+
+    COMPANY --> IAM
+    DECLARATION --> WORKFLOW
+    PAYMENT --> AUDIT
+
+    style COMPANY fill:#4A90E2
+    style DECLARATION fill:#4A90E2
+    style ASYCUDA fill:#E74C3C
+    style IAM fill:#F39C12
