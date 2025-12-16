@@ -17,67 +17,6 @@ graph TB
     subgraph DocumentService["📄 DOCUMENT SERVICE"]
         DocService1[📄 Document Service 1]
         DocService2[📄 Document Service 2]
-        DocServiceN[📄 Document Service N]
-        
-        UploadHandler[📤 Upload Handler]
-        ValidationEngine[✅ Validation Engine]
-        StorageManager[💾 Storage Manager]
-    end
-
-    %% MinIO Cluster
-    subgraph MinIOCluster["📦 MINIO CLUSTER"]
-        MinIO1[📦 MinIO Node 1]
-        MinIO2[📦 MinIO Node 2]
-        MinIO3[📦 MinIO Node 3]
-        MinIO4[📦 MinIO Node 4]
-    end
-
-    %% Database
-    subgraph Database["🗃️ METADATA DB"]
-        DocumentDB[(🗃️ PostgreSQL)]
-        FilesTable[(📄 Files Table)]
-        MetadataTable[(📝 Metadata Table)]
-    end
-
-    %% Security
-    subgraph Security["🛡️ SECURITY"]
-        Encryption[🔒 Encryption]
-        AccessControl[👤 Access Control]
-        VirusScanning[🦠 Virus Scanning]
-    end
-
-    %% Document Types
-    subgraph DocumentTypes["📁 DOCUMENT TYPES"]
-        PDFDocs[📄 PDF Documents]
-        ImageDocs[🖼️ Image Documents]
-        OfficeDocs[📝 Office Documents]
-    end
-
-    %% Backup
-    subgraph Backup["💾 BACKUP"]
-        LocalBackup[📅 Local Backup]
-        OffsiteBackup[🌐 Offsite Backup]
-    end
-
-%%{init: {'theme':'base', 'themeVariables': {'fontSize': '10px', 'fontFamily': 'Arial, sans-serif'}}}%%
-graph TB
-    %% Client Applications
-    subgraph Clients["👥 CLIENTS"]
-        WebPortal[🌐 Web Portal]
-        MobileApp[📱 Mobile App]
-        APIClients[🔌 API Clients]
-    end
-
-    %% Gateway
-    subgraph Gateway["🚪 GATEWAY"]
-        NGINX[⚖️ NGINX]
-        Kong[🦍 Kong Gateway]
-    end
-
-    %% Document Service
-    subgraph DocumentService["📄 DOCUMENT SERVICE"]
-        DocService1[📄 Document Service 1]
-        DocService2[📄 Document Service 2]
         UploadHandler[📤 Upload Handler]
         ValidationEngine[✅ Validation Engine]
         StorageManager[💾 Storage Manager]
@@ -97,7 +36,7 @@ graph TB
     subgraph MinIOFeatures["🔧 MINIO FEATURES"]
         S3Compatibility[🔌 S3 Compatibility]
         ErasureCoding[🛡️ Erasure Coding]
-        Encryption[🔐 Encryption]
+        EncryptionFeature[🔐 Encryption]
         Replication[🔄 Cross-Site Replication]
     end
 
