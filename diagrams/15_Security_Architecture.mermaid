@@ -1,0 +1,249 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '8px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% External Threats
+    subgraph Threats["🌐 EXTERNAL THREATS & ATTACK VECTORS"]
+        direction TB
+        DDoSAttacks[💥 DDoS Attacks<br/>Volumetric & Application Layer]
+        WebAttacks[🕸️ Web Application Attacks<br/>OWASP Top 10]
+        APIAttacks[🔌 API Attacks<br/>Injection & Abuse]
+        MalwareThreats[🦠 Malware & Virus<br/>File Upload Threats]
+        SocialEngineering[🎭 Social Engineering<br/>Phishing & Fraud]
+    end
+
+    %% Perimeter Security
+    subgraph PerimeterSecurity["🛡️ PERIMETER SECURITY - DMZ"]
+        direction TB
+        
+        subgraph EdgeProtection["Edge Protection"]
+            CloudflareWAF[☁️ Cloudflare WAF<br/>• DDoS Protection<br/>• Bot Management<br/>• Rate Limiting<br/>• Geo-blocking]
+            
+            ExternalFirewall[🔥 External Firewall<br/>• Network-level Filtering<br/>• Port Management<br/>• IP Whitelisting<br/>• Threat Intelligence]
+            
+            IDS_IPS[🔍 IDS/IPS<br/>• Intrusion Detection<br/>• Automated Response<br/>• Signature-based Detection<br/>• Anomaly Detection]
+        end
+        
+        subgraph LoadBalancerSecurity["Load Balancer Security"]
+            SecureLoadBalancer[⚖️ Secure Load Balancer<br/>• SSL/TLS Termination<br/>• Certificate Management<br/>• Header Security<br/>• Request Filtering]
+            
+            WebApplicationFirewall[🛡️ Web Application Firewall<br/>• ModSecurity Rules<br/>• OWASP Protection<br/>• Custom Rules<br/>• Request Validation]
+        end
+    end
+
+    %% Network Security
+    subgraph NetworkSecurity["🌐 NETWORK SECURITY"]
+        direction TB
+        
+        subgraph NetworkSegmentation["Network Segmentation"]
+            VLANSeparation[🔀 VLAN Separation<br/>• DMZ: 172.16.1.0/24<br/>• App: 10.10.0.0/16<br/>• Data: 10.20.0.0/16<br/>• Mgmt: 10.30.0.0/16]
+            
+            FirewallRules[📋 Firewall Rules<br/>• Zero Trust Model<br/>• Least Privilege<br/>• Port Restrictions<br/>• Traffic Monitoring]
+            
+            NetworkACLs[📝 Network ACLs<br/>• Subnet-level Control<br/>• Protocol Filtering<br/>• Direction Control<br/>• Logging]
+        end
+        
+        subgraph VPNSecurity["VPN Security"]
+            AdminVPN[🔒 Admin VPN<br/>• IPSec/OpenVPN<br/>• Certificate-based Auth<br/>• Multi-Factor Auth<br/>• Session Monitoring]
+            
+            SiteToSiteVPN[🏛️ Site-to-Site VPN<br/>• Government Networks<br/>• Partner Connections<br/>• Encrypted Tunnels<br/>• Redundant Paths]
+        end
+    end
+
+    %% Application Security
+    subgraph ApplicationSecurity["⚙️ APPLICATION SECURITY"]
+        direction TB
+        
+        subgraph APIGatewaySecurity["API Gateway Security"]
+            Kong[🦍 Kong API Gateway<br/>• OAuth 2.0 Validation<br/>• Rate Limiting<br/>• Request/Response Filtering<br/>• API Key Management<br/>• CORS Policy]
+            
+            APISecurityPolicies[🔐 API Security Policies<br/>• Authentication Required<br/>• Role-based Authorization<br/>• Input Validation<br/>• Output Sanitization]
+        end
+        
+        subgraph MicroservicesSecurity["Microservices Security"]
+            ServiceMesh[🕸️ Service Mesh Security<br/>• mTLS Communication<br/>• Service-to-Service Auth<br/>• Traffic Encryption<br/>• Zero Trust Network]
+            
+            ContainerSecurity[📦 Container Security<br/>• Image Scanning<br/>• Runtime Protection<br/>• Vulnerability Management<br/>• Secure Base Images]
+            
+            SecretManagement[🔐 Secret Management<br/>• Kubernetes Secrets<br/>• Encryption at Rest<br/>• Rotation Policies<br/>• Access Control]
+        end
+    end
+
+    %% Identity & Access Management
+    subgraph IAMSecurity["👤 IDENTITY & ACCESS MANAGEMENT"]
+        direction TB
+        
+        subgraph KeycloakSecurity["Keycloak Security"]
+            AuthenticationSecurity[🔑 Authentication Security<br/>• Multi-Factor Authentication<br/>• Password Policies<br/>• Account Lockout<br/>• Session Management]
+            
+            AuthorizationSecurity[🛡️ Authorization Security<br/>• Role-Based Access Control<br/>• Attribute-Based Access<br/>• Fine-grained Permissions<br/>• Dynamic Authorization]
+            
+            SessionSecurity[🔄 Session Security<br/>• Secure Token Storage<br/>• Token Rotation<br/>• Session Timeout<br/>• Concurrent Session Limits]
+        end
+        
+        subgraph IdentityProtection["Identity Protection"]
+            UserVerification[✅ User Verification<br/>• Email Verification<br/>• Phone Verification<br/>• Document Verification<br/>• Background Checks]
+            
+            AccountSecurity[🔒 Account Security<br/>• Strong Password Policy<br/>• Password Breach Detection<br/>• Suspicious Activity Detection<br/>• Account Recovery Security]
+        end
+    end
+
+    %% Data Security
+    subgraph DataSecurity["🗃️ DATA SECURITY"]
+        direction TB
+        
+        subgraph EncryptionSecurity["Encryption Security"]
+            TransitEncryption[🔒 Encryption in Transit<br/>• TLS 1.3<br/>• Perfect Forward Secrecy<br/>• Certificate Pinning<br/>• HSTS Headers]
+            
+            RestEncryption[🔒 Encryption at Rest<br/>• Database Encryption<br/>• File System Encryption<br/>• Backup Encryption<br/>• Key Management]
+            
+            ApplicationEncryption[🔒 Application-level Encryption<br/>• Field-level Encryption<br/>• PII Protection<br/>• Tokenization<br/>• Data Masking]
+        end
+        
+        subgraph DatabaseSecurity["Database Security"]
+            PostgreSQLSecurity[🗃️ PostgreSQL Security<br/>• Connection Encryption<br/>• User Authentication<br/>• Row-level Security<br/>• Audit Logging]
+            
+            MinIOSecurity[📦 MinIO Security<br/>• Server-side Encryption<br/>• Access Policies<br/>• Bucket Policies<br/>• Audit Logging]
+            
+            RedisSecurity[⚡ Redis Security<br/>• AUTH Authentication<br/>• ACL (Access Control Lists)<br/>• TLS Encryption<br/>• Memory Protection]
+        end
+    end
+
+    %% Security Monitoring
+    subgraph SecurityMonitoring["📊 SECURITY MONITORING & LOGGING"]
+        direction TB
+        
+        subgraph SIEM["SIEM & Log Analysis"]
+            ELKSecurity[📋 ELK Stack Security<br/>• Security Event Logging<br/>• Log Correlation<br/>• Threat Detection<br/>• Incident Response]
+            
+            SecurityDashboards[📊 Security Dashboards<br/>• Real-time Monitoring<br/>• Threat Indicators<br/>• Security Metrics<br/>• Compliance Reports]
+        end
+        
+        subgraph ThreatDetection["Threat Detection"]
+            AnomalyDetection[🔍 Anomaly Detection<br/>• User Behavior Analytics<br/>• Network Traffic Analysis<br/>• Application Performance<br/>• Data Access Patterns]
+            
+            ThreatIntelligence[🧠 Threat Intelligence<br/>• IOC Feeds<br/>• Reputation Services<br/>• Vulnerability Feeds<br/>• Attack Signatures]
+        end
+        
+        subgraph IncidentResponse["Incident Response"]
+            AlertingSystem[🚨 Alerting System<br/>• Real-time Alerts<br/>• Escalation Procedures<br/>• Multi-channel Notifications<br/>• Alert Correlation]
+            
+            IncidentManagement[📋 Incident Management<br/>• Incident Classification<br/>• Response Procedures<br/>• Evidence Collection<br/>• Recovery Plans]
+        end
+    end
+
+    %% Compliance & Governance
+    subgraph ComplianceSecurity["📜 COMPLIANCE & GOVERNANCE"]
+        direction TB
+        
+        subgraph RegulatoryCompliance["Regulatory Compliance"]
+            DataProtection[🛡️ Data Protection<br/>• Angola Data Protection Laws<br/>• GDPR Compliance<br/>• Data Residency<br/>• Right to be Forgotten]
+            
+            FinancialCompliance[💰 Financial Compliance<br/>• AML Regulations<br/>• KYC Requirements<br/>• Transaction Monitoring<br/>• Suspicious Activity Reporting]
+            
+            CustomsCompliance[🏛️ Customs Compliance<br/>• WCO Standards<br/>• Audit Requirements<br/>• Record Retention<br/>• Data Integrity]
+        end
+        
+        subgraph SecurityGovernance["Security Governance"]
+            SecurityPolicies[📋 Security Policies<br/>• Security Standards<br/>• Procedures & Guidelines<br/>• Risk Management<br/>• Security Training]
+            
+            AuditCompliance[📝 Audit & Compliance<br/>• Security Audits<br/>• Vulnerability Assessments<br/>• Penetration Testing<br/>• Compliance Reporting]
+        end
+    end
+
+    %% Business Continuity
+    subgraph BusinessContinuity["🔄 BUSINESS CONTINUITY & DR"]
+        direction TB
+        
+        subgraph BackupSecurity["Backup Security"]
+            EncryptedBackups[🔒 Encrypted Backups<br/>• Backup Encryption<br/>• Secure Storage<br/>• Access Control<br/>• Integrity Verification]
+            
+            OffsiteBackups[🌍 Offsite Backups<br/>• Geographic Distribution<br/>• Secure Transport<br/>• Air-gapped Storage<br/>• Regular Testing]
+        end
+        
+        subgraph DisasterRecovery["Disaster Recovery"]
+            DRSecurity[🏥 DR Security<br/>• Secure DR Site<br/>• Data Replication Security<br/>• Recovery Procedures<br/>• Security Validation]
+            
+            BCPSecurity[📋 BCP Security<br/>• Security Continuity Plans<br/>• Emergency Procedures<br/>• Communication Security<br/>• Alternate Operations]
+        end
+    end
+
+    %% Security Testing
+    subgraph SecurityTesting["🧪 SECURITY TESTING & VALIDATION"]
+        direction TB
+        
+        subgraph AutomatedTesting["Automated Testing"]
+            SAST[🔍 SAST<br/>Static Application Security Testing<br/>Code Analysis<br/>Vulnerability Detection]
+            
+            DAST[🕸️ DAST<br/>Dynamic Application Security Testing<br/>Runtime Analysis<br/>Penetration Testing]
+            
+            IAST[⚡ IAST<br/>Interactive Application Security Testing<br/>Real-time Analysis<br/>Code Coverage]
+        end
+        
+        subgraph ManualTesting["Manual Testing"]
+            PenTesting[🎯 Penetration Testing<br/>• External Testing<br/>• Internal Testing<br/>• Social Engineering<br/>• Physical Security]
+            
+            VulnAssessment[🔍 Vulnerability Assessment<br/>• Network Scanning<br/>• Application Testing<br/>• Configuration Review<br/>• Risk Assessment]
+        end
+    end
+
+    %% Attack Flow Prevention
+    Threats --> PerimeterSecurity
+    PerimeterSecurity --> NetworkSecurity
+    NetworkSecurity --> ApplicationSecurity
+    ApplicationSecurity --> IAMSecurity
+    IAMSecurity --> DataSecurity
+
+    %% Monitoring Integration
+    SecurityMonitoring -.-> ApplicationSecurity
+    SecurityMonitoring -.-> DataSecurity
+    SecurityMonitoring -.-> NetworkSecurity
+    SecurityMonitoring -.-> IAMSecurity
+
+    %% Compliance Integration
+    ComplianceSecurity -.-> DataSecurity
+    ComplianceSecurity -.-> SecurityMonitoring
+    ComplianceSecurity -.-> IAMSecurity
+
+    %% Business Continuity Integration
+    BusinessContinuity -.-> DataSecurity
+    BusinessContinuity -.-> SecurityMonitoring
+
+    %% Security Testing Integration
+    SecurityTesting -.-> ApplicationSecurity
+    SecurityTesting -.-> NetworkSecurity
+    SecurityTesting -.-> ComplianceSecurity
+
+    %% Security Layers Visualization
+    subgraph SecurityLayers["🔒 DEFENSE IN DEPTH LAYERS"]
+        direction LR
+        Layer1[🌐 Perimeter]
+        Layer2[🌐 Network]
+        Layer3[⚙️ Application]
+        Layer4[👤 Identity]
+        Layer5[🗃️ Data]
+        Layer6[📊 Monitoring]
+        
+        Layer1 --> Layer2
+        Layer2 --> Layer3
+        Layer3 --> Layer4
+        Layer4 --> Layer5
+        Layer5 --> Layer6
+    end
+
+    %% Styling
+    classDef threatBox fill:#ffcdd2,stroke:#d32f2f,stroke-width:3px,color:#000
+    classDef perimeterBox fill:#f8bbd9,stroke:#c2185b,stroke-width:2px,color:#000
+    classDef networkBox fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    classDef appBox fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef iamBox fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef dataBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef monitorBox fill:#e0f2f1,stroke:#00695c,stroke-width:2px,color:#000
+    classDef complianceBox fill:#fce4ec,stroke:#ad1457,stroke-width:2px,color:#000
+
+    class Threats threatBox
+    class PerimeterSecurity perimeterBox
+    class NetworkSecurity networkBox
+    class ApplicationSecurity appBox
+    class IAMSecurity iamBox
+    class DataSecurity dataBox
+    class SecurityMonitoring monitorBox
+    class ComplianceSecurity,BusinessContinuity,SecurityTesting complianceBox

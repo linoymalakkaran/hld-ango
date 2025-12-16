@@ -1,0 +1,271 @@
+graph TB
+    %% Developer Workflow
+    subgraph Developer["👨‍💻 DEVELOPER WORKFLOW"]
+        direction TB
+        
+        Developer1[👨‍💻 Developer]
+        LocalDev[💻 Local Development<br/>• Docker Compose<br/>• Local Testing<br/>• Code Quality Tools]
+        
+        Developer1 --> LocalDev
+    end
+
+    %% Source Control
+    subgraph SourceControl["📚 SOURCE CONTROL & COLLABORATION"]
+        direction TB
+        
+        GitLab[📚 GitLab Enterprise<br/>• Git Repository<br/>• Merge Requests<br/>• Code Review<br/>• Branch Protection]
+        
+        subgraph BranchStrategy["Branch Strategy"]
+            MainBranch[🌟 main branch<br/>Production Ready]
+            DevelopBranch[🔧 develop branch<br/>Integration Branch]
+            FeatureBranches[🚀 feature/* branches<br/>Individual Features]
+            ReleaseBranches[🏷️ release/* branches<br/>Release Preparation]
+            HotfixBranches[🔥 hotfix/* branches<br/>Emergency Fixes]
+        end
+    end
+
+    %% CI/CD Pipeline Triggers
+    subgraph PipelineTriggers["🔄 PIPELINE TRIGGERS"]
+        direction TB
+        
+        CommitTrigger[📝 Code Commit<br/>feature branch]
+        MRTrigger[🔀 Merge Request<br/>develop/main branch]
+        TagTrigger[🏷️ Git Tag<br/>Release trigger]
+        ScheduledTrigger[⏰ Scheduled<br/>Nightly builds]
+    end
+
+    %% CI Pipeline
+    subgraph CIPipeline["🔨 CONTINUOUS INTEGRATION PIPELINE"]
+        direction TB
+        
+        subgraph BuildStage["Build Stage"]
+            CheckoutCode[📥 Checkout Code<br/>Clone Repository]
+            DependencyInstall[📦 Install Dependencies<br/>NuGet, NPM packages]
+            CompileCode[🔨 Compile Code<br/>Build .NET & Angular]
+            UnitTests[🧪 Unit Tests<br/>xUnit, Jest, Karma]
+        end
+        
+        subgraph QualityStage["Quality Assurance Stage"]
+            CodeAnalysis[🔍 Code Analysis<br/>SonarQube]
+            SecurityScan[🔒 Security Scan<br/>OWASP Dependency Check]
+            LintCheck[📋 Lint Check<br/>ESLint, Roslyn Analyzers]
+            CodeCoverage[📊 Code Coverage<br/>Coverlet, Istanbul]
+        end
+        
+        subgraph TestStage["Testing Stage"]
+            IntegrationTests[🔗 Integration Tests<br/>API Testing]
+            E2ETests[🎭 E2E Tests<br/>Playwright/Cypress]
+            ContractTests[📋 Contract Tests<br/>Pact Testing]
+            PerformanceTests[⚡ Performance Tests<br/>NBomber, k6]
+        end
+        
+        subgraph PackageStage["Package Stage"]
+            DockerBuild[🐳 Docker Build<br/>Multi-stage builds]
+            ImageScan[🔍 Image Security Scan<br/>Trivy, Clair]
+            ImagePush[📤 Push to Registry<br/>Harbor Registry]
+            HelmPackage[⚙️ Package Helm Charts<br/>Chart versioning]
+        end
+    end
+
+    %% Artifact Repository
+    subgraph ArtifactRepo["📦 ARTIFACT REPOSITORY"]
+        direction TB
+        
+        HarborRegistry[🐳 Harbor Registry<br/>• Container Images<br/>• Vulnerability Scanning<br/>• Image Signing<br/>• Replication]
+        
+        HelmRepository[⚙️ Helm Repository<br/>• Chart Storage<br/>• Version Management<br/>• Dependency Management]
+        
+        NuGetFeed[📦 NuGet Feed<br/>• .NET Packages<br/>• Internal Libraries<br/>• Version Control]
+        
+        NPMRegistry[📦 NPM Registry<br/>• Node.js Packages<br/>• Angular Libraries<br/>• Private Packages]
+    end
+
+    %% CD Pipeline
+    subgraph CDPipeline["🚀 CONTINUOUS DEPLOYMENT PIPELINE"]
+        direction TB
+        
+        subgraph DeploymentStages["Deployment Stages"]
+            DevDeploy[🟢 Development Deploy<br/>• Automatic deployment<br/>• Latest features<br/>• Developer testing]
+            
+            StagingDeploy[🟡 Staging Deploy<br/>• Manual approval<br/>• Production-like testing<br/>• User acceptance testing]
+            
+            ProdDeploy[🔴 Production Deploy<br/>• Manual approval<br/>• Blue-green deployment<br/>• Rollback capability]
+        end
+        
+        subgraph DeploymentStrategies["Deployment Strategies"]
+            BlueGreen[🔄 Blue-Green Deployment<br/>• Zero downtime<br/>• Quick rollback<br/>• Full environment switch]
+            
+            RollingUpdate[📈 Rolling Update<br/>• Gradual deployment<br/>• Partial traffic<br/>• Minimal resource usage]
+            
+            CanaryDeploy[🐤 Canary Deployment<br/>• Progressive rollout<br/>• Traffic splitting<br/>• Risk mitigation]
+        end
+    end
+
+    %% Kubernetes Environments
+    subgraph K8sEnvironments["☸️ KUBERNETES ENVIRONMENTS"]
+        direction TB
+        
+        subgraph DevEnvironment["Development Environment"]
+            DevNamespace[🟢 jul-development<br/>Namespace]
+            DevServices[⚙️ All Services<br/>Latest builds]
+            DevDB[🗃️ Development DB<br/>Test data]
+        end
+        
+        subgraph StagingEnvironment["Staging Environment"]
+            StagingNamespace[🟡 jul-staging<br/>Namespace]
+            StagingServices[⚙️ All Services<br/>Release candidates]
+            StagingDB[🗃️ Staging DB<br/>Production-like data]
+        end
+        
+        subgraph ProductionEnvironment["Production Environment"]
+            ProdNamespace[🔴 jul-production<br/>Namespace]
+            ProdServices[⚙️ All Services<br/>Stable releases]
+            ProdDB[🗃️ Production DB<br/>Live data]
+        end
+    end
+
+    %% Infrastructure as Code
+    subgraph IaC["🏗️ INFRASTRUCTURE AS CODE"]
+        direction TB
+        
+        subgraph TerraformConfig["Terraform Configuration"]
+            TerraformModules[🏗️ Terraform Modules<br/>• Kubernetes cluster<br/>• Networking<br/>• Storage<br/>• Security groups]
+            
+            TerraformState[💾 Terraform State<br/>• Remote state backend<br/>• State locking<br/>• Version control]
+        end
+        
+        subgraph HelmCharts["Helm Charts"]
+            ApplicationCharts[⚙️ Application Charts<br/>• Microservice templates<br/>• Configuration management<br/>• Environment values]
+            
+            InfrastructureCharts[🏗️ Infrastructure Charts<br/>• PostgreSQL<br/>• Redis<br/>• MinIO<br/>• RabbitMQ]
+        end
+        
+        subgraph ConfigManagement["Configuration Management"]
+            ConfigMaps[⚙️ ConfigMaps<br/>• Application config<br/>• Environment variables<br/>• Feature flags]
+            
+            Secrets[🔐 Secrets Management<br/>• Database passwords<br/>• API keys<br/>• Certificates]
+        end
+    end
+
+    %% Monitoring and Observability
+    subgraph Monitoring["📊 MONITORING & OBSERVABILITY"]
+        direction TB
+        
+        subgraph PipelineMonitoring["Pipeline Monitoring"]
+            GitLabCI[📊 GitLab CI Metrics<br/>• Build success rate<br/>• Pipeline duration<br/>• Test results<br/>• Deployment frequency]
+            
+            QualityMetrics[📈 Quality Metrics<br/>• Code coverage<br/>• Technical debt<br/>• Security vulnerabilities<br/>• Performance benchmarks]
+        end
+        
+        subgraph DeploymentMonitoring["Deployment Monitoring"]
+            DeploymentStatus[🚀 Deployment Status<br/>• Deployment success<br/>• Rollback events<br/>• Environment health<br/>• Service availability]
+            
+            ApplicationMetrics[📊 Application Metrics<br/>• Performance monitoring<br/>• Error tracking<br/>• User experience<br/>• Business metrics]
+        end
+    end
+
+    %% Security and Compliance
+    subgraph Security["🔒 SECURITY & COMPLIANCE"]
+        direction TB
+        
+        subgraph SecurityScanning["Security Scanning"]
+            SAST[🔍 SAST<br/>Static Application Security Testing<br/>Code vulnerability analysis]
+            
+            DAST[🕸️ DAST<br/>Dynamic Application Security Testing<br/>Runtime vulnerability testing]
+            
+            DependencyCheck[📦 Dependency Check<br/>Third-party vulnerability scanning<br/>License compliance]
+            
+            ContainerScan[🐳 Container Scanning<br/>Image vulnerability assessment<br/>Base image security]
+        end
+        
+        subgraph ComplianceChecks["Compliance Checks"]
+            PolicyValidation[📋 Policy Validation<br/>• Kubernetes policies<br/>• Security policies<br/>• Compliance rules]
+            
+            AuditLogging[📝 Audit Logging<br/>• Pipeline audit trail<br/>• Deployment logs<br/>• Access logs]
+        end
+    end
+
+    %% Testing Strategy
+    subgraph TestingStrategy["🧪 TESTING STRATEGY"]
+        direction TB
+        
+        subgraph TestPyramid["Test Pyramid"]
+            UnitTestLayer[🧪 Unit Tests (70%)<br/>• Fast execution<br/>• High coverage<br/>• Developer feedback]
+            
+            IntegrationTestLayer[🔗 Integration Tests (20%)<br/>• API testing<br/>• Database testing<br/>• Service interaction]
+            
+            E2ETestLayer[🎭 E2E Tests (10%)<br/>• User journey testing<br/>• Browser automation<br/>• Critical path validation]
+        end
+        
+        subgraph TestEnvironments["Test Environments"]
+            TestDataManagement[🗃️ Test Data Management<br/>• Synthetic data<br/>• Data masking<br/>• Environment refresh]
+            
+            TestReporting[📊 Test Reporting<br/>• Test results<br/>• Coverage reports<br/>• Trend analysis]
+        end
+    end
+
+    %% Release Management
+    subgraph ReleaseManagement["🏷️ RELEASE MANAGEMENT"]
+        direction TB
+        
+        subgraph ReleaseStrategy["Release Strategy"]
+            GitFlow[🌊 Git Flow<br/>• Feature branches<br/>• Release branches<br/>• Hotfix workflow]
+            
+            SemanticVersioning[🔢 Semantic Versioning<br/>• Major.Minor.Patch<br/>• Automated versioning<br/>• Changelog generation]
+        end
+        
+        subgraph ReleaseAutomation["Release Automation"]
+            ReleaseNotes[📝 Release Notes<br/>• Automated generation<br/>• Feature summaries<br/>• Bug fixes<br/>• Breaking changes]
+            
+            RollbackProcedures[↩️ Rollback Procedures<br/>• Automated rollback<br/>• Database migrations<br/>• Configuration rollback]
+        end
+    end
+
+    %% Flow Connections
+    Developer --> SourceControl
+    SourceControl --> PipelineTriggers
+    PipelineTriggers --> CIPipeline
+    CIPipeline --> ArtifactRepo
+    ArtifactRepo --> CDPipeline
+    CDPipeline --> K8sEnvironments
+    
+    IaC --> K8sEnvironments
+    Security --> CIPipeline
+    TestingStrategy --> CIPipeline
+    Monitoring -.-> CIPipeline
+    Monitoring -.-> CDPipeline
+    ReleaseManagement --> CDPipeline
+
+    %% Pipeline Flow Details
+    subgraph PipelineFlow["🔄 DETAILED PIPELINE FLOW"]
+        direction LR
+        
+        Step1[1️⃣ Code Commit]
+        Step2[2️⃣ Build & Test]
+        Step3[3️⃣ Quality Gates]
+        Step4[4️⃣ Security Scan]
+        Step5[5️⃣ Package & Store]
+        Step6[6️⃣ Deploy to Dev]
+        Step7[7️⃣ Integration Test]
+        Step8[8️⃣ Deploy to Staging]
+        Step9[9️⃣ UAT & Performance]
+        Step10[🔟 Deploy to Prod]
+        
+        Step1 --> Step2 --> Step3 --> Step4 --> Step5
+        Step5 --> Step6 --> Step7 --> Step8 --> Step9 --> Step10
+    end
+
+    %% Styling
+    classDef devBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef ciBox fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef cdBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef securityBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    classDef infraBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef monitorBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+
+    class Developer,SourceControl devBox
+    class CIPipeline,TestingStrategy ciBox
+    class CDPipeline,ReleaseManagement cdBox
+    class Security securityBox
+    class K8sEnvironments,IaC,ArtifactRepo infraBox
+    class Monitoring monitorBox

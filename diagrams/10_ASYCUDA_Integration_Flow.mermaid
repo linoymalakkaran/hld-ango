@@ -1,0 +1,124 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '8px', 'fontFamily': 'Arial, sans-serif'}}}%%
+sequenceDiagram
+    participant Trader as 👤 Trader/Broker
+    participant JULPortal as 🌐 JUL Web Portal
+    participant APIGateway as 🦍 Kong API Gateway
+    participant DeclarationService as 📋 Declaration Service
+    participant ASYCUDAIntegration as 🏛️ ASYCUDA Integration
+    participant ASYCUDA as 🏛️ ASYCUDA (AGT)
+    participant WorkflowService as 🔄 Workflow Service
+    participant PaymentService as 💳 Payment Service
+    participant NotificationService as 📧 Notification Service
+    participant AuditService as 📝 Audit Service
+
+    Note over Trader, AuditService: Declaration Submission Flow
+
+    %% 1. Declaration Creation
+    Trader->>+JULPortal: Create new DU declaration
+    JULPortal->>+APIGateway: Submit declaration data
+    APIGateway->>+DeclarationService: POST /declarations
+    
+    Note over DeclarationService: Validate declaration data<br/>Check required fields<br/>Validate business rules
+    
+    DeclarationService->>+AuditService: Log declaration creation
+    AuditService-->>-DeclarationService: Audit logged
+    
+    DeclarationService-->>-APIGateway: Declaration created (ID: DU123456)
+    APIGateway-->>-JULPortal: 201 Created
+    JULPortal-->>-Trader: Declaration created successfully
+
+    %% 2. Declaration Validation
+    Note over DeclarationService: Internal validation complete<br/>Status: DRAFT → SUBMITTED
+    
+    DeclarationService->>+WorkflowService: Start declaration workflow
+    WorkflowService-->>-DeclarationService: Workflow instance created
+
+    %% 3. ASYCUDA Integration - CUSDEC Submission
+    DeclarationService->>+ASYCUDAIntegration: Submit to ASYCUDA
+    
+    Note over ASYCUDAIntegration: Transform DU to CUSDEC format<br/>Apply UN/EDIFACT standards<br/>Add required headers
+    
+    ASYCUDAIntegration->>+ASYCUDA: SOAP Request: CUSDEC Message
+    Note right of ASYCUDA: CUSDEC Elements:<br/>• Declaration Header<br/>• Declarant Information<br/>• Goods Items<br/>• HS Codes & Values<br/>• Transport Details<br/>• Supporting Documents
+
+    %% 4. ASYCUDA Processing
+    Note over ASYCUDA: Process customs declaration<br/>• Risk Assessment<br/>• Tariff Lookup<br/>• Duty Calculation<br/>• Compliance Checks
+
+    ASYCUDA-->>-ASYCUDAIntegration: SOAP Response: CUSRES Message
+    
+    Note right of ASYCUDA: CUSRES Elements:<br/>• Assessment Results<br/>• Calculated Duties<br/>• Tax Amounts<br/>• Inspection Requirements<br/>• Clearance Status<br/>• Error Messages (if any)
+
+    ASYCUDAIntegration->>ASYCUDAIntegration: Parse CUSRES response
+    ASYCUDAIntegration-->>-DeclarationService: ASYCUDA response processed
+
+    %% 5. Update Declaration Status
+    DeclarationService->>DeclarationService: Update status: SUBMITTED → ASSESSED
+    DeclarationService->>+AuditService: Log ASYCUDA response
+    AuditService-->>-DeclarationService: Audit logged
+
+    %% 6. Payment Processing
+    alt Assessment Successful (Duties Calculated)
+        DeclarationService->>+PaymentService: Process duty payment
+        PaymentService->>PaymentService: Calculate total amount<br/>(Duties + VAT + Fees)
+        PaymentService-->>-DeclarationService: Payment request created
+        
+        DeclarationService->>+NotificationService: Send payment notification
+        NotificationService-->>-Trader: 📧 Payment required: $2,500.00
+        
+    else Assessment Failed (Inspection Required)
+        DeclarationService->>DeclarationService: Update status: ASSESSED → INSPECTION_REQUIRED
+        DeclarationService->>+NotificationService: Send inspection notification
+        NotificationService-->>-Trader: 📧 Physical inspection required
+    end
+
+    %% 7. Payment Confirmation Flow
+    Note over Trader: Trader makes payment<br/>via banking system
+
+    PaymentService->>PaymentService: Receive payment confirmation
+    PaymentService->>+DeclarationService: Payment confirmed
+    DeclarationService->>DeclarationService: Update status: ASSESSED → CLEARED
+    DeclarationService-->>-PaymentService: Status updated
+
+    %% 8. Clearance Certificate
+    DeclarationService->>+ASYCUDAIntegration: Request clearance certificate
+    ASYCUDAIntegration->>+ASYCUDA: Request clearance document
+    ASYCUDA-->>-ASYCUDAIntegration: Return clearance certificate
+    ASYCUDAIntegration-->>-DeclarationService: Certificate received
+
+    %% 9. Final Notifications
+    DeclarationService->>+WorkflowService: Complete workflow
+    WorkflowService-->>-DeclarationService: Workflow completed
+
+    DeclarationService->>+NotificationService: Send clearance notification
+    NotificationService-->>-Trader: 📧 ✅ Clearance certificate available
+
+    DeclarationService->>+AuditService: Log declaration completion
+    AuditService-->>-DeclarationService: Final audit logged
+
+    Note over Trader, AuditService: Declaration Process Complete<br/>Total Time: 4-6 hours (target)
+
+    %% Error Handling Scenarios
+    Note over DeclarationService, ASYCUDA: Error Handling Scenarios
+
+    alt ASYCUDA System Unavailable
+        ASYCUDAIntegration->>ASYCUDA: CUSDEC Request
+        ASYCUDA--X ASYCUDAIntegration: Connection timeout
+        ASYCUDAIntegration->>ASYCUDAIntegration: Queue for retry<br/>Apply circuit breaker
+        ASYCUDAIntegration->>+NotificationService: System maintenance alert
+        NotificationService-->>-Trader: 📧 Temporary system delay
+    end
+
+    alt Declaration Validation Errors
+        ASYCUDA-->>ASYCUDAIntegration: CUSRES with errors
+        ASYCUDAIntegration->>+DeclarationService: Validation errors received
+        DeclarationService->>DeclarationService: Update status: SUBMITTED → REJECTED
+        DeclarationService->>+NotificationService: Send error notification
+        NotificationService-->>-Trader: 📧 ❌ Declaration rejected<br/>Reason: Invalid HS code
+    end
+
+    %% Message Format Details
+    Note over ASYCUDAIntegration, ASYCUDA: Message Format Examples
+
+    Note left of ASYCUDAIntegration: CUSDEC Message Structure:<br/>```xml<br/><CUSDEC><br/>  <MessageHeader><br/>    <MessageID>JUL123456789</MessageID><br/>    <MessageDate>2025-12-15</MessageDate><br/>  </MessageHeader><br/>  <DeclarationHeader><br/>    <DeclarationID>DU123456</DeclarationID><br/>    <DeclarationType>IMD</DeclarationType><br/>    <CustomsOffice>AOLAD</CustomsOffice><br/>  </DeclarationHeader><br/>  <GoodsItems>...</GoodsItems><br/></CUSDEC><br/>```
+
+    Note right of ASYCUDA: CUSRES Message Structure:<br/>```xml<br/><CUSRES><br/>  <MessageHeader><br/>    <ResponseID>AGT987654321</ResponseID><br/>    <OriginalMessageID>JUL123456789</OriginalMessageID><br/>  </MessageHeader><br/>  <AssessmentResult><br/>    <Status>APPROVED</Status><br/>    <DutyAmount>1500.00</DutyAmount><br/>    <VATAmount>750.00</VATAmount><br/>    <ProcessingFee>250.00</ProcessingFee><br/>  </AssessmentResult><br/></CUSRES><br/>```

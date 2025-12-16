@@ -1,0 +1,64 @@
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#ff0000', 'fontSize': '10px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% External Actors
+    Trader[👤 Trader/Broker]
+    Broker[👤 Customs Broker]
+    Forwarder[👤 Freight Forwarder]
+    Officer[👤 Customs Officer]
+    Supervisor[👤 Gov Supervisor]
+
+    %% JUL System (Central)
+    subgraph JUL["🏛️ JUL System - Angola Logistics Single Window"]
+        direction TB
+        Portal[🌐 Web Portal Angular 17+]
+        Gateway[🔌 API Gateway Kong]
+        Services[⚙️ 11 Microservices .NET 8.0]
+        Database[(🗃️ PostgreSQL Cluster)]
+        Storage[📦 MinIO Storage]
+        Identity[🔐 Keycloak IAM]
+    end
+
+    %% External Systems
+    ASYCUDA[🏛️ ASYCUDA AGT]
+    SINTECE[🏛️ SINTECE Angola]
+    OGA[🏛️ Other Gov Agencies]
+
+    %% Banking and Payment
+    Banks[🏦 Banking Systems]
+
+    %% User Interactions
+    Trader -.->|Register/Submit| Portal
+    Broker -.->|Process DU| Portal
+    Forwarder -.->|Track/Upload| Portal
+    Officer -.->|Review/Clear| Portal
+    Supervisor -.->|Monitor/Report| Portal
+
+    %% System Connections
+    Portal --> Gateway
+    Gateway --> Services
+    Services --> Database
+    Services --> Storage
+    Services --> Identity
+
+    %% External Integrations
+    Services <-->|SOAP CUSDEC| ASYCUDA
+    Services <-->|REST License| SINTECE
+    Services <-->|REST Permits| OGA
+    Services <-->|Payment| Banks
+
+    %% Data Flows
+    ASYCUDA -.->|Master Data| Services
+    SINTECE -.->|Certificates| Services
+
+    %% Styling for A4
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px,font-size:9px
+    OGA -.->|Permit Approvals<br/>Regulatory Updates| Services
+
+    %% Styling
+    classDef systemBox fill:#e1f5fe,stroke:#01579b,stroke-width:3px,color:#000
+    classDef externalBox fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    classDef actorBox fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px,color:#000
+
+    class JUL systemBox
+    class ASYCUDA,SINTECE,OGA,Banks externalBox
+    class Trader,Broker,Forwarder,Officer,Supervisor actorBox

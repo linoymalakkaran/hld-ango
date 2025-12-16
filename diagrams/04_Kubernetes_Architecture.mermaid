@@ -1,0 +1,213 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '10px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% External Traffic
+    Internet[🌍 Internet Traffic]
+    
+    %% Ingress Layer
+    subgraph Ingress["🚪 INGRESS LAYER"]
+        direction TB
+        IngressController[🚪 NGINX Ingress Controller<br/>SSL Termination & Load Balancing]
+        IngressService[⚙️ Ingress Service<br/>Type: LoadBalancer]
+    end
+
+    %% Namespace Organization
+    subgraph Production["🔴 PRODUCTION NAMESPACE"]
+        direction TB
+        
+        subgraph ApiGateway["API Gateway"]
+            KongPod[🦍 Kong API Gateway<br/>Pod Replicas: 3]
+            KongService[⚙️ Kong Service<br/>ClusterIP: 8000]
+        end
+        
+        subgraph CoreServices["Core Business Services"]
+            CompanyPods[🏢 Company Management<br/>Pod Replicas: 2<br/>Port 8081]
+            LicensePods[📜 License & Permits<br/>Pod Replicas: 2<br/>Port 8082]
+            AgentPods[👥 Agent Nomination<br/>Pod Replicas: 2<br/>Port 8083]
+            DeclarationPods[📋 Declaration Management<br/>Pod Replicas: 3<br/>Port 8084]
+            DocumentPods[📄 Document Management<br/>Pod Replicas: 2<br/>Port 8085]
+            MasterDataPods[🗂️ Master Data Management<br/>Pod Replicas: 2<br/>Port 8086]
+        end
+        
+        subgraph IntegrationServices["Integration Services"]
+            ASYCUDAPods[🏛️ ASYCUDA Integration<br/>Pod Replicas: 2<br/>Port 9081]
+            SINTECEPods[🏛️ SINTECE Integration<br/>Pod Replicas: 2<br/>Port 9082]
+            OGAPods[🏛️ OGA Integration<br/>Pod Replicas: 2<br/>Port 9083]
+        end
+        
+        subgraph CrossCuttingServices["Cross-Cutting Services"]
+            KeycloakPods[🔐 Keycloak<br/>Pod Replicas: 3<br/>Port 8080]
+            NotificationPods[📧 Notification Service<br/>Pod Replicas: 2<br/>Port 8089]
+            WorkflowPods[🔄 Camunda Workflow<br/>Pod Replicas: 2<br/>Port 8090]
+            AuditPods[📝 Audit & Logging<br/>Pod Replicas: 2<br/>Port 8091]
+            ReportingPods[📊 Reporting Service<br/>Pod Replicas: 2<br/>Port 8092]
+        end
+    end
+
+    %% Data Layer
+    subgraph DataLayer["🗃️ DATA LAYER"]
+        direction TB
+        
+        subgraph DatabaseCluster["PostgreSQL StatefulSets"]
+            PostgreSQLMaster[(🗃️ PostgreSQL Master<br/>StatefulSet<br/>Primary Instance)]
+            PostgreSQLReplica1[(🗃️ PostgreSQL Replica 1<br/>StatefulSet<br/>Read Replica)]
+            PostgreSQLReplica2[(🗃️ PostgreSQL Replica 2<br/>StatefulSet<br/>Read Replica)]
+        end
+        
+        subgraph StorageCluster["MinIO StatefulSets"]
+            MinIONode1[📦 MinIO Node 1<br/>StatefulSet]
+            MinIONode2[📦 MinIO Node 2<br/>StatefulSet]
+            MinIONode3[📦 MinIO Node 3<br/>StatefulSet]
+            MinIONodeN[📦 MinIO Node N<br/>StatefulSet]
+        end
+        
+        subgraph CacheCluster["Redis StatefulSets"]
+            RedisMaster[⚡ Redis Master<br/>StatefulSet]
+            RedisSentinel[🔍 Redis Sentinel<br/>StatefulSet]
+            RedisReplica[⚡ Redis Replica<br/>StatefulSet]
+        end
+        
+        subgraph MessageQueue["RabbitMQ StatefulSets"]
+            RabbitMQNode1[🐰 RabbitMQ Node 1<br/>StatefulSet]
+            RabbitMQNode2[🐰 RabbitMQ Node 2<br/>StatefulSet]
+            RabbitMQNode3[🐰 RabbitMQ Node 3<br/>StatefulSet]
+        end
+    end
+
+    %% Storage Layer
+    subgraph Storage["💾 STORAGE LAYER"]
+        direction TB
+        
+        subgraph PersistentStorage["Persistent Volumes"]
+            DBPV[💾 Database PVs<br/>SSD Storage Class<br/>ReadWriteOnce]
+            MinIOPV[💾 MinIO PVs<br/>SSD Storage Class<br/>ReadWriteOnce]
+            ConfigPV[💾 Config PVs<br/>Standard Storage Class<br/>ReadWriteMany]
+        end
+        
+        subgraph StorageClasses["Storage Classes"]
+            FastSSD[⚡ fast-ssd<br/>NVMe Storage<br/>Provisioner: local-path]
+            StandardSSD[💾 standard-ssd<br/>SSD Storage<br/>Provisioner: local-path]
+            BackupStorage[💾 backup-storage<br/>Network Storage<br/>Provisioner: nfs]
+        end
+    end
+
+    %% Configuration Management
+    subgraph ConfigMgmt["⚙️ CONFIGURATION MANAGEMENT"]
+        direction TB
+        
+        subgraph ConfigMaps["ConfigMaps"]
+            AppConfig[⚙️ App Configuration<br/>Database URLs, API Keys]
+            EnvConfig[🌍 Environment Config<br/>Feature Flags, Limits]
+            LogConfig[📋 Logging Config<br/>Log Levels, Formats]
+        end
+        
+        subgraph Secrets["Secrets"]
+            DBSecrets[🔐 Database Secrets<br/>Passwords, Connection Strings]
+            APISecrets[🔐 API Secrets<br/>OAuth Keys, Certificates]
+            TLSSecrets[🔐 TLS Secrets<br/>SSL Certificates, Private Keys]
+        end
+    end
+
+    %% Monitoring Namespace
+    subgraph Monitoring["📊 MONITORING NAMESPACE"]
+        direction TB
+        
+        subgraph MonitoringPods["Monitoring Services"]
+            PrometheusPods[📈 Prometheus<br/>Pod Replicas: 2<br/>Metrics Collection]
+            GrafanaPods[📊 Grafana<br/>Pod Replicas: 2<br/>Dashboards]
+            AlertManagerPods[🚨 AlertManager<br/>Pod Replicas: 2<br/>Alerting]
+        end
+        
+        subgraph LoggingPods["Logging Services"]
+            ElasticsearchPods[🔍 Elasticsearch<br/>StatefulSet: 3<br/>Log Storage]
+            LogstashPods[📋 Logstash<br/>Pod Replicas: 2<br/>Log Processing]
+            KibanaPods[📊 Kibana<br/>Pod Replicas: 1<br/>Log Visualization]
+        end
+        
+        subgraph TracingPods["Tracing Services"]
+            JaegerPods[🔍 Jaeger<br/>Pod Replicas: 1<br/>Distributed Tracing]
+        end
+    end
+
+    %% Horizontal Pod Autoscaler
+    subgraph HPA["📈 HORIZONTAL POD AUTOSCALER"]
+        direction TB
+        DeclarationHPA[📋 Declaration Service HPA<br/>Min: 3, Max: 10<br/>CPU: 70%, Memory: 80%]
+        KeycloakHPA[🔐 Keycloak HPA<br/>Min: 3, Max: 6<br/>CPU: 80%]
+        KongHPA[🦍 Kong HPA<br/>Min: 3, Max: 8<br/>CPU: 75%]
+    end
+
+    %% Resource Quotas and Limits
+    subgraph Resources["📏 RESOURCE MANAGEMENT"]
+        direction TB
+        
+        subgraph ResourceQuotas["Resource Quotas"]
+            ProdQuota[🔴 Production Quota<br/>CPU: 200 cores<br/>Memory: 800Gi<br/>Storage: 10Ti]
+            MonitorQuota[📊 Monitoring Quota<br/>CPU: 50 cores<br/>Memory: 200Gi<br/>Storage: 5Ti]
+        end
+        
+        subgraph LimitRanges["Limit Ranges"]
+            PodLimits[📦 Pod Limits<br/>CPU: 100m-4000m<br/>Memory: 128Mi-8Gi]
+            ContainerLimits[📦 Container Limits<br/>CPU: 50m-2000m<br/>Memory: 64Mi-4Gi]
+        end
+    end
+
+    %% Network Policies
+    subgraph NetworkPolicies["🌐 NETWORK POLICIES"]
+        direction TB
+        
+        subgraph ServiceMesh["Service Mesh (Optional)"]
+            Istio[🕸️ Istio Service Mesh<br/>mTLS, Traffic Management<br/>Observability]
+        end
+        
+        subgraph NetworkSecurity["Network Security"]
+            ProdNetPolicy[🔴 Production Network Policy<br/>Ingress: API Gateway Only<br/>Egress: Database, External APIs]
+            DataNetPolicy[🗃️ Data Network Policy<br/>Ingress: App Services Only<br/>Egress: Backup Systems]
+            MonitorNetPolicy[📊 Monitor Network Policy<br/>Ingress: All Namespaces<br/>Egress: Alert Systems]
+        end
+    end
+
+    %% Flow Connections
+    Internet --> IngressController
+    IngressController --> IngressService
+    IngressService --> KongService
+    KongService --> KongPod
+    
+    KongPod --> CoreServices
+    KongPod --> IntegrationServices
+    KongPod --> CrossCuttingServices
+    
+    CoreServices --> DatabaseCluster
+    CoreServices --> StorageCluster
+    CoreServices --> CacheCluster
+    CoreServices --> MessageQueue
+    
+    DatabaseCluster --> DBPV
+    StorageCluster --> MinIOPV
+    CacheCluster --> DBPV
+    MessageQueue --> DBPV
+    
+    AppConfig --> CoreServices
+    DBSecrets --> DatabaseCluster
+    APISecrets --> IntegrationServices
+    TLSSecrets --> IngressController
+
+    HPA --> CoreServices
+    HPA --> CrossCuttingServices
+    
+    MonitoringPods --> CoreServices
+    MonitoringPods --> DataLayer
+    LoggingPods --> CoreServices
+    TracingPods --> CoreServices
+
+    %% Styling
+    classDef namespaceBox fill:#e1f5fe,stroke:#01579b,stroke-width:3px,color:#000
+    classDef serviceBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+    classDef dataBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef configBox fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#000
+    classDef monitorBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+
+    class Production,Monitoring namespaceBox
+    class CoreServices,IntegrationServices,CrossCuttingServices,ApiGateway serviceBox
+    class DataLayer,Storage dataBox
+    class ConfigMgmt,Resources,NetworkPolicies configBox
+    class MonitoringPods,LoggingPods,TracingPods,HPA monitorBox

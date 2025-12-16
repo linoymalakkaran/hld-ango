@@ -1,0 +1,124 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '10px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TD
+    %% User
+    Trader[👤 Trader]
+    
+    %% JUL System
+    subgraph JUL["🏛️ JUL SYSTEM"]
+        WebPortal[🌐 Web Portal]
+        APIGateway[🦍 API Gateway]
+        DeclarationService[📋 Declaration Service]
+        DocumentService[📄 Document Service]
+        PaymentService[💳 Payment Service]
+        NotificationService[📧 Notification Service]
+    end
+    
+    %% Data Storage
+    subgraph DataLayer["🗃️ DATA"]
+        DeclarationDB[(📋 Declaration DB)]
+        MinIOStorage[📦 MinIO Storage]
+        MessageQueue[📬 Message Queue]
+    end
+    
+    %% External Systems
+    subgraph External["🌐 EXTERNAL"]
+        ASYCUDA[🏛️ ASYCUDA]
+        Banks[🏦 Banks]
+        SINTECE[🏛️ SINTECE]
+    end
+
+    %% Main Flow
+    Trader --> WebPortal
+    WebPortal --> APIGateway
+    APIGateway --> DeclarationService
+    
+    DeclarationService --> DeclarationDB
+    DeclarationService --> DocumentService
+    DocumentService --> MinIOStorage
+    
+    DeclarationService --> ASYCUDA
+    DeclarationService --> PaymentService
+    PaymentService --> Banks
+    
+    DeclarationService --> NotificationService
+    NotificationService --> Trader
+    
+    %% Event Processing
+    DeclarationService -.-> MessageQueue
+    PaymentService -.-> MessageQueue
+    NotificationService -.-> MessageQueue
+
+    %% Data Validation
+    DeclarationService --> SINTECE
+    
+    %% Data Processing Flow Labels
+    Trader -.->|1. Create Declaration| WebPortal
+    WebPortal -.->|2. Submit Data| DeclarationService
+    DeclarationService -.->|3. Upload Documents| DocumentService
+    MasterDataService -.->|4. Validate HS Codes| DeclarationService
+    DeclarationService -.->|5. Submit CUSDEC| ASYCUDA
+    ASYCUDA -.->|6. Return CUSRES| DeclarationService
+    DeclarationService -.->|7. Process Payment| PaymentService
+    PaymentService -.->|8. Confirm Payment| BankingSystem
+    NotificationService -.->|9. Send Status Update| Trader
+    
+    %% Data Synchronization Flows
+    subgraph DataSync["🔄 DATA SYNCHRONIZATION"]
+        direction TB
+        NightlySync[🌙 Nightly Batch Sync<br/>02:00 AM WAT]
+        ExternalDataSources[📊 External Data Sources<br/>• HS Code Updates<br/>• Tariff Changes<br/>• Exchange Rates<br/>• Regulatory Updates]
+        
+        NightlySync --> ExternalDataSources
+        ExternalDataSources --> MasterDataService
+        MasterDataService --> RedisCache
+    end
+    
+    %% Real-time Event Processing
+    subgraph EventProcessing["⚡ REAL-TIME EVENT PROCESSING"]
+        direction TB
+        EventProcessor[⚡ Event Processor<br/>RabbitMQ Consumer]
+        EventTypes[📬 Event Types<br/>• Declaration Status Change<br/>• Payment Confirmation<br/>• Document Upload<br/>• Workflow Transition<br/>• System Alerts]
+        
+        MessageQueue --> EventProcessor
+        EventProcessor --> EventTypes
+        EventTypes --> NotificationService
+        EventTypes --> AuditService
+        EventTypes --> WorkflowService
+    end
+    
+    %% Performance Optimization
+    subgraph Performance["🚀 PERFORMANCE OPTIMIZATION"]
+        direction TB
+        CacheStrategy[⚡ Cache Strategy<br/>• Master Data Caching<br/>• Session Caching<br/>• Query Result Caching]
+        
+        LoadBalancing[⚖️ Load Balancing<br/>• Service Replicas<br/>• Database Read Replicas<br/>• MinIO Distribution]
+        
+        RedisCache --> CacheStrategy
+        DeclarationService --> LoadBalancing
+        DocumentService --> LoadBalancing
+    end
+    
+    %% Data Quality and Monitoring
+    subgraph DataQuality["🎯 DATA QUALITY & MONITORING"]
+        direction TB
+        DataValidation[✅ Data Validation<br/>• Schema Validation<br/>• Business Rules<br/>• Data Integrity Checks]
+        
+        MonitoringMetrics[📊 Monitoring Metrics<br/>• Processing Times<br/>• Error Rates<br/>• System Performance<br/>• Data Volume]
+        
+        DeclarationService --> DataValidation
+        DataValidation --> MonitoringMetrics
+        MonitoringMetrics --> NotificationService
+    end
+
+    %% Styling
+    classDef julBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef dataBox fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef externalBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    classDef processBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef actorBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+
+    class JUL julBox
+    class DataLayer dataBox
+    class ExternalSystems externalBox
+    class DataSync,EventProcessing,Performance,DataQuality processBox
+    class Trader actorBox

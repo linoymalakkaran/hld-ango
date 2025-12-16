@@ -1,0 +1,251 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '8px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% Data Sources - Applications and Infrastructure
+    subgraph DataSources["📊 DATA SOURCES"]
+        direction TB
+        
+        subgraph ApplicationSources["Application Sources"]
+            Microservices[⚙️ JUL Microservices<br/>• Company Management<br/>• Declaration Management<br/>• Document Management<br/>• License & Permits<br/>• Integration Services]
+            
+            APIGateway[🦍 Kong API Gateway<br/>• Request/Response metrics<br/>• API performance<br/>• Rate limiting stats<br/>• Error rates]
+            
+            WebApplications[🌐 Web Applications<br/>• Angular Frontend<br/>• User interactions<br/>• Page load times<br/>• JavaScript errors]
+        end
+        
+        subgraph InfrastructureSources["Infrastructure Sources"]
+            KubernetesCluster[☸️ Kubernetes Cluster<br/>• Pod metrics<br/>• Node performance<br/>• Resource utilization<br/>• Cluster health]
+            
+            Databases[🗃️ PostgreSQL Databases<br/>• Query performance<br/>• Connection pools<br/>• Replication lag<br/>• Lock statistics]
+            
+            MinIOStorage[📦 MinIO Storage<br/>• Storage utilization<br/>• I/O performance<br/>• Request latency<br/>• Error rates]
+            
+            RedisCache[⚡ Redis Cache<br/>• Hit/Miss ratios<br/>• Memory usage<br/>• Connection stats<br/>• Command statistics]
+            
+            RabbitMQ[🐰 RabbitMQ<br/>• Queue depth<br/>• Message rates<br/>• Consumer lag<br/>• Connection stats]
+        end
+        
+        subgraph ExternalSources["External Integration Sources"]
+            ASYCUDAIntegration[🏛️ ASYCUDA Integration<br/>• Response times<br/>• Success rates<br/>• Error patterns<br/>• Message volume]
+            
+            SINTECEIntegration[🏛️ SINTECE Integration<br/>• API response times<br/>• Success rates<br/>• Certificate validations<br/>• System availability]
+            
+            NetworkInfrastructure[🌐 Network Infrastructure<br/>• Bandwidth utilization<br/>• Latency metrics<br/>• Packet loss<br/>• Connection tracking]
+        end
+    end
+
+    %% Metrics Collection Layer
+    subgraph MetricsCollection["📈 METRICS COLLECTION LAYER"]
+        direction TB
+        
+        subgraph PrometheusStack["Prometheus Stack"]
+            PrometheusServer[📈 Prometheus Server<br/>• Metrics collection<br/>• Time-series storage<br/>• PromQL queries<br/>• Alert evaluation<br/>Retention: 30 days]
+            
+            NodeExporter[📊 Node Exporter<br/>• System metrics<br/>• Hardware stats<br/>• OS performance<br/>• Process monitoring]
+            
+            KubeStateMetrics[☸️ Kube-State-Metrics<br/>• Kubernetes objects<br/>• Resource states<br/>• Pod status<br/>• Deployment health]
+            
+            CustomMetrics[⚙️ Custom Application Metrics<br/>• Business metrics<br/>• Declaration counts<br/>• Processing times<br/>• User activity]
+        end
+        
+        subgraph ServiceDiscovery["Service Discovery"]
+            K8sServiceDiscovery[☸️ Kubernetes SD<br/>• Auto-discovery<br/>• Dynamic targets<br/>• Label-based filtering<br/>• Namespace isolation]
+            
+            ConsulSD[🔍 Consul SD<br/>• Service registry<br/>• Health checks<br/>• Dynamic configuration<br/>• Multi-datacenter]
+        end
+    end
+
+    %% Visualization Layer
+    subgraph VisualizationLayer["📊 VISUALIZATION & DASHBOARDS"]
+        direction TB
+        
+        subgraph GrafanaStack["Grafana Stack"]
+            GrafanaServer[📊 Grafana Server<br/>• Dashboard creation<br/>• Data visualization<br/>• User management<br/>• Alert annotations]
+            
+            subgraph GrafanaDashboards["Pre-built Dashboards"]
+                InfraDashboard[🏗️ Infrastructure Dashboard<br/>• Kubernetes cluster overview<br/>• Node performance<br/>• Resource utilization<br/>• Network statistics]
+                
+                AppDashboard[⚙️ Application Dashboard<br/>• Microservice health<br/>• API performance<br/>• Error rates<br/>• Response times]
+                
+                BusinessDashboard[📋 Business Dashboard<br/>• Declaration metrics<br/>• Processing volumes<br/>• User activity<br/>• System usage patterns]
+                
+                SecurityDashboard[🔒 Security Dashboard<br/>• Authentication events<br/>• Failed login attempts<br/>• API security metrics<br/>• Threat indicators]
+                
+                IntegrationDashboard[🔌 Integration Dashboard<br/>• External system health<br/>• API call statistics<br/>• Message processing<br/>• Error tracking]
+            end
+        end
+        
+        subgraph CustomVisualization["Custom Visualization"]
+            ExecutiveDashboard[👔 Executive Dashboard<br/>• High-level KPIs<br/>• Business metrics<br/>• System availability<br/>• Performance trends]
+            
+            OperationalDashboard[⚙️ Operational Dashboard<br/>• Real-time monitoring<br/>• Alert status<br/>• System health<br/>• Incident tracking]
+        end
+    end
+
+    %% Logging and Observability
+    subgraph LoggingStack["📋 LOGGING & OBSERVABILITY"]
+        direction TB
+        
+        subgraph ELKStack["ELK Stack"]
+            Elasticsearch[🔍 Elasticsearch Cluster<br/>• Log storage & indexing<br/>• Full-text search<br/>• Aggregations<br/>• Hot/warm/cold tiers<br/>Retention: 90 days]
+            
+            Logstash[📋 Logstash<br/>• Log processing<br/>• Data transformation<br/>• Filtering & parsing<br/>• Multi-input support]
+            
+            Kibana[📊 Kibana<br/>• Log visualization<br/>• Search interface<br/>• Dashboard creation<br/>• Alert management]
+            
+            Filebeat[📄 Filebeat<br/>• Log shipping<br/>• File monitoring<br/>• Multi-line handling<br/>• Kubernetes integration]
+        end
+        
+        subgraph LogSources["Log Sources"]
+            ApplicationLogs[📝 Application Logs<br/>• Structured logging<br/>• Error tracking<br/>• Request tracing<br/>• Business events]
+            
+            SystemLogs[🖥️ System Logs<br/>• Syslog messages<br/>• Kernel logs<br/>• Service logs<br/>• Security events]
+            
+            AuditLogs[📝 Audit Logs<br/>• User activities<br/>• System changes<br/>• Security events<br/>• Compliance tracking]
+        end
+    end
+
+    %% Distributed Tracing
+    subgraph TracingStack["🔍 DISTRIBUTED TRACING"]
+        direction TB
+        
+        JaegerTracing[🔍 Jaeger<br/>• Distributed tracing<br/>• Request flow tracking<br/>• Performance analysis<br/>• Dependency mapping<br/>Retention: 7 days]
+        
+        subgraph TracingComponents["Tracing Components"]
+            JaegerAgent[📡 Jaeger Agent<br/>• Trace collection<br/>• Local buffering<br/>• Protocol translation<br/>• Sampling decisions]
+            
+            JaegerCollector[📥 Jaeger Collector<br/>• Trace processing<br/>• Validation<br/>• Indexing<br/>• Storage backend]
+            
+            JaegerQuery[🔍 Jaeger Query<br/>• Trace retrieval<br/>• Search interface<br/>• Dependency graph<br/>• Performance metrics]
+        end
+    end
+
+    %% Alerting System
+    subgraph AlertingSystem["🚨 ALERTING & NOTIFICATION"]
+        direction TB
+        
+        subgraph AlertManagerStack["AlertManager Stack"]
+            AlertManager[🚨 AlertManager<br/>• Alert routing<br/>• Notification handling<br/>• Alert grouping<br/>• Silence management]
+            
+            AlertingRules[📋 Alerting Rules<br/>• Prometheus rules<br/>• Threshold definitions<br/>• Severity levels<br/>• Condition logic]
+        end
+        
+        subgraph NotificationChannels["Notification Channels"]
+            EmailAlerts[📧 Email Notifications<br/>• SMTP integration<br/>• Template-based<br/>• Escalation rules<br/>• Group notifications]
+            
+            SlackAlerts[💬 Slack Integration<br/>• Channel notifications<br/>• Alert formatting<br/>• Interactive buttons<br/>• Status updates]
+            
+            SMSAlerts[📱 SMS Notifications<br/>• Critical alerts<br/>• On-call rotation<br/>• Emergency contacts<br/>• Rate limiting]
+            
+            WebhookAlerts[🔗 Webhook Integration<br/>• ITSM integration<br/>• Custom systems<br/>• Automation triggers<br/>• External escalation]
+        end
+        
+        subgraph AlertCategories["Alert Categories"]
+            CriticalAlerts[🔴 Critical Alerts<br/>• System down<br/>• Data corruption<br/>• Security breaches<br/>• Service unavailable]
+            
+            WarningAlerts[🟡 Warning Alerts<br/>• High resource usage<br/>• Performance degradation<br/>• Capacity planning<br/>• Threshold breaches]
+            
+            InfoAlerts[🔵 Info Alerts<br/>• Deployment events<br/>• Maintenance windows<br/>• Configuration changes<br/>• Scheduled tasks]
+        end
+    end
+
+    %% Performance Analytics
+    subgraph PerformanceAnalytics["⚡ PERFORMANCE ANALYTICS"]
+        direction TB
+        
+        subgraph APMTools["APM Tools"]
+            ApplicationInsights[📊 Application Performance<br/>• Response time analysis<br/>• Throughput monitoring<br/>• Error rate tracking<br/>• User experience metrics]
+            
+            InfrastructureAPM[🏗️ Infrastructure Performance<br/>• Resource utilization<br/>• Capacity planning<br/>• Bottleneck identification<br/>• Trend analysis]
+        end
+        
+        subgraph BusinessMetrics["Business Metrics"]
+            KPIMonitoring[📈 KPI Monitoring<br/>• Declaration processing times<br/>• System availability<br/>• User satisfaction<br/>• Business volumes]
+            
+            SLAMonitoring[📋 SLA Monitoring<br/>• Service level tracking<br/>• Compliance reporting<br/>• Performance baselines<br/>• Trend analysis]
+        end
+    end
+
+    %% Health Checks and Synthetic Monitoring
+    subgraph HealthMonitoring["❤️ HEALTH CHECKS & SYNTHETIC MONITORING"]
+        direction TB
+        
+        subgraph HealthChecks["Health Checks"]
+            LivenessProbes[💓 Liveness Probes<br/>• Pod health status<br/>• Container restart<br/>• Service availability<br/>• Automated recovery]
+            
+            ReadinessProbes[✅ Readiness Probes<br/>• Service readiness<br/>• Traffic routing<br/>• Load balancer integration<br/>• Graceful shutdown]
+            
+            CustomHealthChecks[⚙️ Custom Health Checks<br/>• Database connectivity<br/>• External API status<br/>• Resource availability<br/>• Business logic validation]
+        end
+        
+        subgraph SyntheticMonitoring["Synthetic Monitoring"]
+            UptimeMonitoring[📈 Uptime Monitoring<br/>• End-to-end availability<br/>• Geographic monitoring<br/>• Response time tracking<br/>• Alert automation]
+            
+            TransactionMonitoring[🔄 Transaction Monitoring<br/>• Critical user journeys<br/>• Business process monitoring<br/>• Performance baselines<br/>• Error detection]
+        end
+    end
+
+    %% Security Monitoring
+    subgraph SecurityMonitoring["🔒 SECURITY MONITORING"]
+        direction TB
+        
+        SecurityEventLogs[🛡️ Security Event Logs<br/>• Authentication events<br/>• Authorization failures<br/>• Suspicious activities<br/>• Threat detection]
+        
+        SecurityDashboards[📊 Security Dashboards<br/>• Security metrics<br/>• Threat indicators<br/>• Compliance status<br/>• Incident tracking]
+        
+        ComplianceReporting[📋 Compliance Reporting<br/>• Audit trail visualization<br/>• Regulatory reporting<br/>• Policy compliance<br/>• Risk assessment]
+    end
+
+    %% Data Flow Connections
+    DataSources --> MetricsCollection
+    MetricsCollection --> VisualizationLayer
+    DataSources --> LoggingStack
+    DataSources --> TracingStack
+    
+    MetricsCollection --> AlertingSystem
+    LoggingStack --> AlertingSystem
+    TracingStack --> PerformanceAnalytics
+    
+    VisualizationLayer --> PerformanceAnalytics
+    HealthMonitoring --> AlertingSystem
+    SecurityMonitoring --> AlertingSystem
+    
+    %% Monitoring Data Flow
+    Microservices -.-> PrometheusServer
+    KubernetesCluster -.-> NodeExporter
+    ApplicationLogs -.-> Filebeat
+    Filebeat -.-> Logstash
+    Logstash -.-> Elasticsearch
+    
+    PrometheusServer -.-> GrafanaServer
+    Elasticsearch -.-> Kibana
+    JaegerTracing -.-> JaegerQuery
+    
+    AlertManager -.-> NotificationChannels
+
+    %% Monitoring Infrastructure
+    subgraph MonitoringInfrastructure["🏗️ MONITORING INFRASTRUCTURE"]
+        direction TB
+        
+        MonitoringNamespace[📊 jul-monitoring namespace<br/>• Isolated environment<br/>• Resource quotas<br/>• Network policies<br/>• Access controls]
+        
+        MonitoringStorage[💾 Monitoring Storage<br/>• Time-series data<br/>• Log storage<br/>• High-performance disks<br/>• Retention policies]
+        
+        MonitoringNetwork[🌐 Monitoring Network<br/>• Service mesh integration<br/>• Secure communication<br/>• Load balancing<br/>• High availability]
+    end
+
+    %% Styling
+    classDef sourceBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef metricsBox fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef visualBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef loggingBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef alertBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    classDef perfBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+    classDef securityBox fill:#fce4ec,stroke:#ad1457,stroke-width:2px,color:#000
+
+    class DataSources sourceBox
+    class MetricsCollection metricsBox
+    class VisualizationLayer visualBox
+    class LoggingStack,TracingStack loggingBox
+    class AlertingSystem alertBox
+    class PerformanceAnalytics,HealthMonitoring perfBox
+    class SecurityMonitoring securityBox

@@ -1,0 +1,237 @@
+graph TD
+    %% Scheduler
+    subgraph Scheduler["⏰ BATCH SCHEDULER"]
+        CronJob[🕐 Cron Job Scheduler<br/>Daily at 02:00 AM WAT<br/>Kubernetes CronJob]
+    end
+
+    %% Master Data Management Service
+    subgraph MasterDataService["🗂️ MASTER DATA MANAGEMENT SERVICE"]
+        direction TB
+        
+        subgraph SyncOrchestrator["Synchronization Orchestrator"]
+            SyncManager[🔄 Sync Manager<br/>• Process Coordination<br/>• Error Handling<br/>• Rollback Management<br/>• Progress Tracking]
+            
+            ValidationEngine[✅ Validation Engine<br/>• Data Integrity Checks<br/>• Schema Validation<br/>• Business Rule Verification<br/>• Conflict Detection]
+            
+            TransformationEngine[🔄 Transformation Engine<br/>• Format Conversion<br/>• Data Mapping<br/>• Standardization<br/>• Enrichment]
+            
+            DistributionEngine[📤 Distribution Engine<br/>• Service Notification<br/>• Delta Distribution<br/>• Version Management<br/>• Dependency Resolution]
+        end
+    end
+
+    %% External Data Sources
+    subgraph ExternalSources["🌐 EXTERNAL DATA SOURCES"]
+        direction TB
+        
+        subgraph GovernmentSources["Government Sources"]
+            AGTSystems[🏛️ AGT Customs Authority<br/>• HS Codes & Classifications<br/>• Tariff Schedules<br/>• Duty Rates<br/>• Customs Office Codes<br/>Protocol: SFTP/API]
+            
+            SINTECESystems[🏛️ SINTECE<br/>• License Types<br/>• Regulatory Updates<br/>• Certificate Templates<br/>• Compliance Rules<br/>Protocol: REST API]
+            
+            OGASystems[🏛️ OGA Systems<br/>• Permit Requirements<br/>• Restricted Goods Lists<br/>• Agency Contacts<br/>• Processing Fees<br/>Protocol: REST API/FTP]
+        end
+        
+        subgraph InternationalSources["International Sources"]
+            WCOUpdates[🌍 World Customs Organization<br/>• HS Code Updates<br/>• Classification Changes<br/>• Best Practices<br/>• Standards Updates<br/>Protocol: HTTPS/FTP]
+            
+            CurrencyAPI[💱 Currency Exchange APIs<br/>• Real-time Exchange Rates<br/>• Historical Data<br/>• Central Bank Rates<br/>Protocol: REST API]
+            
+            ISOStandards[📊 ISO Standards<br/>• Country Codes (ISO 3166)<br/>• Currency Codes (ISO 4217)<br/>• Unit Codes<br/>Protocol: Data Feed]
+        end
+        
+        subgraph CommercialSources["Commercial Data Sources"]
+            UNLOCODEData[🌐 UN/LOCODE<br/>• Port Codes<br/>• Location Codes<br/>• Terminal Information<br/>Protocol: Data Feed]
+            
+            TradeData[📈 Trade Statistics<br/>• Import/Export Volumes<br/>• Market Intelligence<br/>• Price Indices<br/>Protocol: API/Feed]
+        end
+    end
+
+    %% Master Data Database
+    subgraph MasterDataDB["🗃️ MASTER DATA DATABASE"]
+        direction TB
+        
+        MasterDB[(🗃️ PostgreSQL 15+<br/>masterdata_db)]
+        
+        subgraph MasterTables["Master Data Tables"]
+            HSCodesTable[(🏷️ hs_codes<br/>• hs_code (6-10 digits)<br/>• description<br/>• unit_of_measure<br/>• effective_date<br/>• version)]
+            
+            TariffTable[(💰 tariff_schedules<br/>• hs_code<br/>• origin_country<br/>• duty_rate<br/>• vat_rate<br/>• effective_date)]
+            
+            CountryTable[(🌍 countries<br/>• country_code (ISO 3166)<br/>• country_name<br/>• region<br/>• trade_agreements)]
+            
+            CurrencyTable[(💱 currencies<br/>• currency_code (ISO 4217)<br/>• currency_name<br/>• exchange_rate<br/>• last_updated)]
+            
+            PortsTable[(🚢 ports<br/>• port_code (UN/LOCODE)<br/>• port_name<br/>• country<br/>• coordinates<br/>• customs_office)]
+            
+            CustomsOfficeTable[(🏛️ customs_offices<br/>• office_code<br/>• office_name<br/>• location<br/>• operating_hours<br/>• contact_info)]
+            
+            LicenseTypesTable[(📜 license_types<br/>• license_code<br/>• license_name<br/>• required_documents<br/>• validity_period<br/>• issuing_agency)]
+            
+            ProhibitedGoodsTable[(🚫 prohibited_goods<br/>• hs_code<br/>• country_origin<br/>• restriction_type<br/>• exemptions<br/>• effective_date)]
+        end
+        
+        subgraph VersionControl["Version Control Tables"]
+            SyncHistoryTable[(📅 sync_history<br/>• sync_id<br/>• sync_date<br/>• status<br/>• records_processed<br/>• errors_count)]
+            
+            DataVersionTable[(🔄 data_versions<br/>• table_name<br/>• version_number<br/>• last_updated<br/>• checksum)]
+            
+            ChangeLogTable[(📝 change_log<br/>• change_id<br/>• table_name<br/>• record_id<br/>• change_type<br/>• old_value<br/>• new_value<br/>• timestamp)]
+        end
+    end
+
+    %% Target Microservice Databases
+    subgraph TargetDatabases["🗃️ TARGET MICROSERVICE DATABASES"]
+        direction TB
+        
+        subgraph CoreServiceDBs["Core Service Databases"]
+            CompanyDB[(🏢 company_db<br/>Reference Data Cache)]
+            LicenseDB[(📜 license_db<br/>License Types & Rules)]
+            DeclarationDB[(📋 declaration_db<br/>HS Codes & Tariffs)]
+            DocumentDB[(📄 document_db<br/>Document Types)]
+        end
+        
+        subgraph IntegrationServiceDBs["Integration Service Databases"]
+            ASYCUDAIntegrationDB[(🏛️ asycuda_integration_db<br/>ASYCUDA Reference Data)]
+            SINTECEIntegrationDB[(🏛️ sintece_integration_db<br/>SINTECE Reference Data)]
+            OGAIntegrationDB[(🏛️ oga_integration_db<br/>OGA Reference Data)]
+        end
+        
+        subgraph CrossCuttingDBs["Cross-Cutting Service Databases"]
+            NotificationDB[(📧 notification_db<br/>Template Data)]
+            ReportingDB[(📊 reporting_db<br/>Dimension Tables)]
+            AuditDB[(📝 audit_db<br/>Reference Data)]
+        end
+    end
+
+    %% Cache Layer
+    subgraph CacheLayer["⚡ CACHE LAYER"]
+        RedisCache[⚡ Redis Cluster<br/>• Frequently Accessed Data<br/>• HS Code Lookups<br/>• Exchange Rates<br/>• Tariff Schedules<br/>TTL: 24 Hours]
+    end
+
+    %% Message Queue for Distribution
+    subgraph MessageQueue["📬 MESSAGE QUEUE"]
+        RabbitMQ[🐰 RabbitMQ<br/>• Master Data Change Events<br/>• Service Notifications<br/>• Error Notifications<br/>• Distribution Queues]
+    end
+
+    %% Notification System
+    subgraph NotificationSystem["📧 NOTIFICATION SYSTEM"]
+        NotificationService[📧 Notification Service<br/>• Sync Status Reports<br/>• Error Alerts<br/>• Change Notifications<br/>• Admin Dashboards]
+    end
+
+    %% Monitoring and Alerting
+    subgraph Monitoring["📊 MONITORING & ALERTING"]
+        direction TB
+        
+        SyncMonitoring[📊 Sync Monitoring<br/>• Process Status<br/>• Performance Metrics<br/>• Data Quality Checks<br/>• SLA Tracking]
+        
+        Alerting[🚨 Alerting System<br/>• Failed Sync Alerts<br/>• Data Quality Issues<br/>• Performance Degradation<br/>• Source System Outages]
+    end
+
+    %% Synchronization Flow
+    subgraph SyncFlow["🔄 NIGHTLY SYNC PROCESS"]
+        direction LR
+        
+        Step1[1️⃣ Initialize Sync<br/>Check Sources]
+        Step2[2️⃣ Extract Data<br/>Fetch Updates]
+        Step3[3️⃣ Transform Data<br/>Validate & Convert]
+        Step4[4️⃣ Load Data<br/>Update Master DB]
+        Step5[5️⃣ Distribute Changes<br/>Notify Services]
+        Step6[6️⃣ Verify Distribution<br/>Confirm Updates]
+        Step7[7️⃣ Generate Reports<br/>Send Notifications]
+        
+        Step1 --> Step2
+        Step2 --> Step3
+        Step3 --> Step4
+        Step4 --> Step5
+        Step5 --> Step6
+        Step6 --> Step7
+    end
+
+    %% Error Handling and Recovery
+    subgraph ErrorHandling["⚠️ ERROR HANDLING & RECOVERY"]
+        direction TB
+        
+        RetryMechanism[🔄 Retry Mechanism<br/>• Exponential Backoff<br/>• Max Retry Limits<br/>• Circuit Breaker<br/>• Dead Letter Queue]
+        
+        RollbackProcedure[↩️ Rollback Procedure<br/>• Version Restoration<br/>• Data Consistency<br/>• Service Notification<br/>• Audit Trail]
+        
+        ManualIntervention[👨‍💻 Manual Intervention<br/>• Admin Dashboard<br/>• Error Investigation<br/>• Manual Sync Trigger<br/>• Data Correction]
+    end
+
+    %% Data Quality Validation
+    subgraph DataQuality["🎯 DATA QUALITY VALIDATION"]
+        direction TB
+        
+        SchemaValidation[📋 Schema Validation<br/>• Required Fields<br/>• Data Types<br/>• Format Checks<br/>• Constraint Validation]
+        
+        BusinessRuleValidation[✅ Business Rule Validation<br/>• Logical Consistency<br/>• Cross-Reference Checks<br/>• Duplicate Detection<br/>• Completeness Verification]
+        
+        DataIntegrityChecks[🔍 Data Integrity Checks<br/>• Referential Integrity<br/>• Checksum Validation<br/>• Version Consistency<br/>• Audit Trail Verification]
+    end
+
+    %% Main Flow Connections
+    CronJob --> SyncManager
+    SyncManager --> ExternalSources
+    ExternalSources --> ValidationEngine
+    ValidationEngine --> TransformationEngine
+    TransformationEngine --> MasterDB
+    MasterDB --> DistributionEngine
+    DistributionEngine --> TargetDatabases
+    DistributionEngine --> RedisCache
+    DistributionEngine --> RabbitMQ
+    RabbitMQ --> NotificationService
+
+    %% Monitoring Connections
+    SyncManager -.-> Monitoring
+    ValidationEngine -.-> Monitoring
+    DistributionEngine -.-> Monitoring
+    Monitoring --> NotificationService
+
+    %% Error Handling Connections
+    SyncManager --> ErrorHandling
+    ValidationEngine --> ErrorHandling
+    TransformationEngine --> ErrorHandling
+
+    %% Data Quality Connections
+    ValidationEngine --> DataQuality
+    TransformationEngine --> DataQuality
+
+    %% Sync Process Flow
+    SyncFlow -.-> SyncManager
+
+    %% Real-time Updates Flow
+    subgraph RealTimeUpdates["⚡ REAL-TIME UPDATES"]
+        direction LR
+        
+        ExchangeRateAPI[💱 Exchange Rate API<br/>Hourly Updates]
+        CriticalUpdates[🚨 Critical Updates<br/>Emergency Changes]
+        
+        ExchangeRateAPI --> RedisCache
+        CriticalUpdates --> RabbitMQ
+    end
+
+    %% Performance Optimization
+    subgraph PerformanceOptimization["🚀 PERFORMANCE OPTIMIZATION"]
+        direction TB
+        
+        IncrementalSync[📈 Incremental Sync<br/>• Delta Detection<br/>• Timestamp Comparison<br/>• Change Detection<br/>• Efficient Updates]
+        
+        ParallelProcessing[⚡ Parallel Processing<br/>• Multi-threaded Extraction<br/>• Concurrent Validation<br/>• Parallel Distribution<br/>• Load Balancing]
+        
+        Compression[📦 Data Compression<br/>• Transfer Optimization<br/>• Storage Efficiency<br/>• Network Bandwidth<br/>• Processing Speed]
+    end
+
+    %% Styling
+    classDef serviceBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef dataBox fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef externalBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    classDef processBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef monitorBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef cacheBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+
+    class MasterDataService,NotificationSystem serviceBox
+    class MasterDataDB,TargetDatabases dataBox
+    class ExternalSources externalBox
+    class SyncFlow,ErrorHandling,DataQuality,PerformanceOptimization processBox
+    class Monitoring monitorBox
+    class CacheLayer,MessageQueue cacheBox

@@ -1,0 +1,189 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '8px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% Production Environment
+    subgraph Prod["🔴 PRODUCTION"]
+        direction TB
+        
+        subgraph ProdInfra["Prod Infra"]
+            ProdLB[⚖️ Prod LB HA]
+            
+            subgraph ProdCluster["Prod K8s"]
+                ProdMaster1[🎛️ Master1]
+                ProdMaster2[🎛️ Master2]
+                ProdMaster3[🎛️ Master3]
+                
+                ProdWorker1[💻 Worker1 32c/128GB]
+                ProdWorker2[💻 Worker2 32c/128GB]
+                ProdWorker3[💻 Worker3 32c/128GB]
+                ProdWorkerN[💻 WorkerN 32c/128GB]
+            end
+            
+            subgraph ProdData["Prod Data"]
+                ProdDB1[(🗃️ PG Primary)]
+                ProdDB2[(🗃️ PG Replica1)]
+                ProdDB3[(🗃️ PG Replica2)]
+                ProdMinIO1[📦 MinIO1]
+                ProdMinIO2[📦 MinIO2]
+                ProdMinION[📦 MinIO6+]
+                ProdRedis[⚡ Redis Cluster]
+            end
+        end
+    end
+
+    %% Staging Environment
+    subgraph Stage["🟡 STAGING ENVIRONMENT"]
+        direction TB
+        
+        subgraph StageInfra["Staging Infrastructure"]
+            StageLB[⚖️ Staging Load Balancer]
+            
+            subgraph StageCluster["Staging K8s Cluster"]
+                StageMaster1[🎛️ Master Node 1]
+                StageMaster2[🎛️ Master Node 2]
+                StageMaster3[🎛️ Master Node 3]
+                
+                StageWorker1[💻 Worker Node 1<br/>16 vCPU, 64GB RAM]
+                StageWorker2[💻 Worker Node 2<br/>16 vCPU, 64GB RAM]
+                StageWorker3[💻 Worker Node 3<br/>16 vCPU, 64GB RAM]
+                StageWorker4[💻 Worker Node 4<br/>16 vCPU, 64GB RAM]
+                StageWorker5[💻 Worker Node 5<br/>16 vCPU, 64GB RAM]
+            end
+            
+            subgraph StageData["Staging Data Tier"]
+                StageDB1[(🗃️ PostgreSQL Primary)]
+                StageDB2[(🗃️ PostgreSQL Replica)]
+                StageMinIO[📦 MinIO 3-Node<br/>Distributed]
+                StageRedis[⚡ Redis Cluster<br/>3 Nodes]
+            end
+        end
+    end
+
+    %% Development Environment
+    subgraph Dev["🟢 DEVELOPMENT ENVIRONMENT"]
+        direction TB
+        
+        subgraph DevInfra["Development Infrastructure"]
+            DevLB[⚖️ Dev Load Balancer]
+            
+            subgraph DevCluster["Development K8s Cluster"]
+                DevMaster[🎛️ Master Node<br/>Single Master]
+                DevWorker1[💻 Worker Node 1<br/>8 vCPU, 32GB RAM]
+                DevWorker2[💻 Worker Node 2<br/>8 vCPU, 32GB RAM]
+                DevWorker3[💻 Worker Node 3<br/>8 vCPU, 32GB RAM]
+            end
+            
+            subgraph DevData["Development Data Tier"]
+                DevDB[(🗃️ PostgreSQL<br/>Single Instance)]
+                DevMinIO[📦 MinIO<br/>Single Node]
+                DevRedis[⚡ Redis<br/>Single Instance]
+            end
+        end
+        
+        subgraph DevTools["Development Tools"]
+            GitLab[📚 GitLab CE<br/>Source Control & CI/CD]
+            Harbor[🐳 Harbor Registry<br/>Container Images]
+            SonarQube[🔍 SonarQube<br/>Code Quality]
+        end
+    end
+
+    %% Monitoring and Management
+    subgraph Monitor["📊 MONITORING & MANAGEMENT"]
+        direction TB
+        
+        subgraph MonitorStack["Monitoring Stack"]
+            Prometheus[📈 Prometheus<br/>Metrics Collection]
+            Grafana[📊 Grafana<br/>Dashboards]
+            AlertManager[🚨 AlertManager<br/>Alerting]
+        end
+        
+        subgraph LoggingStack["Logging Stack"]
+            Elasticsearch[🔍 Elasticsearch<br/>Log Storage]
+            Logstash[📋 Logstash<br/>Log Processing]
+            Kibana[📊 Kibana<br/>Log Visualization]
+        end
+        
+        subgraph TracingStack["Tracing Stack"]
+            Jaeger[🔍 Jaeger<br/>Distributed Tracing]
+        end
+    end
+
+    %% Network and Security
+    subgraph Security["🛡️ SECURITY & NETWORK"]
+        direction TB
+        
+        subgraph Network["Network Infrastructure"]
+            Firewall[🔥 Firewall<br/>iptables/pfSense]
+            VPN[🔒 VPN Gateway<br/>Admin Access]
+            DNS[🌐 DNS Server<br/>Internal Resolution]
+        end
+        
+        subgraph SecurityTools["Security Tools"]
+            WAF[🛡️ WAF<br/>ModSecurity]
+            IDS[👁️ IDS/IPS<br/>Intrusion Detection]
+            Vault[🔐 HashiCorp Vault<br/>Secrets Management]
+        end
+    end
+
+    %% Backup and DR
+    subgraph Backup["💾 BACKUP & DISASTER RECOVERY"]
+        direction TB
+        
+        subgraph BackupSys["Backup Systems"]
+            BackupPrimary[💾 Primary Backup<br/>Daily Full + Incremental]
+            BackupOffsite[🌍 Offsite Backup<br/>Cross-site Replication]
+        end
+        
+        subgraph DRSite["Disaster Recovery Site"]
+            DRCluster[☁️ DR Kubernetes Cluster<br/>Cold Standby]
+            DRStorage[💾 DR Storage<br/>Synchronized]
+        end
+    end
+
+    %% External Connections
+    subgraph External["🌐 EXTERNAL SYSTEMS"]
+        Internet[🌍 Internet<br/>Public Access]
+        ASYCUDA_Ext[🏛️ ASYCUDA<br/>AGT Network]
+        SINTECE_Ext[🏛️ SINTECE<br/>Government Network]
+        OGA_Ext[🏛️ OGA Systems<br/>Agency Networks]
+        Banks[🏦 Banking Networks<br/>Payment Processing]
+    end
+
+    %% Connections
+    Internet --> Security
+    Security --> ProdLB
+    Security --> StageLB
+    Security --> DevLB
+    
+    ProdLB --> ProdCluster
+    StageLB --> StageCluster
+    DevLB --> DevCluster
+    
+    ProdCluster --> ProdData
+    StageCluster --> StageData
+    DevCluster --> DevData
+    
+    ProdData --> BackupPrimary
+    BackupPrimary --> BackupOffsite
+    BackupOffsite --> DRSite
+    
+    ProdCluster --> ASYCUDA_Ext
+    ProdCluster --> SINTECE_Ext
+    ProdCluster --> OGA_Ext
+    ProdCluster --> Banks
+    
+    Monitor --> ProdCluster
+    Monitor --> StageCluster
+    Monitor --> DevCluster
+
+    %% Styling
+    classDef prodBox fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#000
+    classDef stageBox fill:#fff8e1,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef devBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef infraBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+    classDef externalBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+
+    class Prod prodBox
+    class Stage stageBox
+    class Dev devBox
+    class Monitor,Security,Backup infraBox
+    class External externalBox

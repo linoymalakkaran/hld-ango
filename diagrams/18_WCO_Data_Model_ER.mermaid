@@ -1,0 +1,429 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '8px', 'fontFamily': 'Arial, sans-serif'}}}%%
+erDiagram
+    %% Core Declaration Entities
+    DECLARATION {
+        uuid declaration_id PK
+        string functional_reference_id UK "WCO requirement"
+        string declaration_type_code "IMD/EXD/TRA"
+        string declaration_office_id "Customs office"
+        string goods_location_code "UN/LOCODE"
+        uuid declarant_party_id FK
+        uuid representative_party_id FK
+        jsonb border_transport_means "WCO transport"
+        timestamp created_datetime
+        timestamp submission_datetime
+        timestamp acceptance_datetime
+        string wco_data_model_version "3.10"
+        string status "DRAFT/SUBMITTED/CLEARED"
+        decimal total_invoice_amount
+        string invoice_currency_code "ISO 4217"
+    }
+
+    GOODS_ITEM {
+        uuid goods_item_id PK
+        uuid declaration_id FK
+        integer sequence_numeric
+        string commodity_code "HS 2017/2022"
+        string commodity_code_list_id "HS"
+        decimal customs_value_amount
+        string customs_value_currency_id "ISO 4217"
+        decimal statistical_value_amount
+        decimal net_weight_measure
+        decimal gross_weight_measure
+        decimal supplementary_unit_quantity
+        string origin_country_code "ISO 3166-1"
+        string export_country_code "ISO 3166-1"
+        string destination_country_code "ISO 3166-1"
+        string goods_description
+        string packaging_type_code
+        integer package_quantity
+    }
+
+    %% Party Management
+    PARTY {
+        uuid party_id PK
+        string party_identification UK "Tax ID/NIF"
+        string party_name
+        string party_type_code "WCO party types"
+        string party_role_code "Declarant/Representative"
+        jsonb communication_details "Contact info"
+        jsonb address "WCO Address structure"
+        string tax_id "NIF Angola"
+        string economic_operator_id "EORI equivalent"
+        string authorization_id "Various authorizations"
+        timestamp created_date
+        timestamp updated_date
+        boolean is_active
+    }
+
+    COMPANY {
+        uuid company_id PK
+        uuid party_id FK
+        string company_name
+        string registration_number UK
+        string nif UK "Tax identification"
+        string company_type "Trader/Broker/Forwarder"
+        jsonb business_address
+        string phone_number
+        string email_address
+        string website_url
+        timestamp registration_date
+        string verification_status "PENDING/VERIFIED/REJECTED"
+        jsonb verification_documents
+        boolean is_active
+    }
+
+    USER_COMPANY {
+        uuid user_company_id PK
+        string user_id FK "Keycloak user ID"
+        uuid company_id FK
+        string role "ADMIN/USER/VIEWER"
+        timestamp association_date
+        timestamp last_access_date
+        boolean is_active
+        string status "PENDING/ACTIVE/SUSPENDED"
+    }
+
+    %% License and Permits
+    LICENSE {
+        uuid license_id PK
+        uuid company_id FK
+        string license_type "CNCA/IMPORT/EXPORT"
+        string license_number UK
+        string issuing_authority
+        date issue_date
+        date expiry_date
+        string status "ACTIVE/EXPIRED/SUSPENDED"
+        jsonb license_details
+        jsonb supporting_documents
+        decimal fee_amount
+        string fee_currency "AOA"
+        boolean is_renewable
+    }
+
+    PERMIT {
+        uuid permit_id PK
+        uuid company_id FK
+        string permit_type "OGA specific"
+        string permit_number UK
+        string issuing_agency "Health/Agriculture/etc"
+        date application_date
+        date approval_date
+        date expiry_date
+        string status "PENDING/APPROVED/REJECTED"
+        jsonb permit_conditions
+        decimal processing_fee
+    }
+
+    %% Agent/Broker Relationships
+    AGENT_NOMINATION {
+        uuid nomination_id PK
+        uuid principal_company_id FK
+        uuid agent_company_id FK
+        string nomination_type "CUSTOMS_BROKER/AGENT"
+        date nomination_date
+        date expiry_date
+        string status "ACTIVE/EXPIRED/REVOKED"
+        jsonb power_of_attorney_details
+        jsonb scope_limitations
+        string authorization_reference
+    }
+
+    %% Document Management
+    DOCUMENT {
+        uuid document_id PK
+        string filename
+        string content_type "MIME type"
+        bigint size_bytes
+        string minio_bucket_name
+        string minio_object_key
+        string checksum_sha256
+        uuid uploaded_by_user FK
+        timestamp upload_date
+        string document_category "INVOICE/CERTIFICATE/etc"
+        string document_status "ACTIVE/ARCHIVED/DELETED"
+        jsonb metadata
+        integer retention_years
+    }
+
+    DOCUMENT_REFERENCE {
+        uuid reference_id PK
+        uuid document_id FK
+        uuid entity_id "Declaration/License/etc"
+        string entity_type "DECLARATION/LICENSE/PERMIT"
+        string reference_type "SUPPORTING/ATTACHMENT"
+        timestamp linked_date
+        boolean is_required
+        string validation_status "PENDING/VALID/INVALID"
+    }
+
+    %% Master Data Tables
+    HS_CODE {
+        string hs_code PK "6-10 digits"
+        string description
+        string unit_of_measure
+        string supplementary_unit
+        date effective_date
+        date end_date
+        string version "2017/2022"
+        boolean is_prohibited
+        boolean requires_permit
+        jsonb additional_requirements
+    }
+
+    TARIFF_SCHEDULE {
+        uuid tariff_id PK
+        string hs_code FK
+        string origin_country_code "ISO 3166-1"
+        decimal duty_rate_percent
+        decimal vat_rate_percent
+        decimal excise_rate_percent
+        string tariff_type "NORMAL/PREFERENTIAL"
+        date effective_date
+        date end_date
+        string trade_agreement "SADC/EU/etc"
+    }
+
+    COUNTRY {
+        string country_code PK "ISO 3166-1"
+        string country_name
+        string region_code
+        string currency_code "ISO 4217"
+        boolean is_eu_member
+        boolean is_sadc_member
+        jsonb trade_agreements
+        boolean requires_coo "Certificate of Origin"
+    }
+
+    CURRENCY {
+        string currency_code PK "ISO 4217"
+        string currency_name
+        decimal exchange_rate_to_aoa
+        timestamp last_updated
+        string source_system
+        boolean is_base_currency
+    }
+
+    PORT_LOCATION {
+        string location_code PK "UN/LOCODE"
+        string location_name
+        string country_code FK
+        string port_type "SEAPORT/AIRPORT/INLAND"
+        jsonb coordinates "lat/lng"
+        string customs_office_code
+        boolean is_active
+        jsonb operating_hours
+        jsonb contact_information
+    }
+
+    CUSTOMS_OFFICE {
+        string office_code PK
+        string office_name
+        string location_code FK
+        jsonb address
+        jsonb operating_hours
+        jsonb contact_details
+        string office_type "MAIN/BRANCH/INSPECTION"
+        boolean accepts_declarations
+        boolean conducts_inspections
+    }
+
+    %% Payment and Financial
+    PAYMENT {
+        uuid payment_id PK
+        uuid declaration_id FK
+        decimal duty_amount
+        decimal vat_amount
+        decimal excise_amount
+        decimal processing_fee
+        decimal total_amount
+        string currency_code "AOA"
+        string payment_method "BANK/CARD/MOBILE"
+        string payment_status "PENDING/COMPLETED/FAILED"
+        timestamp payment_date
+        string transaction_reference
+        jsonb bank_details
+    }
+
+    DUTY_CALCULATION {
+        uuid calculation_id PK
+        uuid goods_item_id FK
+        decimal customs_value
+        decimal duty_rate_percent
+        decimal calculated_duty
+        decimal vat_rate_percent
+        decimal calculated_vat
+        decimal excise_rate_percent
+        decimal calculated_excise
+        string calculation_basis "CIF/FOB"
+        timestamp calculation_date
+        string calculated_by_system
+    }
+
+    %% Workflow and Process Tracking
+    WORKFLOW_INSTANCE {
+        uuid workflow_id PK
+        uuid declaration_id FK
+        string process_definition_key
+        string business_key
+        timestamp start_time
+        timestamp end_time
+        string current_state
+        string workflow_status "ACTIVE/COMPLETED/TERMINATED"
+        jsonb process_variables
+        string created_by_user
+    }
+
+    WORKFLOW_TASK {
+        uuid task_id PK
+        uuid workflow_id FK
+        string task_name
+        string task_type "USER_TASK/SERVICE_TASK"
+        string assignee
+        string candidate_group
+        timestamp created_date
+        timestamp due_date
+        timestamp completion_date
+        string task_status "OPEN/COMPLETED/CANCELLED"
+        jsonb task_variables
+    }
+
+    %% External System Integration
+    ASYCUDA_MESSAGE {
+        uuid message_id PK
+        uuid declaration_id FK
+        string message_type "CUSDEC/CUSRES"
+        string message_direction "OUTBOUND/INBOUND"
+        text message_content "XML content"
+        timestamp sent_timestamp
+        timestamp received_timestamp
+        string processing_status "SENT/RECEIVED/ERROR"
+        jsonb error_details
+        string correlation_id
+    }
+
+    SINTECE_TRANSACTION {
+        uuid transaction_id PK
+        uuid license_id FK
+        string transaction_type "VERIFY/VALIDATE/ISSUE"
+        jsonb request_payload
+        jsonb response_payload
+        timestamp request_timestamp
+        timestamp response_timestamp
+        string status "SUCCESS/FAILED/TIMEOUT"
+        string sintece_reference_id
+        jsonb error_details
+    }
+
+    %% Audit and Compliance
+    AUDIT_LOG {
+        uuid audit_id PK
+        string entity_type "DECLARATION/COMPANY/etc"
+        uuid entity_id
+        string action "CREATE/UPDATE/DELETE/VIEW"
+        string user_id "Keycloak user ID"
+        timestamp action_timestamp
+        jsonb old_values
+        jsonb new_values
+        string source_ip_address
+        string user_agent
+        string session_id
+    }
+
+    COMPLIANCE_EVENT {
+        uuid event_id PK
+        string event_type "DATA_RETENTION/AUDIT_TRAIL"
+        string entity_type
+        uuid entity_id
+        timestamp event_timestamp
+        jsonb event_details
+        string compliance_rule
+        string status "COMPLIANT/NON_COMPLIANT"
+        jsonb remediation_actions
+    }
+
+    %% Notification and Communication
+    NOTIFICATION {
+        uuid notification_id PK
+        string recipient_type "USER/COMPANY/ROLE"
+        string recipient_id
+        string notification_type "EMAIL/SMS/PUSH"
+        string subject
+        text message_content
+        string template_name
+        timestamp created_date
+        timestamp sent_date
+        string status "PENDING/SENT/FAILED/READ"
+        jsonb metadata
+        integer retry_count
+    }
+
+    %% Reporting and Analytics
+    REPORT_DEFINITION {
+        uuid report_id PK
+        string report_name
+        string report_type "OPERATIONAL/COMPLIANCE/STATISTICAL"
+        text report_query
+        jsonb report_parameters
+        string created_by_user
+        timestamp created_date
+        boolean is_scheduled
+        string schedule_cron
+        jsonb recipients
+    }
+
+    DATA_EXPORT {
+        uuid export_id PK
+        uuid report_id FK
+        string export_format "PDF/EXCEL/CSV"
+        string file_path
+        bigint file_size_bytes
+        timestamp generation_date
+        timestamp expiry_date
+        string generated_by_user
+        string status "GENERATING/COMPLETED/FAILED"
+        jsonb export_parameters
+    }
+
+    %% Relationships
+    DECLARATION ||--|| PARTY : "declarant"
+    DECLARATION ||--o| PARTY : "representative"
+    DECLARATION ||--o{ GOODS_ITEM : "contains"
+    DECLARATION ||--o{ DOCUMENT_REFERENCE : "references"
+    DECLARATION ||--o| PAYMENT : "has"
+    DECLARATION ||--o{ ASYCUDA_MESSAGE : "generates"
+    DECLARATION ||--o| WORKFLOW_INSTANCE : "triggers"
+
+    PARTY ||--o{ COMPANY : "represents"
+    PARTY ||--o{ AGENT_NOMINATION : "principal"
+    PARTY ||--o{ AGENT_NOMINATION : "agent"
+
+    COMPANY ||--o{ USER_COMPANY : "employs"
+    COMPANY ||--o{ LICENSE : "holds"
+    COMPANY ||--o{ PERMIT : "applies_for"
+
+    LICENSE ||--o{ SINTECE_TRANSACTION : "validates"
+
+    GOODS_ITEM ||--|| HS_CODE : "classified_as"
+    GOODS_ITEM ||--o{ DUTY_CALCULATION : "calculated_for"
+
+    HS_CODE ||--o{ TARIFF_SCHEDULE : "has_tariff"
+
+    COUNTRY ||--o{ PORT_LOCATION : "contains"
+    PORT_LOCATION ||--o{ CUSTOMS_OFFICE : "serves"
+
+    DOCUMENT ||--o{ DOCUMENT_REFERENCE : "referenced_by"
+
+    WORKFLOW_INSTANCE ||--o{ WORKFLOW_TASK : "contains"
+
+    TARIFF_SCHEDULE ||--|| COUNTRY : "applies_to"
+
+    %% Additional constraints and notes
+    %% Note: WCO Data Model 3.10 compliance requires specific field formats
+    %% Note: All monetary values use decimal(18,2) for precision
+    %% Note: All timestamps include timezone information
+    %% Note: JSONB fields allow for flexible WCO-compliant data structures
+    %% Note: Foreign keys to Keycloak users are string type (UUID format)
+    %% Note: UN/LOCODE format: 2-letter country code + 3-character location
+    %% Note: ISO standards: ISO 3166 (countries), ISO 4217 (currencies)
+    %% Note: Audit trail maintains 7+ year retention for compliance

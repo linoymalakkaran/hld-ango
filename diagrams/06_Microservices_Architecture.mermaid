@@ -1,0 +1,138 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '8px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% External Clients
+    subgraph Clients["👥 CLIENTS"]
+        WebBrowser[🌐 Web Traders/Brokers]
+        MobileApp[📱 Mobile Officers]
+        APIClients[🔌 API 3rd Party]
+    end
+
+    %% API Gateway Layer
+    subgraph APIGateway["🦍 API GATEWAY"]
+        Kong[🦍 Kong :8000 R:3<br/>• Auth & Rate Limiting<br/>• Caching & Analytics]
+    end
+
+    %% Authentication Layer
+    subgraph AuthLayer["🔐 AUTH"]
+        Keycloak[🔐 Keycloak :8080 R:3<br/>• OAuth/SAML<br/>• MFA & RBAC]
+    end
+
+    %% Core Business Services
+    subgraph CoreServices["⚙️ CORE SERVICES"]
+        direction TB
+        
+        CompanyService[🏢 Company :8081 R:2<br/>Registration & Profile<br/>DB: company_db]
+        
+        LicenseService[📜 License :8082 R:2<br/>CNCA & Permits<br/>DB: license_db]
+        
+        AgentService[👥 Agent :8083 R:2<br/>Broker Nominations<br/>DB: agent_db]
+        
+        DeclarationService[📋 Declaration :8084 R:3<br/>DU & Payment & Tracking<br/>DB: declaration_db]
+        
+        DocumentService[📄 Document :8085 R:2<br/>Upload & MinIO Storage<br/>DB: doc_meta_db]
+        
+        MasterDataService[🗂️ MasterData :8086 R:2<br/>HS Codes & Sync<br/>DB: masterdata_db]
+    end
+
+    %% Integration Services
+    subgraph IntegrationServices["🔌 INTEGRATION"]
+        direction TB
+        
+        ASYCUDAService[🏛️ ASYCUDA :9081 R:2<br/>SOAP CUSDEC/CUSRES<br/>Declaration Submit]
+        
+        SINTECEService[🏛️ SINTECE :9082 R:2<br/>REST License Verify<br/>Certificate Valid]
+        
+        OGAService[🏛️ OGA :9083 R:2<br/>Multi-Agency Permits<br/>REST Async]
+    end
+
+    %% Cross-Cutting Services
+    subgraph CrossCuttingServices["🔄 CROSS-CUTTING"]
+        direction TB
+        
+        IAMService[🔐 IAM :8080 R:3<br/>Auth & Role Mgmt<br/>DB: keycloak_db]
+        
+        NotificationService[📧 Notification :8089 R:2<br/>Email/SMS/Push<br/>DB: notification_db]
+        
+        WorkflowService[🔄 Workflow :8090 R:2<br/>BPM Camunda<br/>DB: camunda_db]
+        
+        AuditService[📝 Audit :8091 R:2<br/>Activity Logging 7yr<br/>DB: audit_db]
+        
+        ReportingService[📊 Reporting :8092 R:2<br/>Analytics & Reports<br/>DB: reporting_db]
+    end
+
+    %% Data Layer
+    subgraph DataLayer["🗃️ DATA"]
+        direction TB
+        
+        subgraph Databases["PostgreSQL Cluster"]
+            PostgreSQLPrimary[(🗃️ Primary)]
+            PostgreSQLReplica1[(🗃️ Replica1)]
+        end
+        
+        subgraph ObjectStorage["Object Storage"]
+            MinIOCluster[📦 MinIO Cluster S3-Compatible]
+        end
+        
+        subgraph Cache["Cache"]
+            RedisCluster[⚡ Redis Cluster & Sentinel]
+        end
+        
+        subgraph MessageQueue["Queue"]
+            RabbitMQCluster[🐰 RabbitMQ Cluster HA]
+        end
+    end
+
+    %% External Systems
+    subgraph ExternalSystems["🌐 EXTERNAL"]
+        direction TB
+        
+        ASYCUDA[🏛️ ASYCUDA AGT<br/>SOAP CUSDEC/CUSRES]
+        SINTECE[🏛️ SINTECE<br/>REST License & Certs]
+        OGAs[🏛️ Gov Agencies<br/>REST Multi-Agency]
+        BankingSystems[🏦 Banking<br/>REST Payment]
+    end
+
+    %% Connections
+    Clients --> Kong
+    Kong <--> Keycloak
+    Kong --> CoreServices
+    Kong --> IntegrationServices
+    Kong --> CrossCuttingServices
+
+    CoreServices <--> Databases
+    CoreServices <--> ObjectStorage
+    CoreServices <--> Cache
+
+    ASYCUDAService <--> ASYCUDA
+    SINTECEService <--> SINTECE
+    OGAService <--> OGAs
+    DeclarationService <--> BankingSystems
+
+    %% Inter-service messaging
+    CoreServices <-.-> RabbitMQCluster
+    IntegrationServices <-.-> RabbitMQCluster
+    CrossCuttingServices <-.-> RabbitMQCluster
+
+    %% Auth flows
+    CoreServices -.-> Keycloak
+    IntegrationServices -.-> Keycloak
+
+    %% Audit and notifications
+    CoreServices -.-> AuditService
+    CoreServices -.-> NotificationService
+
+    %% Styling for A4
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px,font-size:8px
+    classDef coreBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:1px
+    classDef integrationBox fill:#fff3e0,stroke:#ef6c00,stroke-width:1px
+    classDef crossCuttingBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px
+    classDef dataBox fill:#e1f5fe,stroke:#01579b,stroke-width:1px
+    classDef externalBox fill:#ffebee,stroke:#c62828,stroke-width:1px
+    classDef gatewayBox fill:#e8eaf6,stroke:#3f51b5,stroke-width:1px
+
+    class CoreServices coreBox
+    class IntegrationServices integrationBox
+    class CrossCuttingServices crossCuttingBox
+    class DataLayer dataBox
+    class ExternalSystems externalBox
+    class APIGateway,AuthLayer gatewayBox

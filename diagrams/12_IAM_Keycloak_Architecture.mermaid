@@ -1,0 +1,205 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '10px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% Clients
+    subgraph Clients["👥 CLIENTS"]
+        WebApp[🌐 JUL Portal]
+        MobileApp[📱 Mobile App]
+        APIClients[🔌 API Clients]
+    end
+
+    %% Load Balancer
+    subgraph LoadBalancer["⚖️ NGINX"]
+        NGINX[⚖️ NGINX Ingress]
+    end
+
+    %% Keycloak Cluster
+    subgraph KeycloakCluster["🔐 KEYCLOAK"]
+        KC1[🔐 Keycloak Instance 1]
+        KC2[🔐 Keycloak Instance 2]
+        KC3[🔐 Keycloak Instance 3]
+    end
+
+    %% Database
+    subgraph Database["🗃️ DATABASE"]
+        KeycloakDB[(🗃️ PostgreSQL)]
+        UsersTable[(👤 Users)]
+        RolesTable[(🛡️ Roles)]
+        SessionsTable[(🔄 Sessions)]
+    end
+
+    %% External Providers
+    subgraph ExternalProviders["🌐 EXTERNAL"]
+        LDAPProvider[📁 LDAP/AD]
+        SocialProviders[📱 Social Login]
+        GovernmentSSO[🏛️ Gov SSO]
+    end
+
+    %% JUL Services
+    subgraph JULServices["⚙️ JUL SERVICES"]
+        CompanyService[🏢 Company]
+        LicenseService[📜 License]
+        DeclarationService[📋 Declaration]
+        DocumentService[📄 Document]
+    end
+
+    %% API Gateway
+    subgraph APIGateway["🦍 GATEWAY"]
+        Kong[🦍 Kong Gateway]
+    end
+
+    %% System Roles
+    subgraph Roles["🛡️ ROLES"]
+        Admin[👨‍💼 Admin]
+        Officer[👮 Officer]
+        Supervisor[👨‍💼 Supervisor]
+        Trader[👤 Trader]
+    end
+
+    %% Authentication Protocols
+    subgraph Protocols["🔑 PROTOCOLS"]
+        OAuth2[🔑 OAuth 2.0]
+        OpenIDConnect[🔐 OpenID Connect]
+        SAML[📜 SAML 2.0]
+    end
+
+    %% MFA Methods
+    subgraph MFA["🔐 MFA"]
+        TOTP[📱 TOTP]
+        SMS[📱 SMS]
+        Email[📧 Email]
+    end
+
+    %% Connections
+    Clients --> NGINX
+    NGINX --> KeycloakCluster
+    KeycloakCluster --> Database
+    KeycloakCluster <--> ExternalProviders
+    
+    Clients --> Kong
+    Kong <--> KeycloakCluster
+    Kong --> JULServices
+    
+    KeycloakCluster --> Protocols
+    KeycloakCluster --> MFA
+    KeycloakCluster --> Roles
+            
+            CustomsBroker[👥 Customs Broker<br/>• Client representation<br/>• Declaration processing<br/>• Agent services]
+            
+            FreightForwarder[🚛 Freight Forwarder<br/>• Logistics management<br/>• Shipment tracking<br/>• Documentation]
+            
+            ReadOnlyUser[👁️ Read-Only User<br/>• View access only<br/>• Report generation<br/>• Status inquiry]
+        end
+        
+        subgraph Permissions["Fine-Grained Permissions"]
+            DeclarationPerms[📋 Declaration Permissions<br/>• create:declaration<br/>• update:declaration<br/>• delete:declaration<br/>• approve:declaration]
+            
+            DocumentPerms[📄 Document Permissions<br/>• upload:document<br/>• view:document<br/>• delete:document<br/>• share:document]
+            
+            CompanyPerms[🏢 Company Permissions<br/>• create:company<br/>• update:company<br/>• view:company<br/>• approve:company]
+            
+            ReportPerms[📊 Reporting Permissions<br/>• view:reports<br/>• generate:reports<br/>• export:reports<br/>• schedule:reports]
+        end
+    end
+
+    %% Multi-Factor Authentication Flow
+    subgraph MFAFlow["🔐 MULTI-FACTOR AUTHENTICATION"]
+        direction TB
+        
+        subgraph MFAMethods["MFA Methods"]
+            TOTPAuth[📱 TOTP Authenticator<br/>• Google Authenticator<br/>• Microsoft Authenticator<br/>• Time-based OTP]
+            
+            SMSAuth[📱 SMS Verification<br/>• Angola Mobile Networks<br/>• One-time Passcode<br/>• Backup Method]
+            
+            EmailAuth[📧 Email Verification<br/>• OTP via Email<br/>• Backup Method<br/>• Account Recovery]
+        end
+        
+        subgraph MFAPolicy["MFA Policy"]
+            MandatoryRoles[⚠️ Mandatory for:<br/>• Customs Officers<br/>• System Administrators<br/>• Supervisors]
+            
+            OptionalRoles[ℹ️ Optional for:<br/>• Traders<br/>• Brokers<br/>• Freight Forwarders]
+        end
+    end
+
+    %% Session Management
+    subgraph SessionMgmt["🔄 SESSION MANAGEMENT"]
+        direction TB
+        
+        subgraph SessionStore["Session Storage"]
+            RedisCache[⚡ Redis Cluster<br/>Session Store<br/>High Performance]
+            
+            SessionConfig[⚙️ Session Configuration<br/>• Timeout: 8 hours<br/>• Refresh: 1 hour<br/>• Max Concurrent: 3]
+        end
+        
+        subgraph TokenManagement["Token Management"]
+            AccessToken[🎟️ Access Token<br/>• Validity: 1 hour<br/>• JWT Format<br/>• Role Claims]
+            
+            RefreshToken[🔄 Refresh Token<br/>• Validity: 8 hours<br/>• Secure Storage<br/>• Rotation Policy]
+            
+            IDToken[🆔 ID Token<br/>• User Information<br/>• OpenID Connect<br/>• Profile Claims]
+        end
+    end
+
+    %% Authentication Flows
+    Clients --> NGINX
+    NGINX --> KeycloakCluster
+    
+    %% Keycloak Internal Connections
+    KC1 -.-> KeycloakPostgreSQL
+    KC2 -.-> KeycloakPostgreSQL
+    KC3 -.-> KeycloakPostgreSQL
+    
+    KeycloakServices --> DatabaseTables
+    KeycloakProtocols --> KeycloakServices
+    
+    %% External Provider Integration
+    KeycloakCluster <-.-> ExternalProviders
+    
+    %% Application Integration
+    Clients --> APIGateway
+    APIGateway <--> KeycloakCluster
+    APIGateway --> JULServices
+    
+    %% Session and Token Flow
+    KeycloakCluster <--> RedisCache
+    KeycloakCluster --> TokenManagement
+    
+    %% Role and Permission Flow
+    SystemRoles --> Permissions
+    KeycloakCluster --> RoleManagement
+    
+    %% MFA Integration
+    KeycloakCluster --> MFAFlow
+    MFAMethods --> TOTPAuth
+    MFAMethods --> SMSAuth
+    MFAMethods --> EmailAuth
+
+    %% User Registration and Company Association Flow
+    subgraph UserFlow["👤 USER REGISTRATION FLOW"]
+        direction LR
+        
+        UserRegistration[1️⃣ User Registration<br/>Email + Password]
+        EmailVerification[2️⃣ Email Verification<br/>Account Activation]
+        CompanyAssociation[3️⃣ Company Association<br/>Link to Trading Company]
+        RoleAssignment[4️⃣ Role Assignment<br/>Assign Appropriate Role]
+        MFASetup[5️⃣ MFA Setup<br/>Configure 2FA]
+        
+        UserRegistration --> EmailVerification
+        EmailVerification --> CompanyAssociation
+        CompanyAssociation --> RoleAssignment
+        RoleAssignment --> MFASetup
+    end
+
+    %% Styling
+    classDef keycloakBox fill:#e1f5fe,stroke:#01579b,stroke-width:3px,color:#000
+    classDef serviceBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef securityBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    classDef dbBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef externalBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    classDef flowBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+
+    class KeycloakCluster keycloakBox
+    class JULServices,APIGateway serviceBox
+    class RoleManagement,MFAFlow,SessionMgmt securityBox
+    class KeycloakDB dbBox
+    class ExternalProviders externalBox
+    class UserFlow flowBox

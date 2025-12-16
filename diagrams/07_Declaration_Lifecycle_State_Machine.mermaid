@@ -1,0 +1,110 @@
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '10px', 'fontFamily': 'Arial, sans-serif', 'primaryColor': '#f9f9f9'}}}%%
+stateDiagram-v2
+    [*] --> Draft
+
+    state "📝 DRAFT" as Draft {
+        [*] --> DataEntry
+        DataEntry --> DocumentUpload
+        DocumentUpload --> Validation
+        Validation --> DataEntry : Failed
+        Validation --> ReadyToSubmit : Passed
+        ReadyToSubmit --> [*]
+    }
+
+    Draft --> Submitted : Submit
+    Draft --> Cancelled : Cancel
+
+    state "📋 SUBMITTED" as Submitted {
+        [*] --> QueuedForProcessing
+        QueuedForProcessing --> PreValidation
+        PreValidation --> ProcessedLocally
+        ProcessedLocally --> [*]
+    }
+
+    Submitted --> UnderReview : Forward
+    Submitted --> Rejected : Reject
+
+    state "🔍 UNDER_REVIEW" as UnderReview {
+        [*] --> DocumentReview
+        DocumentReview --> RiskAssessment
+        RiskAssessment --> AutomaticallyProcessed : Low Risk
+        RiskAssessment --> ManualReview : High Risk
+        ManualReview --> [*]
+        AutomaticallyProcessed --> [*]
+    }
+
+    UnderReview --> Assessed : Complete
+    UnderReview --> InspectionRequired : Inspect
+    UnderReview --> Rejected : Failed
+
+    state "🔍 INSPECTION_REQUIRED" as InspectionRequired {
+        [*] --> InspectionScheduled
+        InspectionScheduled --> InspectionCompleted
+        InspectionCompleted --> [*]
+    }
+
+    InspectionRequired --> Assessed : Passed
+    InspectionRequired --> Rejected : Failed
+    InspectionRequired --> Seized : Seized
+
+    state "💰 ASSESSED" as Assessed {
+        [*] --> DutyCalculation
+        DutyCalculation --> PaymentDue
+        PaymentDue --> PaymentReceived
+        PaymentReceived --> [*]
+    }
+
+    Assessed --> Cleared : Paid
+    Assessed --> PaymentOverdue : Timeout
+
+    state "✅ CLEARED" as Cleared {
+        [*] --> ClearanceCertificateIssued
+        ClearanceCertificateIssued --> GoodsReleased
+        GoodsReleased --> [*]
+    }
+
+    Cleared --> Delivered : Collected
+
+    state "❌ REJECTED" as Rejected {
+        [*] --> RejectionNotified
+        RejectionNotified --> AppealPeriod
+        AppealPeriod --> [*]
+    }
+
+    Rejected --> UnderReview : Appeal
+
+    state "🚫 CANCELLED" as Cancelled {
+        [*] --> CancellationRequested
+        CancellationRequested --> [*]
+    }
+
+    state "⏰ PAYMENT_OVERDUE" as PaymentOverdue {
+        [*] --> OverdueNotified
+        OverdueNotified --> [*]
+    }
+
+    PaymentOverdue --> Assessed : Payment
+    PaymentOverdue --> Seized : Seizure
+
+    state "🔒 SEIZED" as Seized {
+        [*] --> SeizureNotified
+        SeizureNotified --> [*]
+    }
+
+    Seized --> Cleared : Lifted
+    Seized --> Confiscated : Final
+
+    state "📦 DELIVERED" as Delivered {
+        [*] --> DeliveryConfirmed
+        DeliveryConfirmed --> [*]
+    }
+
+    state "⛔ CONFISCATED" as Confiscated {
+        [*] --> ConfiscationFinal
+        ConfiscationFinal --> [*]
+    }
+
+    %% Terminal states
+    Delivered --> [*]
+    Confiscated --> [*]
+    Cancelled --> [*]
