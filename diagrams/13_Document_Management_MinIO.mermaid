@@ -59,178 +59,108 @@ graph TB
         OffsiteBackup[🌐 Offsite Backup]
     end
 
-    %% Connections
-    Clients --> NGINX
-    NGINX --> Kong
-    Kong --> DocumentService
-    
-    DocumentService --> MinIOCluster
-    DocumentService --> Database
-    DocumentService --> Security
-    
-    MinIOCluster --> Backup
-    DocumentService --> DocumentTypes
-        direction TB
-        
-        subgraph MinIONodes["MinIO Nodes"]
-            MinIO1[📦 MinIO Node 1<br/>Storage Server<br/>10.20.2.10]
-            MinIO2[📦 MinIO Node 2<br/>Storage Server<br/>10.20.2.11]
-            MinIO3[📦 MinIO Node 3<br/>Storage Server<br/>10.20.2.12]
-            MinIO4[📦 MinIO Node 4<br/>Storage Server<br/>10.20.2.13]
-            MinIO5[📦 MinIO Node 5<br/>Storage Server<br/>10.20.2.14]
-            MinIO6[📦 MinIO Node 6<br/>Storage Server<br/>10.20.2.15]
-        end
-        
-        subgraph MinIOFeatures["MinIO Features"]
-            S3Compatibility[🔌 S3 Compatibility<br/>• Amazon S3 API<br/>• SDK Support<br/>• Tool Compatibility]
-            
-            ErasureCoding[🛡️ Erasure Coding<br/>• Data Protection<br/>• N/2 Fault Tolerance<br/>• Storage Efficiency]
-            
-            Encryption[🔐 Encryption<br/>• Server-Side Encryption<br/>• Client-Side Encryption<br/>• Key Management]
-            
-            Replication[🔄 Cross-Site Replication<br/>• Disaster Recovery<br/>• Geographic Distribution<br/>• Automatic Sync]
-        end
-        
-        subgraph BucketStructure["Bucket Organization"]
-            ProdBuckets[🔴 Production Buckets<br/>• jul-documents-2025<br/>• jul-certificates<br/>• jul-declarations<br/>• jul-attachments]
-            
-            StagingBuckets[🟡 Staging Buckets<br/>• jul-staging-docs<br/>• jul-test-uploads<br/>• jul-validation-temp]
-            
-            BackupBuckets[💾 Backup Buckets<br/>• jul-backup-daily<br/>• jul-backup-monthly<br/>• jul-archive-yearly]
-        end
+%%{init: {'theme':'base', 'themeVariables': {'fontSize': '10px', 'fontFamily': 'Arial, sans-serif'}}}%%
+graph TB
+    %% Client Applications
+    subgraph Clients["👥 CLIENTS"]
+        WebPortal[🌐 Web Portal]
+        MobileApp[📱 Mobile App]
+        APIClients[🔌 API Clients]
     end
 
-    %% PostgreSQL Metadata Database
-    subgraph MetadataDB["🗃️ METADATA DATABASE"]
-        direction TB
-        
-        DocumentMetadataDB[(🗃️ PostgreSQL<br/>document_metadata_db)]
-        
-        subgraph MetadataTables["Metadata Tables"]
-            DocumentsTable[(📄 documents<br/>• document_id<br/>• filename<br/>• content_type<br/>• size_bytes<br/>• upload_date<br/>• uploaded_by)]
-            
-            VersionsTable[(🔄 document_versions<br/>• version_id<br/>• document_id<br/>• version_number<br/>• minio_object_key<br/>• created_date)]
-            
-            MetadataTable[(📊 document_metadata<br/>• document_id<br/>• key<br/>• value<br/>• metadata_type)]
-            
-            AccessLogTable[(📝 document_access_log<br/>• access_id<br/>• document_id<br/>• user_id<br/>• action<br/>• timestamp)]
-            
-            RetentionTable[(⏰ retention_policies<br/>• policy_id<br/>• document_type<br/>• retention_years<br/>• auto_delete)]
-        end
+    %% Gateway
+    subgraph Gateway["🚪 GATEWAY"]
+        NGINX[⚖️ NGINX]
+        Kong[🦍 Kong Gateway]
     end
 
-    %% Document Processing Pipeline
-    subgraph ProcessingPipeline["🔄 DOCUMENT PROCESSING PIPELINE"]
-        direction LR
-        
-        subgraph UploadPipeline["Upload Pipeline"]
-            Step1[1️⃣ Receive Upload<br/>Validate File]
-            Step2[2️⃣ Virus Scan<br/>Security Check]
-            Step3[3️⃣ Extract Metadata<br/>OCR Processing]
-            Step4[4️⃣ Store in MinIO<br/>Encrypt & Save]
-            Step5[5️⃣ Update Database<br/>Metadata & Index]
-            
-            Step1 --> Step2
-            Step2 --> Step3
-            Step3 --> Step4
-            Step4 --> Step5
-        end
-        
-        subgraph ValidationPipeline["Validation Pipeline"]
-            Validate1[1️⃣ Format Check<br/>File Type Validation]
-            Validate2[2️⃣ Content Analysis<br/>Document Structure]
-            Validate3[3️⃣ Business Rules<br/>Required Fields]
-            Validate4[4️⃣ Compliance Check<br/>Regulatory Requirements]
-            
-            Validate1 --> Validate2
-            Validate2 --> Validate3
-            Validate3 --> Validate4
-        end
+    %% Document Service
+    subgraph DocumentService["📄 DOCUMENT SERVICE"]
+        DocService1[📄 Document Service 1]
+        DocService2[📄 Document Service 2]
+        UploadHandler[📤 Upload Handler]
+        ValidationEngine[✅ Validation Engine]
+        StorageManager[💾 Storage Manager]
     end
 
-    %% Security and Access Control
-    subgraph Security["🛡️ SECURITY & ACCESS CONTROL"]
-        direction TB
-        
-        subgraph Authentication["Authentication"]
-            KeycloakAuth[🔐 Keycloak Integration<br/>• OAuth 2.0 Tokens<br/>• Role-Based Access<br/>• Permission Validation]
-        end
-        
-        subgraph Encryption["Encryption"]
-            TransitEncryption[🔒 Encryption in Transit<br/>• TLS 1.3<br/>• HTTPS Only<br/>• Certificate Management]
-            
-            RestEncryption[🔒 Encryption at Rest<br/>• AES-256<br/>• MinIO Server-Side<br/>• Key Rotation]
-            
-            FieldEncryption[🔒 Field-Level Encryption<br/>• Sensitive Data<br/>• PII Protection<br/>• Compliance Requirements]
-        end
-        
-        subgraph AccessControl["Access Control"]
-            RolePermissions[🛡️ Role-Based Permissions<br/>• Document Owner<br/>• Company Access<br/>• Government Access<br/>• Public Access]
-            
-            IPWhitelist[🌐 IP Whitelisting<br/>• Restricted Access<br/>• Government Networks<br/>• Trusted Partners]
-        end
+    %% MinIO Cluster
+    subgraph MinIOCluster["📦 MINIO CLUSTER"]
+        MinIO1[📦 MinIO Node 1]
+        MinIO2[📦 MinIO Node 2]
+        MinIO3[📦 MinIO Node 3]
+        MinIO4[📦 MinIO Node 4]
+        MinIO5[📦 MinIO Node 5]
+        MinIO6[📦 MinIO Node 6]
     end
 
-    %% Monitoring and Analytics
-    subgraph Monitoring["📊 MONITORING & ANALYTICS"]
-        direction TB
-        
-        subgraph Metrics["Storage Metrics"]
-            StorageUsage[📊 Storage Usage<br/>• Total Storage<br/>• Bucket Distribution<br/>• Growth Trends]
-            
-            PerformanceMetrics[⚡ Performance Metrics<br/>• Upload/Download Speed<br/>• Throughput<br/>• Latency]
-            
-            HealthMetrics[❤️ Health Metrics<br/>• Node Status<br/>• Disk Usage<br/>• Network Performance]
-        end
-        
-        subgraph Alerts["Alerting"]
-            StorageAlerts[⚠️ Storage Alerts<br/>• Disk Space Warning<br/>• Node Failure<br/>• Performance Degradation]
-            
-            SecurityAlerts[🚨 Security Alerts<br/>• Unauthorized Access<br/>• Virus Detection<br/>• Unusual Activity]
-        end
+    %% MinIO Features
+    subgraph MinIOFeatures["🔧 MINIO FEATURES"]
+        S3Compatibility[🔌 S3 Compatibility]
+        ErasureCoding[🛡️ Erasure Coding]
+        Encryption[🔐 Encryption]
+        Replication[🔄 Cross-Site Replication]
     end
 
-    %% Backup and Disaster Recovery
-    subgraph BackupDR["💾 BACKUP & DISASTER RECOVERY"]
-        direction TB
-        
-        subgraph LocalBackup["Local Backup"]
-            DailyBackup[📅 Daily Backup<br/>Incremental Backup<br/>Local Storage]
-            
-            WeeklyBackup[📅 Weekly Backup<br/>Full Backup<br/>Local Storage]
-        end
-        
-        subgraph OffsiteBackup["Offsite Backup"]
-            MonthlyBackup[📅 Monthly Backup<br/>Full Archive<br/>Remote Site]
-            
-            CrossSiteReplication[🔄 Cross-Site Replication<br/>Real-time Sync<br/>DR Site]
-        end
+    %% Database
+    subgraph MetadataDB["🗃️ METADATA DB"]
+        DocumentDB[(🗃️ PostgreSQL)]
+        DocumentsTable[(📄 Documents Table)]
+        VersionsTable[(🔄 Versions Table)]
+        MetadataTable[(📊 Metadata Table)]
+        AccessLogTable[(📝 Access Log Table)]
     end
 
-    %% Data Flow Connections
-    Clients --> NGINX
-    NGINX --> Kong
-    Kong --> DocumentService
-    
-    DocumentService --> MinIOCluster
-    DocumentService --> MetadataDB
-    
-    ProcessingPipeline --> MinIOCluster
-    ProcessingPipeline --> MetadataDB
-    
-    Security --> DocumentService
-    Security --> MinIOCluster
-    
-    Monitoring --> MinIOCluster
-    Monitoring --> DocumentService
-    
-    MinIOCluster --> BackupDR
-    MetadataDB --> BackupDR
+    %% Bucket Organization
+    subgraph BucketStructure["📁 BUCKET STRUCTURE"]
+        ProdBuckets[🔴 Production Buckets]
+        StagingBuckets[🟡 Staging Buckets]
+        BackupBuckets[💾 Backup Buckets]
+    end
 
-    %% Document Lifecycle Flow
+    %% Security
+    subgraph Security["🛡️ SECURITY"]
+        KeycloakAuth[🔐 Keycloak Auth]
+        TransitEncryption[🔒 Transit Encryption]
+        RestEncryption[🔒 Rest Encryption]
+        AccessControl[👤 Access Control]
+        VirusScanning[🦠 Virus Scanning]
+    end
+
+    %% Document Processing
+    subgraph ProcessingPipeline["🔄 PROCESSING PIPELINE"]
+        ReceiveUpload[1️⃣ Receive Upload]
+        VirusScan[2️⃣ Virus Scan]
+        ExtractMetadata[3️⃣ Extract Metadata]
+        StoreMinIO[4️⃣ Store in MinIO]
+        UpdateDatabase[5️⃣ Update Database]
+    end
+
+    %% Document Types
+    subgraph DocumentTypes["📁 DOCUMENT TYPES"]
+        PDFDocs[📄 PDF Documents]
+        ImageDocs[🖼️ Image Documents]
+        OfficeDocs[📝 Office Documents]
+    end
+
+    %% Monitoring
+    subgraph Monitoring["📊 MONITORING"]
+        StorageUsage[📊 Storage Usage]
+        PerformanceMetrics[⚡ Performance Metrics]
+        HealthMetrics[❤️ Health Metrics]
+        StorageAlerts[⚠️ Storage Alerts]
+        SecurityAlerts[🚨 Security Alerts]
+    end
+
+    %% Backup and DR
+    subgraph BackupDR["💾 BACKUP & DR"]
+        DailyBackup[📅 Daily Backup]
+        WeeklyBackup[📅 Weekly Backup]
+        MonthlyBackup[📅 Monthly Backup]
+        CrossSiteReplication[🔄 Cross-Site Replication]
+    end
+
+    %% Document Lifecycle
     subgraph DocumentLifecycle["📋 DOCUMENT LIFECYCLE"]
-        direction LR
-        
         Upload[📤 Upload]
         Processing[🔄 Processing]
         Validation[✅ Validation]
@@ -238,37 +168,51 @@ graph TB
         Access[📥 Access]
         Archive[📦 Archive]
         Delete[🗑️ Delete]
-        
-        Upload --> Processing
-        Processing --> Validation
-        Validation --> Storage
-        Storage --> Access
-        Access --> Archive
-        Archive --> Delete
     end
 
-    %% Sample API Endpoints
+    %% API Endpoints
     subgraph APIEndpoints["🔌 API ENDPOINTS"]
-        direction TB
-        
-        UploadAPI[POST /api/documents/upload<br/>Multipart file upload]
-        DownloadAPI[GET /api/documents/{id}/download<br/>Stream file download]
-        MetadataAPI[GET /api/documents/{id}/metadata<br/>Document information]
-        SearchAPI[GET /api/documents/search<br/>Document search & filter]
-        DeleteAPI[DELETE /api/documents/{id}<br/>Soft delete document]
+        UploadAPI[POST /upload]
+        DownloadAPI[GET /download]
+        MetadataAPI[GET /metadata]
+        SearchAPI[GET /search]
+        DeleteAPI[DELETE /delete]
     end
 
-    %% Styling
-    classDef serviceBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
-    classDef storageBox fill:#e1f5fe,stroke:#01579b,stroke-width:3px,color:#000
-    classDef dbBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
-    classDef securityBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
-    classDef processBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
-    classDef monitorBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
-
-    class DocumentService,APIEndpoints serviceBox
-    class MinIOCluster storageBox
-    class MetadataDB dbBox
-    class Security securityBox
-    class ProcessingPipeline,DocumentLifecycle processBox
-    class Monitoring,BackupDR monitorBox
+    %% Main Flow Connections
+    Clients --> NGINX
+    NGINX --> Kong
+    Kong --> DocumentService
+    
+    DocumentService --> MinIOCluster
+    DocumentService --> MetadataDB
+    DocumentService --> Security
+    
+    MinIOCluster --> MinIOFeatures
+    MinIOCluster --> BucketStructure
+    
+    %% Processing Flow
+    ReceiveUpload --> VirusScan
+    VirusScan --> ExtractMetadata
+    ExtractMetadata --> StoreMinIO
+    StoreMinIO --> UpdateDatabase
+    
+    %% Document Lifecycle Flow
+    Upload --> Processing
+    Processing --> Validation
+    Validation --> Storage
+    Storage --> Access
+    Access --> Archive
+    Archive --> Delete
+    
+    %% Supporting Connections
+    DocumentService --> ProcessingPipeline
+    DocumentService --> DocumentTypes
+    DocumentService --> APIEndpoints
+    
+    MinIOCluster --> BackupDR
+    MinIOCluster --> Monitoring
+    Security --> MinIOCluster
+    
+    ProcessingPipeline --> MinIOCluster
+    ProcessingPipeline --> MetadataDB
