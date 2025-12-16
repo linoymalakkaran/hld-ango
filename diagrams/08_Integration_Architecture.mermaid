@@ -25,6 +25,11 @@ graph TB
         DeclarationMgmt[📋 Declaration]
         DocumentMgmt[📄 Document]
         MasterData[🗂️ Master Data]
+        
+        Notification[📧 Notification]
+        Workflow[🔄 Workflow]
+        Audit[📝 Audit]
+        Reporting[📊 Reporting]
     end
 
     %% Integration Layer
@@ -41,6 +46,8 @@ graph TB
         SINTECE[🏛️ SINTECE]
         OGAs[🏛️ Gov Agencies]
         Banks[🏦 Banks]
+        CurrencyAPI[💱 Currency APIs]
+        HSCodeAPI[📊 HS Code APIs]
     end
 
     %% Data Storage
@@ -51,141 +58,42 @@ graph TB
         RabbitMQ[🐰 RabbitMQ]
     end
 
-    %% Connections
+    %% Monitoring
+    subgraph Monitoring["📊 MONITORING"]
+        Prometheus[📈 Prometheus]
+        Grafana[📊 Grafana]
+        ELK[📋 ELK Stack]
+    end
+
+    %% Main Connections
     Clients --> Kong
     Kong <--> Keycloak
     Kong --> JULServices
     Kong --> IntegrationLayer
     
+    %% Data Connections
     JULServices <--> DataStorage
     IntegrationLayer <--> DataStorage
     
+    %% External Integration
     ASYCUDAIntegration <--> ASYCUDA
     SINTECEIntegration <--> SINTECE
     OGAIntegration <--> OGAs
     PaymentIntegration <--> Banks
-        
-        PaymentIntegration[💳 Payment Integration<br/>• Banking API Integration<br/>• Payment Processing<br/>• Transaction Verification<br/>• Reconciliation<br/>Protocol: REST/JSON - Synchronous]
-    end
-
-    %% Message Queue
-    subgraph MessageBus["📬 MESSAGE BUS"]
-        RabbitMQ[🐰 RabbitMQ Cluster<br/>• Event-Driven Communication<br/>• Asynchronous Processing<br/>• Message Routing & Queuing<br/>• Dead Letter Handling<br/>• High Availability]
-    end
-
-    %% Data Layer
-    subgraph DataStorage["🗃️ DATA STORAGE LAYER"]
-        direction TB
-        
-        subgraph Databases["Database Cluster"]
-            PostgreSQL[(🗃️ PostgreSQL 15+<br/>Database per Microservice<br/>Primary + 2 Replicas)]
-        end
-        
-        subgraph ObjectStorage["Object Storage"]
-            MinIO[📦 MinIO Cluster<br/>Document Storage<br/>S3-Compatible API]
-        end
-        
-        subgraph Cache["Cache Layer"]
-            Redis[⚡ Redis Cluster<br/>Session & Application Cache<br/>High Performance]
-        end
-    end
-
-    %% External Systems
-    subgraph ExternalSystems["🌐 EXTERNAL SYSTEMS"]
-        direction TB
-        
-        subgraph GovernmentSystems["Government Systems"]
-            ASYCUDA[🏛️ ASYCUDA<br/>Angola Customs Authority (AGT)<br/>---<br/>• Customs Declaration Processing<br/>• Duty Calculation<br/>• Clearance Authorization<br/>• Risk Assessment<br/>Protocol: SOAP/XML]
-            
-            SINTECE[🏛️ SINTECE<br/>Angola Single Window<br/>---<br/>• License Verification<br/>• Certificate Validation<br/>• Regulatory Compliance<br/>• Cross-agency Coordination<br/>Protocol: REST/JSON]
-            
-            OGAs[🏛️ Other Government Agencies<br/>Health, Agriculture, Standards<br/>---<br/>• Import/Export Permits<br/>• Regulatory Approvals<br/>• Certificate Issuance<br/>• Compliance Verification<br/>Protocol: REST/JSON]
-        end
-        
-        subgraph BankingSystems["Banking & Payment Systems"]
-            CommercialBanks[🏦 Commercial Banks<br/>Payment Processing<br/>Transaction Verification<br/>Account Management]
-            
-            PaymentGateways[💳 Payment Gateways<br/>Card Processing<br/>Mobile Money<br/>Digital Wallets]
-            
-            CentralBank[🏛️ Central Bank<br/>Exchange Rates<br/>Monetary Policy<br/>Compliance Reporting]
-        end
-        
-        subgraph ExternalAPIs["External Data Sources"]
-            CurrencyAPI[💱 Currency Exchange APIs<br/>Real-time Exchange Rates<br/>Historical Data]
-            
-            HSCodeAPI[📊 HS Code APIs<br/>WCO Updates<br/>Classification Changes<br/>Tariff Updates]
-        end
-    end
-
-    %% Monitoring and Logging
-    subgraph Monitoring["📊 MONITORING & LOGGING"]
-        direction TB
-        
-        Prometheus[📈 Prometheus<br/>Metrics Collection<br/>Performance Monitoring]
-        
-        Grafana[📊 Grafana<br/>Dashboards<br/>Visualization<br/>Alerting]
-        
-        ELK[📋 ELK Stack<br/>Centralized Logging<br/>Log Analysis<br/>Search & Analytics]
-        
-        Jaeger[🔍 Jaeger<br/>Distributed Tracing<br/>Performance Analysis<br/>Request Flow Tracking]
-    end
-
-    %% Connection Flows
-    %% Client to Gateway
-    Clients --> Kong
-    Kong <--> Keycloak
     
-    %% Gateway to Services
-    Kong --> JULServices
-    Kong --> IntegrationLayer
+    %% Data Sources
+    MasterData <--> CurrencyAPI
+    MasterData <--> HSCodeAPI
     
-    %% Internal Service Communication
-    JULServices <--> DataStorage
-    JULServices <--> RabbitMQ
-    IntegrationLayer <--> DataStorage
-    IntegrationLayer <--> RabbitMQ
-    
-    %% Cross-service communication
-    CoreBusiness <-.-> CrossCutting
-    CoreBusiness <-.-> IntegrationLayer
-    
-    %% External Integration Flows
-    ASYCUDAIntegration <--> ASYCUDA
-    SINTECEIntegration <--> SINTECE
-    OGAIntegration <--> OGAs
-    PaymentIntegration <--> BankingSystems
-    
-    %% Data source integrations
-    MasterData <-.-> ExternalAPIs
-    PaymentIntegration <-.-> CentralBank
-    
-    %% Monitoring connections
-    Monitoring -.-> JULServices
-    Monitoring -.-> IntegrationLayer
-    Monitoring -.-> DataStorage
-    Monitoring -.-> Kong
-    
-    %% Event flows via message bus
-    JULServices <-.-> RabbitMQ
-    IntegrationLayer <-.-> RabbitMQ
-    
-    %% Authentication flows
+    %% Authentication
     JULServices -.-> Keycloak
     IntegrationLayer -.-> Keycloak
-
-    %% Styling
-    classDef clientBox fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
-    classDef gatewayBox fill:#e8eaf6,stroke:#3f51b5,stroke-width:3px,color:#000
-    classDef julServiceBox fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
-    classDef integrationBox fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
-    classDef dataBox fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
-    classDef externalBox fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
-    classDef monitorBox fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
-
-    class Clients clientBox
-    class Gateway,Auth gatewayBox
-    class JULServices julServiceBox
-    class IntegrationLayer integrationBox
-    class DataStorage,MessageBus dataBox
-    class ExternalSystems externalBox
-    class Monitoring monitorBox
+    
+    %% Monitoring
+    Monitoring -.-> JULServices
+    Monitoring -.-> IntegrationLayer
+    Monitoring -.-> Kong
+    
+    %% Event Processing
+    JULServices -.-> RabbitMQ
+    IntegrationLayer -.-> RabbitMQ
