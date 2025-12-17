@@ -1,439 +1,228 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="IAM Keycloak Architecture" id="iam-keycloak">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        
-        <!-- TITLE -->
-        <mxCell id="title" value="IAM & Keycloak Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="20" width="400" height="30" as="geometry" />
-        </mxCell>
-        
-        <!-- USER LAYER -->
-        <mxCell id="users" value="👥 USERS & CLIENTS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="70" width="1300" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="customs-broker" value="👨‍💼 Customs\nBroker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="50" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="importer" value="📦 Importer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="180" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="customs-officer" value="👮‍♂️ Customs\nOfficer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="310" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="inspector" value="🔍 Inspector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="440" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="supervisor" value="👨‍💼 Supervisor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="570" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="admin" value="👨‍💻 System\nAdmin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="700" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="api-client" value="🔌 API\nClient" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="830" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="external-systems" value="🌐 External\nSystems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="960" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="mobile-app" value="📱 Mobile\nApp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="users">
-          <mxGeometry x="1090" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- KEYCLOAK LAYER -->
-        <mxCell id="keycloak-layer" value="🔐 KEYCLOAK IDENTITY & ACCESS MANAGEMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="220" width="1300" height="250" as="geometry" />
-        </mxCell>
-        
-        <!-- Authentication -->
-        <mxCell id="auth-section" value="🔑 AUTHENTICATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="keycloak-layer">
-          <mxGeometry x="20" y="40" width="300" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="login-forms" value="🖥️ Login Forms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="20" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="social-login" value="📱 Social Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="120" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="mfa" value="🔐 MFA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="220" y="30" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ldap-ad" value="🏢 LDAP/AD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="20" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="saml" value="🔗 SAML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="120" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="openid-connect" value="🔓 OpenID Connect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="220" y="80" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="session-mgmt" value="🕐 Session Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="auth-section">
-          <mxGeometry x="70" y="130" width="120" height="30" as="geometry" />
-        </mxCell>
-        
-        <!-- Authorization -->
-        <mxCell id="authz-section" value="🛡️ AUTHORIZATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="keycloak-layer">
-          <mxGeometry x="340" y="40" width="300" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="rbac" value="👤 RBAC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="20" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="abac" value="📋 ABAC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="120" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="policies" value="📜 Policies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="220" y="30" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="permissions" value="✅ Permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="20" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="resources" value="🗂️ Resources" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="120" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="scopes" value="🎯 Scopes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="220" y="80" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="uma" value="🔐 UMA 2.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="authz-section">
-          <mxGeometry x="70" y="130" width="120" height="30" as="geometry" />
-        </mxCell>
-        
-        <!-- Token Management -->
-        <mxCell id="token-section" value="🎫 TOKEN MANAGEMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="keycloak-layer">
-          <mxGeometry x="660" y="40" width="300" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="jwt" value="🎫 JWT Tokens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="20" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="access-tokens" value="🔑 Access Tokens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="120" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="refresh-tokens" value="🔄 Refresh Tokens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="220" y="30" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="introspection" value="🔍 Token Introspection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="20" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="revocation" value="❌ Token Revocation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="120" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="validation" value="✅ Token Validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="220" y="80" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="claims" value="📋 Claims Mapping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="70" y="130" width="120" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="audience" value="🎯 Audience Validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="token-section">
-          <mxGeometry x="200" y="130" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <!-- Core Management -->
-        <mxCell id="core-section" value="⚙️ CORE MANAGEMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="keycloak-layer">
-          <mxGeometry x="980" y="40" width="300" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="realms" value="🌍 Realms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="20" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="clients-mgmt" value="🔌 Clients" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="120" y="30" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="users-mgmt" value="👥 Users" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="220" y="30" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="groups" value="👥 Groups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="20" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="roles" value="🎭 Roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="120" y="80" width="80" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="attributes" value="📋 Attributes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="220" y="80" width="60" height="30" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="mappers" value="🔄 Mappers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" vertex="1" parent="core-section">
-          <mxGeometry x="70" y="130" width="120" height="30" as="geometry" />
-        </mxCell>
-        
-        <!-- APPLICATION LAYER -->
-        <mxCell id="app-layer" value="🚀 JUL APPLICATIONS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="500" width="1300" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="angular-frontend" value="🅰️ Angular\nFrontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="50" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="spring-services" value="🍃 Spring Boot\nMicroservices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="200" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="api-gateway" value="🦍 Kong\nAPI Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="350" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="integration-services" value="🔌 Integration\nServices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="500" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="document-service" value="📄 Document\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="650" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="notification-service" value="📧 Notification\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="800" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="audit-service" value="📝 Audit\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="950" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="reporting-service" value="📊 Reporting\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="app-layer">
-          <mxGeometry x="1100" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- DATA LAYER -->
-        <mxCell id="data-layer" value="🗃️ DATA & STORAGE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="650" width="1300" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="keycloak-db" value="🗃️ Keycloak\nPostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="100" y="40" width="100" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="jul-db" value="🗃️ JUL\nPostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="250" y="40" width="100" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="redis-cache" value="⚡ Redis\nCache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="400" y="50" width="100" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="minio-storage" value="📦 MinIO\nObject Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#388e3c;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="550" y="50" width="120" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ldap-dir" value="📂 LDAP\nDirectory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="720" y="50" width="100" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="audit-db" value="🗃️ Audit\nDatabase" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="870" y="40" width="100" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="backup-storage" value="💾 Backup\nStorage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#388e3c;strokeWidth=1;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="1020" y="50" width="100" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="key-vault" value="🗝️ Key\nVault" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=10;" vertex="1" parent="data-layer">
-          <mxGeometry x="1170" y="50" width="100" height="50" as="geometry" />
-        </mxCell>
-        
-        <!-- AUTHENTICATION FLOWS -->
-        <mxCell id="auth-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="customs-broker" target="login-forms">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="150" y="200" />
-              <mxPoint x="110" y="200" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="auth-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="api-client" target="openid-connect">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="930" y="200" />
-              <mxPoint x="340" y="200" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- TOKEN FLOWS -->
-        <mxCell id="token-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="jwt" target="api-gateway">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="740" y="480" />
-              <mxPoint x="460" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="token-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="validation" target="spring-services">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="890" y="480" />
-              <mxPoint x="310" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- AUTHORIZATION FLOWS -->
-        <mxCell id="authz-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="rbac" target="spring-services">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="430" y="480" />
-              <mxPoint x="310" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="authz-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="permissions" target="integration-services">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="430" y="480" />
-              <mxPoint x="610" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- DATA CONNECTIONS -->
-        <mxCell id="data-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="keycloak-layer" target="keycloak-db">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="200" y="480" />
-              <mxPoint x="200" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="data-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="spring-services" target="jul-db">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="310" y="630" />
-              <mxPoint x="350" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="data-conn3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57c00;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="session-mgmt" target="redis-cache">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="180" y="480" />
-              <mxPoint x="500" y="480" />
-              <mxPoint x="500" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="data-conn4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#388e3c;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="document-service" target="minio-storage">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="760" y="630" />
-              <mxPoint x="660" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="data-conn5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="ldap-ad" target="ldap-dir">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="130" y="480" />
-              <mxPoint x="820" y="480" />
-              <mxPoint x="820" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="data-conn6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="audit-service" target="audit-db">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1060" y="630" />
-              <mxPoint x="970" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- SECURITY CONNECTIONS -->
-        <mxCell id="sec-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="keycloak-layer" target="key-vault">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1300" y="480" />
-              <mxPoint x="1270" y="480" />
-              <mxPoint x="1270" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="sec-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#388e3c;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="audit-db" target="backup-storage">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <!-- USER ACCESS PATTERNS -->
-        <mxCell id="user-access1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="importer" target="angular-frontend">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="280" y="480" />
-              <mxPoint x="160" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="user-access2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="customs-officer" target="spring-services">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="410" y="480" />
-              <mxPoint x="310" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="user-access3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="external-systems" target="api-gateway">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1060" y="480" />
-              <mxPoint x="460" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- ADMIN ACCESS -->
-        <mxCell id="admin-access" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ad1457;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="admin" target="core-section">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="850" y="200" />
-              <mxPoint x="1180" y="200" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>
+<mxGraphModel dx="1426" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="clients-group" value="👥 CLIENTS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="40" y="40" width="240" height="180" as="geometry" />
+    </mxCell>
+    <mxCell id="webapp" value="🌐 JUL Portal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="clients-group" vertex="1">
+      <mxGeometry x="40" y="40" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="mobileapp" value="📱 Mobile App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="clients-group" vertex="1">
+      <mxGeometry x="40" y="85" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="apiclients" value="🔌 API Clients" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="clients-group" vertex="1">
+      <mxGeometry x="40" y="130" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="nginx-group" value="⚖️ NGINX" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="360" y="40" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="nginx" value="⚖️ NGINX Ingress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="nginx-group" vertex="1">
+      <mxGeometry x="30" y="40" width="140" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="keycloak-group" value="🔐 KEYCLOAK CLUSTER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="640" y="40" width="280" height="180" as="geometry" />
+    </mxCell>
+    <mxCell id="kc1" value="🔐 Keycloak Instance 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="keycloak-group" vertex="1">
+      <mxGeometry x="40" y="40" width="200" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="kc2" value="🔐 Keycloak Instance 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="keycloak-group" vertex="1">
+      <mxGeometry x="40" y="85" width="200" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="kc3" value="🔐 Keycloak Instance 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="keycloak-group" vertex="1">
+      <mxGeometry x="40" y="130" width="200" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="database-group" value="🗃️ DATABASE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="1000" y="40" width="240" height="220" as="geometry" />
+    </mxCell>
+    <mxCell id="keycloakdb" value="🗃️ PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="database-group" vertex="1">
+      <mxGeometry x="70" y="40" width="100" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="userstable" value="👤 Users" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;" parent="database-group" vertex="1">
+      <mxGeometry x="40" y="110" width="60" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="rolestable" value="🛡️ Roles" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;" parent="database-group" vertex="1">
+      <mxGeometry x="120" y="110" width="60" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="sessionstable" value="🔄 Sessions" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;" parent="database-group" vertex="1">
+      <mxGeometry x="40" y="165" width="140" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="external-group" value="🌐 EXTERNAL PROVIDERS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="640" y="280" width="280" height="180" as="geometry" />
+    </mxCell>
+    <mxCell id="ldap" value="📁 LDAP/AD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="external-group" vertex="1">
+      <mxGeometry x="60" y="40" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="social" value="📱 Social Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="external-group" vertex="1">
+      <mxGeometry x="60" y="85" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="govsso" value="🏛️ Gov SSO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="external-group" vertex="1">
+      <mxGeometry x="60" y="130" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="kong-group" value="🦍 API GATEWAY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="360" y="280" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="kong" value="🦍 Kong Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="kong-group" vertex="1">
+      <mxGeometry x="30" y="40" width="140" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="services-group" value="⚙️ JUL SERVICES" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="40" y="280" width="240" height="240" as="geometry" />
+    </mxCell>
+    <mxCell id="company-service" value="🏢 Company Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="services-group" vertex="1">
+      <mxGeometry x="40" y="40" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="license-service" value="📜 License Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="services-group" vertex="1">
+      <mxGeometry x="40" y="85" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="declaration-service" value="📋 Declaration Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="services-group" vertex="1">
+      <mxGeometry x="40" y="130" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="document-service" value="📄 Document Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="services-group" vertex="1">
+      <mxGeometry x="40" y="175" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="roles-group" value="🛡️ SYSTEM ROLES" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="1000" y="320" width="240" height="320" as="geometry" />
+    </mxCell>
+    <mxCell id="admin" value="👨‍💼 Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="40" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="officer" value="👮 Officer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="75" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="supervisor" value="👨‍💼 Supervisor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="110" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="trader" value="👤 Trader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="145" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="broker" value="👥 Customs Broker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="180" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="forwarder" value="🚛 Freight Forwarder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="215" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="readonly" value="👁️ Read-Only User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="roles-group" vertex="1">
+      <mxGeometry x="40" y="250" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="permissions-group" value="🔑 PERMISSIONS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="1300" y="320" width="240" height="220" as="geometry" />
+    </mxCell>
+    <mxCell id="decl-perms" value="📋 Declaration Permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="permissions-group" vertex="1">
+      <mxGeometry x="30" y="40" width="180" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="doc-perms" value="📄 Document Permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="permissions-group" vertex="1">
+      <mxGeometry x="30" y="85" width="180" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="company-perms" value="🏢 Company Permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="permissions-group" vertex="1">
+      <mxGeometry x="30" y="130" width="180" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="report-perms" value="📊 Reporting Permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="permissions-group" vertex="1">
+      <mxGeometry x="30" y="175" width="180" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="protocols-group" value="🔑 PROTOCOLS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="640" y="520" width="280" height="180" as="geometry" />
+    </mxCell>
+    <mxCell id="oauth2" value="🔑 OAuth 2.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="protocols-group" vertex="1">
+      <mxGeometry x="60" y="40" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="oidc" value="🔐 OpenID Connect" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="protocols-group" vertex="1">
+      <mxGeometry x="60" y="85" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="saml" value="📜 SAML 2.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="protocols-group" vertex="1">
+      <mxGeometry x="60" y="130" width="160" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="mfa-group" value="🔐 MFA METHODS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="360" y="520" width="200" height="180" as="geometry" />
+    </mxCell>
+    <mxCell id="totp" value="📱 TOTP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="mfa-group" vertex="1">
+      <mxGeometry x="30" y="40" width="140" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="sms" value="📱 SMS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="mfa-group" vertex="1">
+      <mxGeometry x="30" y="85" width="140" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="email-auth" value="📧 Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="mfa-group" vertex="1">
+      <mxGeometry x="30" y="130" width="140" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="session-group" value="🔄 SESSION MANAGEMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="1000" y="700" width="240" height="220" as="geometry" />
+    </mxCell>
+    <mxCell id="redis" value="⚡ Redis Cluster" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="session-group" vertex="1">
+      <mxGeometry x="70" y="40" width="100" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="access-token" value="🎟️ Access Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="session-group" vertex="1">
+      <mxGeometry x="40" y="110" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="refresh-token" value="🔄 Refresh Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="session-group" vertex="1">
+      <mxGeometry x="40" y="145" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="id-token" value="🆔 ID Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="session-group" vertex="1">
+      <mxGeometry x="40" y="180" width="160" height="25" as="geometry" />
+    </mxCell>
+    <mxCell id="user-flow-group" value="👤 USER REGISTRATION FLOW" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" parent="1" vertex="1">
+      <mxGeometry x="40" y="600" width="240" height="320" as="geometry" />
+    </mxCell>
+    <mxCell id="step1" value="1️⃣ User Registration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="user-flow-group" vertex="1">
+      <mxGeometry x="40" y="40" width="160" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="step2" value="2️⃣ Email Verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="user-flow-group" vertex="1">
+      <mxGeometry x="40" y="90" width="160" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="step3" value="3️⃣ Company Association" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="user-flow-group" vertex="1">
+      <mxGeometry x="40" y="140" width="160" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="step4" value="4️⃣ Role Assignment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="user-flow-group" vertex="1">
+      <mxGeometry x="40" y="190" width="160" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="step5" value="5️⃣ MFA Setup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="user-flow-group" vertex="1">
+      <mxGeometry x="40" y="240" width="160" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="clients-group" target="nginx-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="nginx-group" target="keycloak-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="keycloak-group" target="database-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="keycloak-group" target="external-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="clients-group" target="kong-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="kong-group" target="keycloak-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="kong-group" target="services-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="keycloak-group" target="protocols-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="keycloak-group" target="mfa-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="keycloak-group" target="roles-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="roles-group" target="permissions-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="conn12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" parent="1" source="keycloak-group" target="session-group" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="step1" target="step2" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="step2" target="step3" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="step3" target="step4" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;" parent="1" source="step4" target="step5" edge="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

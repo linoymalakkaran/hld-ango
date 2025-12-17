@@ -1,365 +1,223 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="WCO Data Model ER" id="wco-data-model-er">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1200" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        
-        <!-- TITLE -->
-        <mxCell id="title" value="WCO Data Model - Entity Relationship Diagram" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="20" width="400" height="30" as="geometry" />
-        </mxCell>
-        
-        <!-- DECLARATION ENTITY -->
-        <mxCell id="declaration" value="DECLARATION" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="300" y="80" width="200" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="declaration-fields" value="🔑 declaration_id (PK)&#xa;🏢 declarant_id (FK)&#xa;📋 declaration_number&#xa;📅 declaration_date&#xa;🔢 declaration_type&#xa;⚖️ gross_weight&#xa;💰 total_value&#xa;🌍 country_of_origin&#xa;🚢 transport_mode&#xa;📍 loading_port&#xa;📍 discharge_port&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp&#xa;👤 created_by&#xa;👤 updated_by" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="declaration">
-          <mxGeometry y="26" width="200" height="174" as="geometry" />
-        </mxCell>
-        
-        <!-- DECLARANT ENTITY -->
-        <mxCell id="declarant" value="DECLARANT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="50" y="80" width="180" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="declarant-fields" value="🔑 declarant_id (PK)&#xa;🏢 company_name&#xa;📄 license_number&#xa;📧 email_address&#xa;📞 phone_number&#xa;📍 address&#xa;🌐 country&#xa;🔄 status&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="declarant">
-          <mxGeometry y="26" width="180" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- ITEM ENTITY -->
-        <mxCell id="item" value="ITEM" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="580" y="80" width="180" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="item-fields" value="🔑 item_id (PK)&#xa;📋 declaration_id (FK)&#xa;🔢 item_number&#xa;📦 commodity_code&#xa;📝 description&#xa;🌍 country_of_origin&#xa;📏 quantity&#xa;⚖️ net_weight&#xa;⚖️ gross_weight&#xa;💰 unit_value&#xa;💰 total_value&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="item">
-          <mxGeometry y="26" width="180" height="154" as="geometry" />
-        </mxCell>
-        
-        <!-- COMMODITY ENTITY -->
-        <mxCell id="commodity" value="COMMODITY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="820" y="80" width="180" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="commodity-fields" value="🔑 commodity_code (PK)&#xa;📝 description&#xa;🏷️ hs_code&#xa;🔢 unit_of_measure&#xa;💰 duty_rate&#xa;🚫 restrictions&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="commodity">
-          <mxGeometry y="26" width="180" height="114" as="geometry" />
-        </mxCell>
-        
-        <!-- DOCUMENT ENTITY -->
-        <mxCell id="document" value="DOCUMENT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="300" y="320" width="200" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="document-fields" value="🔑 document_id (PK)&#xa;📋 declaration_id (FK)&#xa;📄 document_type&#xa;📝 document_name&#xa;📁 file_path&#xa;📊 file_size&#xa;🔒 checksum&#xa;⏰ upload_timestamp&#xa;👤 uploaded_by&#xa;🔄 status" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="document">
-          <mxGeometry y="26" width="200" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- PARTY ENTITY -->
-        <mxCell id="party" value="PARTY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e8eaf6;strokeColor=#3f51b5;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="50" y="320" width="180" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="party-fields" value="🔑 party_id (PK)&#xa;📋 declaration_id (FK)&#xa;🔢 party_type&#xa;🏢 party_name&#xa;📄 identification&#xa;📍 address&#xa;🌐 country&#xa;📞 contact_info&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="party">
-          <mxGeometry y="26" width="180" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- TRANSPORT ENTITY -->
-        <mxCell id="transport" value="TRANSPORT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e0f2f1;strokeColor=#00695c;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="580" y="320" width="180" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="transport-fields" value="🔑 transport_id (PK)&#xa;📋 declaration_id (FK)&#xa;🚛 transport_mode&#xa;🚢 vessel_name&#xa;🔢 vessel_number&#xa;✈️ flight_number&#xa;📅 arrival_date&#xa;📅 departure_date&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="transport">
-          <mxGeometry y="26" width="180" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- CUSTOMS OFFICE ENTITY -->
-        <mxCell id="customs-office" value="CUSTOMS_OFFICE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="820" y="320" width="180" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="customs-office-fields" value="🔑 office_id (PK)&#xa;🏢 office_code&#xa;📝 office_name&#xa;📍 address&#xa;🌐 country&#xa;📞 contact_info&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="customs-office">
-          <mxGeometry y="26" width="180" height="114" as="geometry" />
-        </mxCell>
-        
-        <!-- INSPECTION ENTITY -->
-        <mxCell id="inspection" value="INSPECTION" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff8e1;strokeColor=#f57c00;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="50" y="540" width="200" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="inspection-fields" value="🔑 inspection_id (PK)&#xa;📋 declaration_id (FK)&#xa;🔍 inspection_type&#xa;📅 inspection_date&#xa;👤 inspector_id&#xa;🔄 status&#xa;📝 findings&#xa;📊 result&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="inspection">
-          <mxGeometry y="26" width="200" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- PAYMENT ENTITY -->
-        <mxCell id="payment" value="PAYMENT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f1f8e9;strokeColor=#689f38;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="300" y="540" width="200" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="payment-fields" value="🔑 payment_id (PK)&#xa;📋 declaration_id (FK)&#xa;💰 amount&#xa;💱 currency&#xa;🔢 payment_type&#xa;📅 payment_date&#xa;🔄 status&#xa;📄 receipt_number&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="payment">
-          <mxGeometry y="26" width="200" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- CLEARANCE ENTITY -->
-        <mxCell id="clearance" value="CLEARANCE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="550" y="540" width="200" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="clearance-fields" value="🔑 clearance_id (PK)&#xa;📋 declaration_id (FK)&#xa;📅 clearance_date&#xa;👤 cleared_by&#xa;🔄 status&#xa;📝 remarks&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="clearance">
-          <mxGeometry y="26" width="200" height="114" as="geometry" />
-        </mxCell>
-        
-        <!-- DUTY ENTITY -->
-        <mxCell id="duty" value="DUTY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fce4ec;strokeColor=#c2185b;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="800" y="540" width="180" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="duty-fields" value="🔑 duty_id (PK)&#xa;📦 item_id (FK)&#xa;🔢 duty_type&#xa;📊 duty_rate&#xa;💰 duty_amount&#xa;💱 currency&#xa;📐 calculation_base&#xa;🔄 status&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="duty">
-          <mxGeometry y="26" width="180" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- COUNTRY ENTITY -->
-        <mxCell id="country" value="COUNTRY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="80" width="160" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="country-fields" value="🔑 country_code (PK)&#xa;🌍 country_name&#xa;🌐 region&#xa;💱 currency&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="country">
-          <mxGeometry y="26" width="160" height="94" as="geometry" />
-        </mxCell>
-        
-        <!-- EXCHANGE RATE ENTITY -->
-        <mxCell id="exchange-rate" value="EXCHANGE_RATE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f3e5f5;strokeColor=#8e24aa;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="240" width="160" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="exchange-rate-fields" value="🔑 rate_id (PK)&#xa;💱 from_currency&#xa;💱 to_currency&#xa;📊 exchange_rate&#xa;📅 effective_date&#xa;📅 expiry_date&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="exchange-rate">
-          <mxGeometry y="26" width="160" height="114" as="geometry" />
-        </mxCell>
-        
-        <!-- TARIFF ENTITY -->
-        <mxCell id="tariff" value="TARIFF" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e0f7fa;strokeColor=#00838f;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="420" width="160" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="tariff-fields" value="🔑 tariff_id (PK)&#xa;🏷️ hs_code (FK)&#xa;🌍 country_code (FK)&#xa;📊 tariff_rate&#xa;🔢 tariff_type&#xa;📅 effective_date&#xa;📅 expiry_date&#xa;⏰ updated_timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="tariff">
-          <mxGeometry y="26" width="160" height="114" as="geometry" />
-        </mxCell>
-        
-        <!-- USER ENTITY -->
-        <mxCell id="user" value="USER" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff9c4;strokeColor=#f9a825;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="50" y="750" width="180" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="user-fields" value="🔑 user_id (PK)&#xa;👤 username&#xa;📧 email&#xa;🏢 department&#xa;🔢 role&#xa;🔄 status&#xa;📅 last_login&#xa;⏰ created_timestamp&#xa;⏰ updated_timestamp&#xa;👤 created_by" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="user">
-          <mxGeometry y="26" width="180" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- AUDIT LOG ENTITY -->
-        <mxCell id="audit-log" value="AUDIT_LOG" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#efebe9;strokeColor=#5d4037;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="300" y="750" width="200" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="audit-log-fields" value="🔑 log_id (PK)&#xa;📋 entity_type&#xa;🔑 entity_id&#xa;🔄 action&#xa;👤 user_id (FK)&#xa;📅 action_timestamp&#xa;📝 old_values&#xa;📝 new_values&#xa;💻 ip_address&#xa;🖥️ user_agent" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="audit-log">
-          <mxGeometry y="26" width="200" height="134" as="geometry" />
-        </mxCell>
-        
-        <!-- RELATIONSHIP LINES -->
-        
-        <!-- Declaration to Declarant -->
-        <mxCell id="decl-declarant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="declarant-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="280" y="170" />
-              <mxPoint x="250" y="170" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-declarant-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="255" y="150" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Item -->
-        <mxCell id="decl-item" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="item-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="520" y="170" />
-              <mxPoint x="560" y="170" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-item-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="535" y="150" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Item to Commodity -->
-        <mxCell id="item-commodity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="item-fields" target="commodity-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="780" y="150" />
-              <mxPoint x="800" y="150" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="item-commodity-label" value="N:1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="775" y="130" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Document -->
-        <mxCell id="decl-document" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="document-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="450" y="300" />
-              <mxPoint x="450" y="300" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-document-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="470" y="285" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Party -->
-        <mxCell id="decl-party" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3f51b5;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="party-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="280" y="300" />
-              <mxPoint x="190" y="300" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-party-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="235" y="285" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Transport -->
-        <mxCell id="decl-transport" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00695c;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="transport-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="520" y="300" />
-              <mxPoint x="620" y="300" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-transport-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="570" y="285" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Inspection -->
-        <mxCell id="decl-inspection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57c00;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="inspection-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="280" y="520" />
-              <mxPoint x="200" y="520" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-inspection-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="235" y="505" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Payment -->
-        <mxCell id="decl-payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#689f38;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="payment-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="450" y="520" />
-              <mxPoint x="450" y="520" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-payment-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="470" y="505" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Declaration to Clearance -->
-        <mxCell id="decl-clearance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="declaration-fields" target="clearance-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="520" y="520" />
-              <mxPoint x="600" y="520" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="decl-clearance-label" value="1:1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="505" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Item to Duty -->
-        <mxCell id="item-duty" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c2185b;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="item-fields" target="duty-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="720" y="520" />
-              <mxPoint x="840" y="520" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="item-duty-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="775" y="505" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Commodity to Country -->
-        <mxCell id="commodity-country" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="commodity-fields" target="country-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1020" y="150" />
-              <mxPoint x="1030" y="150" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="commodity-country-label" value="N:1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1005" y="130" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Commodity to Tariff -->
-        <mxCell id="commodity-tariff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00838f;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="commodity-fields" target="tariff-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1020" y="400" />
-              <mxPoint x="1070" y="400" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="commodity-tariff-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1025" y="385" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- Country to Exchange Rate -->
-        <mxCell id="country-exchange" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8e24aa;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="country-fields" target="exchange-rate-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1180" y="220" />
-              <mxPoint x="1180" y="270" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="country-exchange-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1185" y="240" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- User to Audit Log -->
-        <mxCell id="user-audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#5d4037;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="user-fields" target="audit-log-fields">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="250" y="850" />
-              <mxPoint x="280" y="850" />
-            </Arrays>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user-audit-label" value="1:N" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="255" y="835" width="30" height="20" as="geometry" />
-        </mxCell>
-        
-        <!-- LEGEND -->
-        <mxCell id="legend" value="LEGEND" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="550" y="750" width="200" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-content" value="🔑 Primary Key (PK)&#xa;🔗 Foreign Key (FK)&#xa;1:1 One-to-One Relationship&#xa;1:N One-to-Many Relationship&#xa;N:1 Many-to-One Relationship&#xa;N:M Many-to-Many Relationship" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="legend">
-          <mxGeometry y="26" width="200" height="94" as="geometry" />
-        </mxCell>
-        
-        <!-- DATABASE INFO -->
-        <mxCell id="db-info" value="DATABASE INFO" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="800" y="750" width="200" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="db-info-content" value="🗃️ Database: PostgreSQL&#xa;📊 Total Entities: 16&#xa;🔗 Relationships: 14&#xa;📋 Compliance: WCO Standards&#xa;🔒 Security: Row-Level Security&#xa;⚡ Performance: Indexed Fields" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="db-info">
-          <mxGeometry y="26" width="200" height="94" as="geometry" />
-        </mxCell>
-        
-        <!-- DATA CONSTRAINTS -->
-        <mxCell id="constraints" value="DATA CONSTRAINTS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="750" width="180" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="constraints-content" value="✅ NOT NULL Constraints&#xa;🔢 CHECK Constraints&#xa;🔗 Foreign Key Constraints&#xa;🔒 UNIQUE Constraints&#xa;📅 Date Validations&#xa;💰 Amount Validations" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="constraints">
-          <mxGeometry y="26" width="180" height="94" as="geometry" />
-        </mxCell>
-        
-        <!-- CARDINALITY LABELS -->
-        <mxCell id="cardinality-note" value="📝 Cardinality Notation: Represents the relationship between entities where numbers indicate how many instances of one entity relate to instances of another entity" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="500" y="950" width="400" height="40" as="geometry" />
-        </mxCell>
-        
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram id="WCO_Data_Model_ER" name="WCO Data Model ER">
+        <mxGraphModel dx="590" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="DECLARATION" value="DECLARATION" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="100" width="280" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="DECLARATION_FIELDS" value="uuid declaration_id (PK)&#xa;string functional_reference_id (UK)&#xa;string declaration_type_code&#xa;string declaration_office_id&#xa;string goods_location_code&#xa;uuid declarant_party_id (FK)&#xa;uuid representative_party_id (FK)&#xa;jsonb border_transport_means&#xa;timestamp created_datetime&#xa;timestamp submission_datetime&#xa;timestamp acceptance_datetime&#xa;string wco_data_model_version&#xa;string status&#xa;decimal total_invoice_amount&#xa;string invoice_currency_code" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="DECLARATION" vertex="1">
+                    <mxGeometry y="26" width="280" height="374" as="geometry"/>
+                </mxCell>
+                <mxCell id="GOODS_ITEM" value="GOODS_ITEM" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="100" width="280" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="GOODS_ITEM_FIELDS" value="uuid goods_item_id (PK)&#xa;uuid declaration_id (FK)&#xa;integer sequence_numeric&#xa;string commodity_code&#xa;string commodity_code_list_id&#xa;decimal customs_value_amount&#xa;string customs_value_currency_id&#xa;decimal statistical_value_amount&#xa;decimal net_weight_measure&#xa;decimal gross_weight_measure&#xa;decimal supplementary_unit_quantity&#xa;string origin_country_code&#xa;string export_country_code&#xa;string destination_country_code&#xa;string goods_description&#xa;string packaging_type_code&#xa;integer package_quantity" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="GOODS_ITEM" vertex="1">
+                    <mxGeometry y="26" width="280" height="294" as="geometry"/>
+                </mxCell>
+                <mxCell id="PARTY" value="PARTY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="100" width="280" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="PARTY_FIELDS" value="uuid party_id (PK)&#xa;string party_identification (UK)&#xa;string party_name&#xa;string party_type_code&#xa;string party_role_code&#xa;jsonb communication_details&#xa;jsonb address&#xa;string tax_id&#xa;string economic_operator_id&#xa;string authorization_id&#xa;timestamp created_date&#xa;timestamp updated_date&#xa;boolean is_active" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="PARTY" vertex="1">
+                    <mxGeometry y="26" width="280" height="254" as="geometry"/>
+                </mxCell>
+                <mxCell id="COMPANY" value="COMPANY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="100" width="280" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="COMPANY_FIELDS" value="uuid company_id (PK)&#xa;uuid party_id (FK)&#xa;string company_name&#xa;string registration_number (UK)&#xa;string nif (UK)&#xa;string company_type&#xa;jsonb business_address&#xa;string phone_number&#xa;string email_address&#xa;string website_url&#xa;timestamp registration_date&#xa;string verification_status&#xa;jsonb verification_documents&#xa;boolean is_active" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="COMPANY" vertex="1">
+                    <mxGeometry y="26" width="280" height="274" as="geometry"/>
+                </mxCell>
+                <mxCell id="USER_COMPANY" value="USER_COMPANY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="1700" y="100" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="USER_COMPANY_FIELDS" value="uuid user_company_id (PK)&#xa;string user_id (FK)&#xa;uuid company_id (FK)&#xa;string role&#xa;timestamp association_date&#xa;timestamp last_access_date&#xa;boolean is_active&#xa;string status" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="USER_COMPANY" vertex="1">
+                    <mxGeometry y="26" width="280" height="174" as="geometry"/>
+                </mxCell>
+                <mxCell id="LICENSE" value="LICENSE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="600" width="280" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="LICENSE_FIELDS" value="uuid license_id (PK)&#xa;uuid company_id (FK)&#xa;string license_type&#xa;string license_number (UK)&#xa;string issuing_authority&#xa;date issue_date&#xa;date expiry_date&#xa;string status&#xa;jsonb license_details&#xa;jsonb supporting_documents&#xa;decimal fee_amount&#xa;string fee_currency&#xa;boolean is_renewable" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="LICENSE" vertex="1">
+                    <mxGeometry y="26" width="280" height="234" as="geometry"/>
+                </mxCell>
+                <mxCell id="PERMIT" value="PERMIT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="600" width="280" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="PERMIT_FIELDS" value="uuid permit_id (PK)&#xa;uuid company_id (FK)&#xa;string permit_type&#xa;string permit_number (UK)&#xa;string issuing_agency&#xa;date application_date&#xa;date approval_date&#xa;date expiry_date&#xa;string status&#xa;jsonb permit_conditions&#xa;decimal processing_fee" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="PERMIT" vertex="1">
+                    <mxGeometry y="26" width="280" height="214" as="geometry"/>
+                </mxCell>
+                <mxCell id="HS_CODE" value="HS_CODE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="600" width="280" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="HS_CODE_FIELDS" value="string hs_code (PK)&#xa;string description&#xa;string unit_of_measure&#xa;string supplementary_unit&#xa;date effective_date&#xa;date end_date&#xa;string version&#xa;boolean is_prohibited&#xa;boolean requires_permit&#xa;jsonb additional_requirements" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="HS_CODE" vertex="1">
+                    <mxGeometry y="26" width="280" height="194" as="geometry"/>
+                </mxCell>
+                <mxCell id="TARIFF_SCHEDULE" value="TARIFF_SCHEDULE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="600" width="280" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="TARIFF_SCHEDULE_FIELDS" value="uuid tariff_id (PK)&#xa;string hs_code (FK)&#xa;string origin_country_code&#xa;decimal duty_rate_percent&#xa;decimal vat_rate_percent&#xa;decimal excise_rate_percent&#xa;string tariff_type&#xa;date effective_date&#xa;date end_date&#xa;string trade_agreement" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="TARIFF_SCHEDULE" vertex="1">
+                    <mxGeometry y="26" width="280" height="214" as="geometry"/>
+                </mxCell>
+                <mxCell id="COUNTRY" value="COUNTRY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1700" y="600" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="COUNTRY_FIELDS" value="string country_code (PK)&#xa;string country_name&#xa;string region_code&#xa;string currency_code&#xa;boolean is_eu_member&#xa;boolean is_sadc_member&#xa;jsonb trade_agreements&#xa;boolean requires_coo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="COUNTRY" vertex="1">
+                    <mxGeometry y="26" width="280" height="174" as="geometry"/>
+                </mxCell>
+                <mxCell id="DOCUMENT" value="DOCUMENT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="1000" width="280" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="DOCUMENT_FIELDS" value="uuid document_id (PK)&#xa;string filename&#xa;string content_type&#xa;bigint size_bytes&#xa;string minio_bucket_name&#xa;string minio_object_key&#xa;string checksum_sha256&#xa;uuid uploaded_by_user (FK)&#xa;timestamp upload_date&#xa;string document_category&#xa;string document_status&#xa;jsonb metadata&#xa;integer retention_years" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="DOCUMENT" vertex="1">
+                    <mxGeometry y="26" width="280" height="274" as="geometry"/>
+                </mxCell>
+                <mxCell id="DOCUMENT_REFERENCE" value="DOCUMENT_REFERENCE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="1000" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="DOCUMENT_REFERENCE_FIELDS" value="uuid reference_id (PK)&#xa;uuid document_id (FK)&#xa;uuid entity_id&#xa;string entity_type&#xa;string reference_type&#xa;timestamp linked_date&#xa;boolean is_required&#xa;string validation_status" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="DOCUMENT_REFERENCE" vertex="1">
+                    <mxGeometry y="26" width="280" height="174" as="geometry"/>
+                </mxCell>
+                <mxCell id="PAYMENT" value="PAYMENT" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="1000" width="280" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="PAYMENT_FIELDS" value="uuid payment_id (PK)&#xa;uuid declaration_id (FK)&#xa;decimal duty_amount&#xa;decimal vat_amount&#xa;decimal excise_amount&#xa;decimal processing_fee&#xa;decimal total_amount&#xa;string currency_code&#xa;string payment_method&#xa;string payment_status&#xa;timestamp payment_date&#xa;string transaction_reference&#xa;jsonb bank_details" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="PAYMENT" vertex="1">
+                    <mxGeometry y="26" width="280" height="254" as="geometry"/>
+                </mxCell>
+                <mxCell id="DUTY_CALCULATION" value="DUTY_CALCULATION" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="1000" width="280" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="DUTY_CALCULATION_FIELDS" value="uuid calculation_id (PK)&#xa;uuid goods_item_id (FK)&#xa;decimal customs_value&#xa;decimal duty_rate_percent&#xa;decimal calculated_duty&#xa;decimal vat_rate_percent&#xa;decimal calculated_vat&#xa;decimal excise_rate_percent&#xa;decimal calculated_excise&#xa;string calculation_basis&#xa;timestamp calculation_date&#xa;string calculated_by_system" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="DUTY_CALCULATION" vertex="1">
+                    <mxGeometry y="26" width="280" height="254" as="geometry"/>
+                </mxCell>
+                <mxCell id="rel_decl_goods" value="contains" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="DECLARATION" target="GOODS_ITEM" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="250" as="sourcePoint"/>
+                        <mxPoint x="500" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_decl_party" value="declarant" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="DECLARATION_FIELDS" target="PARTY" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="380" y="200" as="sourcePoint"/>
+                        <mxPoint x="900" y="200" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="500" y="220"/>
+                            <mxPoint x="500" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_party_company" value="represents" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="PARTY" target="COMPANY" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1200" y="240" as="sourcePoint"/>
+                        <mxPoint x="1300" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_company_user" value="employs" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="COMPANY" target="USER_COMPANY" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1600" y="240" as="sourcePoint"/>
+                        <mxPoint x="1700" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_company_license" value="holds" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" source="COMPANY" target="LICENSE" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1300" y="400" as="sourcePoint"/>
+                        <mxPoint x="380" y="600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="700" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_company_permit" value="applies_for" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="COMPANY" target="PERMIT" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1370" y="400" as="sourcePoint"/>
+                        <mxPoint x="710" y="600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1370" y="500"/>
+                            <mxPoint x="710" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_goods_hscode" value="classified_as" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GOODS_ITEM" target="HS_CODE" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="640" y="420" as="sourcePoint"/>
+                        <mxPoint x="900" y="600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="640" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_hscode_tariff" value="has_tariff" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="HS_CODE" target="TARIFF_SCHEDULE" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1200" y="710" as="sourcePoint"/>
+                        <mxPoint x="1300" y="710" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_tariff_country" value="applies_to" style="endArrow=ERone;endFill=1;startArrow=ERmany;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TARIFF_SCHEDULE" target="COUNTRY" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1600" y="720" as="sourcePoint"/>
+                        <mxPoint x="1700" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_decl_payment" value="has" style="endArrow=ERone;endFill=1;startArrow=ERzeroToOne;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="DECLARATION" target="PAYMENT" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="500" as="sourcePoint"/>
+                        <mxPoint x="900" y="1000" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="240" y="800"/>
+                            <mxPoint x="800" y="800"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_goods_duty" value="calculated_for" style="endArrow=ERone;endFill=1;startArrow=ERzeroToMany;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GOODS_ITEM" target="DUTY_CALCULATION" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="780" y="420" as="sourcePoint"/>
+                        <mxPoint x="1300" y="1000" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1200" y="800"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_decl_doc_ref" value="references" style="endArrow=ERone;endFill=1;startArrow=ERzeroToMany;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" source="DECLARATION" target="DOCUMENT_REFERENCE" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="500" as="sourcePoint"/>
+                        <mxPoint x="780" y="1000" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="70" y="500"/>
+                            <mxPoint x="60" y="890"/>
+                            <mxPoint x="450" y="890"/>
+                            <mxPoint x="800" y="800"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="rel_doc_doc_ref" value="referenced_by" style="endArrow=ERone;endFill=1;startArrow=ERzeroToMany;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="DOCUMENT" target="DOCUMENT_REFERENCE" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="1150" as="sourcePoint"/>
+                        <mxPoint x="500" y="1150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="title" value="WCO Data Model Entity Relationship Diagram&#xa;Angola Customs Declaration System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="20" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_title" value="Entity Categories:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="100" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_declaration" value="Declaration Related" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="130" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_party" value="Party Related" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="180" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_license" value="License/Permits" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="230" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_master" value="Master Data" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_document" value="Documents" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="330" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_financial" value="Financial" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="380" width="120" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

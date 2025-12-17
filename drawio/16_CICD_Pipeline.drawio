@@ -1,492 +1,384 @@
-<mxfile host="app.diagrams.net">
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-12-17T12:00:00.000Z" agent="5.0" etag="xxx" version="24.7.17" type="device">
   <diagram name="CI/CD Pipeline" id="cicd-pipeline">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="2074" dy="1194" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1500" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- TITLE -->
-        <mxCell id="title" value="CI/CD Pipeline Architecture for JUL Platform" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="20" width="400" height="30" as="geometry" />
+        <!-- Developer Workflow -->
+        <mxCell id="developer-group" value="👨‍💻 DEVELOPER" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="200" height="120" as="geometry" />
         </mxCell>
-        
-        <!-- VERSION CONTROL -->
-        <mxCell id="version-control" value="📂 VERSION CONTROL" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="70" width="1300" height="100" as="geometry" />
+        <mxCell id="developer1" value="👨‍💻 Developer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="developer-group">
+          <mxGeometry x="10" y="40" width="180" height="30" as="geometry" />
         </mxCell>
-        
-        <mxCell id="github-repo" value="🐙 GitHub\nRepository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="100" y="40" width="120" height="50" as="geometry" />
+        <mxCell id="local-dev" value="💻 Local Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="developer-group">
+          <mxGeometry x="10" y="80" width="180" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="feature-branch" value="🌿 Feature\nBranch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="260" y="40" width="100" height="50" as="geometry" />
+        <!-- Source Control -->
+        <mxCell id="source-control-group" value="📚 SOURCE CONTROL" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="200" height="150" as="geometry" />
         </mxCell>
-        
-        <mxCell id="develop-branch" value="🔄 Develop\nBranch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="390" y="40" width="100" height="50" as="geometry" />
+        <mxCell id="gitlab" value="📚 GitLab Enterprise" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
+          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="main-branch" value="🎯 Main\nBranch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="520" y="40" width="100" height="50" as="geometry" />
+        <mxCell id="main-branch" value="🌟 main branch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
+          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="release-branch" value="🚀 Release\nBranch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42a5f5;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="650" y="40" width="100" height="50" as="geometry" />
+        <mxCell id="develop-branch" value="🔧 develop branch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
+          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="hotfix-branch" value="🔥 Hotfix\nBranch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196f3;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="780" y="40" width="100" height="50" as="geometry" />
+        <mxCell id="feature-branches" value="🚀 feature/* branches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
+          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="pull-request" value="🔀 Pull\nRequest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e88e5;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="version-control">
-          <mxGeometry x="910" y="40" width="100" height="50" as="geometry" />
+        <!-- Pipeline Triggers -->
+        <mxCell id="triggers-group" value="🔄 TRIGGERS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="550" y="50" width="180" height="150" as="geometry" />
         </mxCell>
-        
-        <mxCell id="code-review" value="👀 Code\nReview" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976d2;strokeColor=#0d47a1;strokeWidth=2;fontSize=10;fontColor=white;" vertex="1" parent="version-control">
-          <mxGeometry x="1040" y="40" width="100" height="50" as="geometry" />
+        <mxCell id="commit-trigger" value="📝 Code Commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- CI PIPELINE -->
-        <mxCell id="ci-pipeline" value="🔧 CONTINUOUS INTEGRATION PIPELINE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="200" width="1300" height="180" as="geometry" />
+        <mxCell id="mr-trigger" value="🔀 Merge Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Trigger -->
-        <mxCell id="webhook-trigger" value="🔔 Webhook\nTrigger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=2;fontSize=10;" vertex="1" parent="ci-pipeline">
-          <mxGeometry x="50" y="40" width="100" height="50" as="geometry" />
+        <mxCell id="tag-trigger" value="🏷️ Git Tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Build Stage -->
-        <mxCell id="build-stage" value="🏗️ BUILD STAGE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="ci-pipeline">
-          <mxGeometry x="180" y="40" width="300" height="120" as="geometry" />
+        <mxCell id="scheduled-trigger" value="⏰ Scheduled" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
+          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="checkout-code" value="📥 Checkout\nCode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="build-stage">
-          <mxGeometry x="20" y="30" width="80" height="30" as="geometry" />
+        <!-- CI Pipeline -->
+        <mxCell id="ci-pipeline-group" value="🔨 CI PIPELINE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f0f0f0;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="50" width="200" height="280" as="geometry" />
         </mxCell>
-        
-        <mxCell id="install-deps" value="📦 Install\nDependencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="build-stage">
-          <mxGeometry x="120" y="30" width="80" height="30" as="geometry" />
+        <mxCell id="checkout-code" value="📥 Checkout Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="compile-code" value="⚙️ Compile\nCode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="build-stage">
-          <mxGeometry x="220" y="30" width="80" height="30" as="geometry" />
+        <mxCell id="dependency-install" value="📦 Install Dependencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="create-artifacts" value="📦 Create\nArtifacts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="build-stage">
-          <mxGeometry x="70" y="70" width="80" height="30" as="geometry" />
+        <mxCell id="compile-code" value="🔨 Compile Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="store-artifacts" value="💾 Store\nArtifacts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="build-stage">
-          <mxGeometry x="170" y="70" width="80" height="30" as="geometry" />
+        <mxCell id="unit-tests" value="🧪 Unit Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Test Stage -->
-        <mxCell id="test-stage" value="🧪 TEST STAGE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="ci-pipeline">
-          <mxGeometry x="510" y="40" width="260" height="120" as="geometry" />
+        <mxCell id="code-analysis" value="🔍 Code Analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="160" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="unit-tests" value="🔬 Unit\nTests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=9;" vertex="1" parent="test-stage">
-          <mxGeometry x="20" y="30" width="70" height="30" as="geometry" />
+        <mxCell id="security-scan" value="🔒 Security Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="190" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="integration-tests" value="🔗 Integration\nTests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=9;" vertex="1" parent="test-stage">
-          <mxGeometry x="110" y="30" width="70" height="30" as="geometry" />
+        <mxCell id="integration-tests" value="🔗 Integration Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="220" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="e2e-tests" value="🎭 E2E\nTests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=9;" vertex="1" parent="test-stage">
-          <mxGeometry x="200" y="30" width="70" height="30" as="geometry" />
+        <mxCell id="docker-build" value="🐳 Docker Build" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="10" y="250" width="85" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="test-coverage" value="📊 Test\nCoverage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=2;fontSize=9;" vertex="1" parent="test-stage">
-          <mxGeometry x="40" y="70" width="70" height="30" as="geometry" />
+        <mxCell id="image-scan" value="🔍 Image Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
+          <mxGeometry x="100" y="250" width="85" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="test-report" value="📋 Test\nReport" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=2;fontSize=9;" vertex="1" parent="test-stage">
-          <mxGeometry x="130" y="70" width="70" height="30" as="geometry" />
+        <!-- Artifact Repository -->
+        <mxCell id="artifact-repo-group" value="📦 ARTIFACTS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="50" width="180" height="150" as="geometry" />
         </mxCell>
-        
-        <!-- Security Stage -->
-        <mxCell id="security-stage" value="🔒 SECURITY STAGE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="ci-pipeline">
-          <mxGeometry x="800" y="40" width="240" height="120" as="geometry" />
+        <mxCell id="harbor-registry" value="🐳 Harbor Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="sast" value="🔍 SAST\nScan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="security-stage">
-          <mxGeometry x="20" y="30" width="60" height="30" as="geometry" />
+        <mxCell id="helm-repository" value="⚙️ Helm Repository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="dependency-scan" value="📦 Dependency\nScan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="security-stage">
-          <mxGeometry x="100" y="30" width="60" height="30" as="geometry" />
+        <mxCell id="nuget-feed" value="📦 NuGet Feed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="license-check" value="📄 License\nCheck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="security-stage">
-          <mxGeometry x="180" y="30" width="60" height="30" as="geometry" />
+        <mxCell id="npm-registry" value="📦 NPM Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
+          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="security-report" value="🛡️ Security\nReport" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;strokeWidth=2;fontSize=9;" vertex="1" parent="security-stage">
-          <mxGeometry x="70" y="70" width="80" height="30" as="geometry" />
+        <!-- CD Pipeline -->
+        <mxCell id="cd-pipeline-group" value="🚀 CD PIPELINE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="50" width="180" height="200" as="geometry" />
         </mxCell>
-        
-        <!-- Quality Gate -->
-        <mxCell id="quality-gate" value="✅ Quality\nGate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4caf50;strokeColor=#2e7d32;strokeWidth=3;fontSize=10;fontColor=white;" vertex="1" parent="ci-pipeline">
-          <mxGeometry x="1070" y="90" width="100" height="50" as="geometry" />
+        <mxCell id="dev-deploy" value="🟢 Dev Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- CD PIPELINE -->
-        <mxCell id="cd-pipeline" value="🚀 CONTINUOUS DEPLOYMENT PIPELINE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="410" width="1300" height="200" as="geometry" />
+        <mxCell id="staging-deploy" value="🟡 Staging Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Container Build -->
-        <mxCell id="container-build" value="🐳 CONTAINER BUILD" style="swimlane;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="cd-pipeline">
-          <mxGeometry x="50" y="40" width="250" height="140" as="geometry" />
+        <mxCell id="prod-deploy" value="🔴 Prod Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="dockerfile" value="📄 Dockerfile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="container-build">
-          <mxGeometry x="20" y="30" width="80" height="30" as="geometry" />
+        <mxCell id="blue-green" value="🔄 Blue-Green" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
+          <mxGeometry x="10" y="130" width="75" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="build-image" value="🔨 Build\nImage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="container-build">
-          <mxGeometry x="120" y="30" width="80" height="30" as="geometry" />
+        <mxCell id="rolling-update" value="📈 Rolling Update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
+          <mxGeometry x="90" y="130" width="80" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="scan-image" value="🔍 Scan\nImage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4fc3f7;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="container-build">
-          <mxGeometry x="20" y="70" width="80" height="30" as="geometry" />
+        <mxCell id="canary-deploy" value="🐤 Canary Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
+          <mxGeometry x="10" y="160" width="160" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="push-registry" value="📤 Push to\nRegistry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4fc3f7;strokeColor=#0277bd;strokeWidth=2;fontSize=9;" vertex="1" parent="container-build">
-          <mxGeometry x="120" y="70" width="80" height="30" as="geometry" />
+        <!-- Kubernetes Environments -->
+        <mxCell id="k8s-environments-group" value="☸️ KUBERNETES" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#a29bfe;strokeColor=#6c5ce7;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="50" width="180" height="120" as="geometry" />
         </mxCell>
-        
-        <mxCell id="sign-image" value="✍️ Sign\nImage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#29b6f6;strokeColor=#0277bd;strokeWidth=1;fontSize=9;" vertex="1" parent="container-build">
-          <mxGeometry x="70" y="110" width="80" height="25" as="geometry" />
+        <mxCell id="dev-environment" value="🟢 Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="k8s-environments-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Environment Deployment -->
-        <mxCell id="env-deployment" value="🌐 ENVIRONMENT DEPLOYMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="cd-pipeline">
-          <mxGeometry x="330" y="40" width="420" height="140" as="geometry" />
+        <mxCell id="staging-environment" value="🟡 Staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="k8s-environments-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="dev-deploy" value="🧪 Development\nDeployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="30" y="30" width="80" height="40" as="geometry" />
+        <mxCell id="production-environment" value="🔴 Production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="k8s-environments-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="test-deploy" value="🔬 Test\nDeployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="140" y="30" width="80" height="40" as="geometry" />
+        <!-- Infrastructure as Code -->
+        <mxCell id="iac-group" value="🏗️ INFRASTRUCTURE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#55a3ff;strokeColor=#2d8cff;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="200" height="150" as="geometry" />
         </mxCell>
-        
-        <mxCell id="staging-deploy" value="🎭 Staging\nDeployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="250" y="30" width="80" height="40" as="geometry" />
+        <mxCell id="terraform-modules" value="🏗️ Terraform Modules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
+          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="prod-deploy" value="🚀 Production\nDeployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=3;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="360" y="30" width="80" height="40" as="geometry" />
+        <mxCell id="application-charts" value="⚙️ Application Charts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
+          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="canary-deploy" value="🐤 Canary\nDeployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="60" y="80" width="80" height="30" as="geometry" />
+        <mxCell id="configmaps" value="⚙️ ConfigMaps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
+          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="blue-green" value="💙 Blue-Green\nDeployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="170" y="80" width="80" height="30" as="geometry" />
+        <mxCell id="secrets" value="🔐 Secrets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
+          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="rollback" value="🔙 Automated\nRollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="env-deployment">
-          <mxGeometry x="280" y="80" width="80" height="30" as="geometry" />
+        <!-- Monitoring -->
+        <mxCell id="monitoring-group" value="📊 MONITORING" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff7675;strokeColor=#d63031;" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="180" height="150" as="geometry" />
         </mxCell>
-        
-        <!-- Monitoring & Validation -->
-        <mxCell id="monitoring-validation" value="📊 MONITORING & VALIDATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="cd-pipeline">
-          <mxGeometry x="780" y="40" width="280" height="140" as="geometry" />
+        <mxCell id="gitlab-ci" value="📊 GitLab CI Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="health-check" value="💓 Health\nChecks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="20" y="30" width="70" height="30" as="geometry" />
+        <mxCell id="quality-metrics" value="📈 Quality Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="smoke-tests" value="💨 Smoke\nTests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="110" y="30" width="70" height="30" as="geometry" />
+        <mxCell id="deployment-status" value="🚀 Deployment Status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="performance-tests" value="⚡ Performance\nTests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="200" y="30" width="70" height="30" as="geometry" />
+        <mxCell id="application-metrics" value="📊 App Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
+          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="metrics" value="📈 Metrics\nCollection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="20" y="70" width="70" height="30" as="geometry" />
+        <!-- Security -->
+        <mxCell id="security-group" value="🔒 SECURITY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff6b9d;strokeColor=#e84393;" vertex="1" parent="1">
+          <mxGeometry x="520" y="250" width="180" height="180" as="geometry" />
         </mxCell>
-        
-        <mxCell id="alerts" value="🚨 Automated\nAlerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="110" y="70" width="70" height="30" as="geometry" />
+        <mxCell id="sast" value="🔍 SAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="notification" value="📧 Deployment\nNotification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="200" y="70" width="70" height="30" as="geometry" />
+        <mxCell id="dast" value="🕸️ DAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="dashboard" value="📊 Deployment\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ad7be9;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="monitoring-validation">
-          <mxGeometry x="110" y="110" width="70" height="25" as="geometry" />
+        <mxCell id="dependency-check" value="📦 Dependency Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- INFRASTRUCTURE -->
-        <mxCell id="infrastructure" value="🏗️ INFRASTRUCTURE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="640" width="1300" height="150" as="geometry" />
+        <mxCell id="container-scan" value="🐳 Container Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
+          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="github-actions" value="⚙️ GitHub\nActions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="100" y="40" width="120" height="70" as="geometry" />
+        <mxCell id="policy-validation" value="📋 Policy Validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
+          <mxGeometry x="10" y="160" width="75" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="jenkins" value="🤖 Jenkins\nCI/CD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="260" y="40" width="120" height="70" as="geometry" />
+        <mxCell id="audit-logging" value="📝 Audit Logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
+          <mxGeometry x="90" y="160" width="80" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="docker-registry" value="🐳 Docker\nRegistry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="420" y="40" width="120" height="70" as="geometry" />
+        <!-- Testing Strategy -->
+        <mxCell id="testing-strategy-group" value="🧪 TESTING" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="1">
+          <mxGeometry x="750" y="250" width="200" height="150" as="geometry" />
         </mxCell>
-        
-        <mxCell id="kubernetes" value="☸️ Kubernetes\nCluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="580" y="40" width="120" height="70" as="geometry" />
+        <mxCell id="unit-test-layer" value="🧪 Unit Tests 70%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
+          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="helm" value="⛵ Helm\nCharts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="740" y="40" width="120" height="70" as="geometry" />
+        <mxCell id="integration-test-layer" value="🔗 Integration Tests 20%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
+          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="sonarqube" value="🔍 SonarQube" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="900" y="40" width="120" height="70" as="geometry" />
+        <mxCell id="e2e-test-layer" value="🎭 E2E Tests 10%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
+          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="artifactory" value="📦 Artifactory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="infrastructure">
-          <mxGeometry x="1060" y="40" width="120" height="70" as="geometry" />
+        <mxCell id="test-data-management" value="🗃️ Test Data Mgmt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
+          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
         </mxCell>
         
-        <!-- MONITORING & OBSERVABILITY -->
-        <mxCell id="monitoring-observability" value="📊 MONITORING & OBSERVABILITY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="820" width="1300" height="120" as="geometry" />
+        <!-- Release Management -->
+        <mxCell id="release-management-group" value="🏷️ RELEASE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fdcb6e;strokeColor=#e17055;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="250" width="200" height="150" as="geometry" />
         </mxCell>
-        
-        <mxCell id="prometheus" value="📊 Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="100" y="40" width="120" height="60" as="geometry" />
+        <mxCell id="git-flow" value="🌊 Git Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
+          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="grafana" value="📈 Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="260" y="40" width="120" height="60" as="geometry" />
+        <mxCell id="semantic-versioning" value="🔢 Semantic Versioning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
+          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="elk-stack" value="🔍 ELK Stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="420" y="40" width="120" height="60" as="geometry" />
+        <mxCell id="release-notes" value="📝 Release Notes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
+          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="jaeger" value="🔬 Jaeger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="580" y="40" width="120" height="60" as="geometry" />
+        <mxCell id="rollback-procedures" value="↩️ Rollback Procedures" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
+          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
         </mxCell>
         
-        <mxCell id="alertmanager" value="🚨 AlertManager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="740" y="40" width="120" height="60" as="geometry" />
+        <!-- Pipeline Flow -->
+        <mxCell id="pipeline-flow-group" value="🔄 PIPELINE FLOW" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#636e72;strokeColor=#2d3436;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="280" width="180" height="200" as="geometry" />
         </mxCell>
-        
-        <mxCell id="splunk" value="📊 Splunk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="900" y="40" width="120" height="60" as="geometry" />
+        <mxCell id="step1" value="1️⃣ Code Commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
+          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="newrelic" value="📈 New Relic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ad7be9;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring-observability">
-          <mxGeometry x="1060" y="40" width="120" height="60" as="geometry" />
+        <mxCell id="step2" value="2️⃣ Build &amp; Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
+          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- MAIN FLOW CONNECTIONS -->
-        
-        <!-- Version Control Flow -->
-        <mxCell id="vc-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="feature-branch" target="develop-branch">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="step3" value="3️⃣ Quality Gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
+          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="vc-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="develop-branch" target="main-branch">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="step4" value="4️⃣ Security Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
+          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
         </mxCell>
-        
-        <mxCell id="vc-flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="pull-request" target="code-review">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="step5" value="5️⃣ Package" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
+          <mxGeometry x="10" y="160" width="160" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="step6" value="6️⃣ Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
+          <mxGeometry x="10" y="190" width="160" height="25" as="geometry" />
         </mxCell>
         
-        <!-- Trigger CI Pipeline -->
-        <mxCell id="trigger-ci" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="code-review" target="webhook-trigger">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1140" y="180" />
-              <mxPoint x="150" y="180" />
-            </Array>
+        <!-- Main Flow Arrows -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="developer-group" target="source-control-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="130" as="sourcePoint" />
+            <mxPoint x="310" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- CI Pipeline Flow -->
-        <mxCell id="ci-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="webhook-trigger" target="checkout-code">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="150" y="190" />
-              <mxPoint x="250" y="190" />
-            </Array>
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="source-control-group" target="triggers-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="130" as="sourcePoint" />
+            <mxPoint x="560" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="ci-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="create-artifacts" target="unit-tests">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="340" y="340" />
-              <mxPoint x="600" y="340" />
-            </Array>
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="triggers-group" target="ci-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="130" as="sourcePoint" />
+            <mxPoint x="790" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="ci-flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="test-report" target="sast">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="730" y="340" />
-              <mxPoint x="910" y="340" />
-            </Arrays>
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ci-pipeline-group" target="artifact-repo-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="990" y="130" as="sourcePoint" />
+            <mxPoint x="1040" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="ci-flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="security-report" target="quality-gate">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="960" y="360" />
-              <mxPoint x="1170" y="360" />
-            </Array>
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="artifact-repo-group" target="cd-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1220" y="130" as="sourcePoint" />
+            <mxPoint x="1270" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- CD Pipeline Flow -->
-        <mxCell id="cd-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="quality-gate" target="dockerfile">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1170" y="390" />
-              <mxPoint x="170" y="390" />
-            </Array>
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cd-pipeline-group" target="k8s-environments-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1440" y="130" as="sourcePoint" />
+            <mxPoint x="1490" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="cd-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="push-registry" target="dev-deploy">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="290" y="490" />
-              <mxPoint x="410" y="490" />
-            </Array>
+        <!-- Supporting Arrows -->
+        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="iac-group" target="k8s-environments-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="240" as="sourcePoint" />
+            <mxPoint x="1560" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="cd-flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="dev-deploy" target="test-deploy">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="cd-flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="test-deploy" target="staging-deploy">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="cd-flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="staging-deploy" target="prod-deploy">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <!-- Monitoring Flow -->
-        <mxCell id="monitor-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="prod-deploy" target="health-check">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="880" y="500" />
-              <mxPoint x="885" y="500" />
-            </Array>
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="security-group" target="ci-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="240" as="sourcePoint" />
+            <mxPoint x="880" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="monitor-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="notification" target="dashboard">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1005" y="580" />
-              <mxPoint x="1015" y="580" />
-            </Arrays>
+        <mxCell id="arrow9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="testing-strategy-group" target="ci-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="850" y="240" as="sourcePoint" />
+            <mxPoint x="880" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- Infrastructure Connections -->
-        <mxCell id="infra-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="github-actions" target="github-repo">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="210" y="620" />
-              <mxPoint x="210" y="620" />
-            </Array>
+        <mxCell id="arrow10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="monitoring-group" target="ci-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="290" as="sourcePoint" />
+            <mxPoint x="780" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="infra-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="docker-registry" target="push-registry">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="530" y="620" />
-              <mxPoint x="270" y="620" />
-            </Arrays>
+        <mxCell id="arrow11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="monitoring-group" target="cd-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="360" as="sourcePoint" />
+            <mxPoint x="1250" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="infra-conn3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="kubernetes" target="prod-deploy">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="690" y="620" />
-              <mxPoint x="880" y="620" />
-            </Arrays>
+        <mxCell id="arrow12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="release-management-group" target="cd-pipeline-group">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1100" y="240" as="sourcePoint" />
+            <mxPoint x="1340" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="infra-conn4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="sonarqube" target="test-coverage">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1010" y="620" />
-              <mxPoint x="635" y="620" />
-            </Array>
+        <!-- Pipeline Flow Internal Arrows -->
+        <mxCell id="flow-arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1330" y="370" as="sourcePoint" />
+            <mxPoint x="1330" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- Monitoring Infrastructure -->
-        <mxCell id="monitor-infra1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="prometheus" target="metrics">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="260" y="800" />
-              <mxPoint x="885" y="800" />
-            </Array>
+        <mxCell id="flow-arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step2" target="step3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1330" y="400" as="sourcePoint" />
+            <mxPoint x="1330" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="monitor-infra2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="grafana" target="dashboard">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="370" y="800" />
-              <mxPoint x="1015" y="800" />
-            </Array>
+        <mxCell id="flow-arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1330" y="430" as="sourcePoint" />
+            <mxPoint x="1330" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="monitor-infra3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="alertmanager" target="alerts">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="850" y="800" />
-              <mxPoint x="975" y="800" />
-            </Array>
+        <mxCell id="flow-arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step4" target="step5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1330" y="460" as="sourcePoint" />
+            <mxPoint x="1330" y="490" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- Flow Labels -->
-        <mxCell id="flow-label1" value="Code Commit → CI Trigger" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#1976d2;" vertex="1" parent="1">
-          <mxGeometry x="500" y="160" width="200" height="20" as="geometry" />
+        <mxCell id="flow-arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step5" target="step6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1330" y="490" as="sourcePoint" />
+            <mxPoint x="1330" y="520" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow-label2" value="Build → Test → Security" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#4caf50;" vertex="1" parent="1">
-          <mxGeometry x="500" y="320" width="200" height="20" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="flow-label3" value="Container → Deploy → Monitor" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#0277bd;" vertex="1" parent="1">
-          <mxGeometry x="500" y="590" width="200" height="20" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="flow-label4" value="Observability & Feedback" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#7b1fa2;" vertex="1" parent="1">
-          <mxGeometry x="900" y="780" width="200" height="20" as="geometry" />
+        <!-- Internal connections -->
+        <mxCell id="dev-connection" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="local-dev" target="main-branch">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="110" as="sourcePoint" />
+            <mxPoint x="300" y="95" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         
       </root>
