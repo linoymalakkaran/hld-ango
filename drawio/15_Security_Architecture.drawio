@@ -1,0 +1,393 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Security Architecture" id="security-architecture">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="JUL Security Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="20" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- INTERNET ZONE -->
+        <mxCell id="internet-zone" value="🌐 INTERNET ZONE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="1500" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="users" value="👥 Users" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=11;" vertex="1" parent="internet-zone">
+          <mxGeometry x="100" y="60" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="customs-brokers" value="👨‍💼 Customs\nBrokers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=11;" vertex="1" parent="internet-zone">
+          <mxGeometry x="250" y="60" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="external-apis" value="🔌 External\nAPIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=11;" vertex="1" parent="internet-zone">
+          <mxGeometry x="400" y="60" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="government" value="🏛️ Government\nSystems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=11;" vertex="1" parent="internet-zone">
+          <mxGeometry x="550" y="60" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="attackers" value="⚠️ Potential\nThreats" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f44336;strokeColor=#d32f2f;strokeWidth=2;fontSize=11;" vertex="1" parent="internet-zone">
+          <mxGeometry x="1300" y="60" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- EDGE SECURITY -->
+        <mxCell id="edge-security" value="🛡️ EDGE SECURITY LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="1500" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cdn" value="🌐 CDN\n(CloudFlare)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="100" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="waf" value="🛡️ Web Application\nFirewall (WAF)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="250" y="50" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ddos-protection" value="⚡ DDoS\nProtection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="430" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="load-balancer" value="⚖️ Load\nBalancer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="570" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ssl-termination" value="🔐 SSL\nTermination" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="710" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rate-limiting" value="⏱️ Rate\nLimiting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="850" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="geo-blocking" value="🌍 Geo\nBlocking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=11;" vertex="1" parent="edge-security">
+          <mxGeometry x="990" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- DMZ LAYER -->
+        <mxCell id="dmz" value="🔐 DMZ (DEMILITARIZED ZONE)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="50" y="430" width="1500" height="180" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="reverse-proxy" value="🔄 Reverse\nProxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="100" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="kong-gateway" value="🦍 Kong\nAPI Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=2;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="250" y="50" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oauth-proxy" value="🔐 OAuth\nProxy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="410" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="keycloak-dmz" value="🔐 Keycloak\n(DMZ Instance)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="550" y="50" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="bastion-host" value="🖥️ Bastion\nHost" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="710" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="monitoring-dmz" value="📊 Monitoring\nEndpoint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="850" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="intrusion-detection" value="🔍 IDS/IPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="990" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="threat-intel" value="🧠 Threat\nIntelligence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=11;" vertex="1" parent="dmz">
+          <mxGeometry x="1130" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- APPLICATION LAYER -->
+        <mxCell id="app-security" value="🔒 APPLICATION SECURITY LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="50" y="640" width="1500" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="angular-app" value="🅰️ Angular\nFrontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="50" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="spring-services" value="🍃 Spring Boot\nMicroservices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=2;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="200" y="50" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jwt-validation" value="🎫 JWT\nValidation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="370" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rbac" value="👤 RBAC\nAuthorization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="520" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="input-validation" value="✅ Input\nValidation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="670" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="output-encoding" value="📝 Output\nEncoding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="820" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="session-mgmt" value="🕐 Session\nManagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="970" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="encryption" value="🔐 Encryption\nat Rest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="1120" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit-logging" value="📝 Audit\nLogging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="1270" y="60" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="api-security" value="🔌 API Security\nHeaders" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="50" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="csrf-protection" value="🛡️ CSRF\nProtection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="200" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="xss-protection" value="🛡️ XSS\nProtection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="350" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sql-injection" value="💉 SQL Injection\nPrevention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="500" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="secure-coding" value="👨‍💻 Secure\nCoding Practices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="670" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dependency-scan" value="📦 Dependency\nScanning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="840" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sast-dast" value="🔍 SAST/DAST\nScanning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=11;" vertex="1" parent="app-security">
+          <mxGeometry x="990" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- DATA SECURITY -->
+        <mxCell id="data-security" value="🗃️ DATA SECURITY LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="50" y="870" width="1500" height="170" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="postgresql-sec" value="🗃️ PostgreSQL\nEncryption TDE" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="100" y="60" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="minio-sec" value="📦 MinIO\nEncryption" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="270" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis-sec" value="⚡ Redis\nAuthentication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="420" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pii-protection" value="👤 PII Data\nProtection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="570" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="data-masking" value="🎭 Data\nMasking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="720" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="key-management" value="🗝️ Key\nManagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="870" y="60" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-encryption" value="💾 Backup\nEncryption" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="1020" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="secure-delete" value="🗑️ Secure\nDeletion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="1170" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dlp" value="🛡️ Data Loss\nPrevention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=11;" vertex="1" parent="data-security">
+          <mxGeometry x="1320" y="70" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- MONITORING & COMPLIANCE -->
+        <mxCell id="monitoring-compliance" value="📊 MONITORING & COMPLIANCE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f57f17;strokeWidth=2;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1070" width="1500" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="siem" value="🔍 SIEM\nSplunk/ELK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=2;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="100" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="soar" value="🤖 SOAR\nAutomation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="250" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vulnerability-scan" value="🔍 Vulnerability\nScanning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="400" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pen-testing" value="🎯 Penetration\nTesting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="550" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="compliance-iso" value="📋 ISO 27001\nCompliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="700" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gdpr" value="🇪🇺 GDPR\nCompliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="850" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="forensics" value="🔬 Digital\nForensics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="1000" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="incident-response" value="🚨 Incident\nResponse" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=2;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="1150" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-training" value="🎓 Security\nTraining" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff176;strokeColor=#f57f17;strokeWidth=1;fontSize=11;" vertex="1" parent="monitoring-compliance">
+          <mxGeometry x="1300" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- CONNECTIONS -->
+        
+        <!-- Internet to Edge Security -->
+        <mxCell id="conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1" source="users" target="waf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="190" />
+              <mxPoint x="370" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Edge Security to DMZ -->
+        <mxCell id="conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1" source="ssl-termination" target="kong-gateway">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="400" />
+              <mxPoint x="360" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- DMZ to Application Layer -->
+        <mxCell id="conn3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1" source="kong-gateway" target="spring-services">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="620" />
+              <mxPoint x="310" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Application to Data Security -->
+        <mxCell id="conn4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=3;endArrow=classic;endFill=1;" edge="1" parent="1" source="spring-services" target="postgresql-sec">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="850" />
+              <mxPoint x="210" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Authentication flows -->
+        <mxCell id="auth-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="keycloak-dmz" target="jwt-validation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="600" />
+              <mxPoint x="470" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="auth-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="jwt-validation" target="rbac">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Security monitoring -->
+        <mxCell id="monitor1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57f17;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="intrusion-detection" target="siem">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="1000" />
+              <mxPoint x="200" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="monitor2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57f17;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="audit-logging" target="siem">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1370" y="1000" />
+              <mxPoint x="200" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Key management flows -->
+        <mxCell id="key-flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="key-management" target="postgresql-sec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="key-flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="key-management" target="minio-sec">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="920" y="850" />
+              <mxPoint x="370" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Threat detection -->
+        <mxCell id="threat1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;strokeStyle=dashed;endArrow=block;startArrow=none;" edge="1" parent="1" source="attackers" target="waf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="190" />
+              <mxPoint x="370" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Security response -->
+        <mxCell id="response1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57f17;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="siem" target="incident-response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="response2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57f17;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="incident-response" target="soar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Additional protection flows -->
+        <mxCell id="protect1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="ddos-protection" target="rate-limiting">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="protect2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="input-validation" target="sql-injection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="160" />
+              <mxPoint x="560" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="protect3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="output-encoding" target="xss-protection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="160" />
+              <mxPoint x="450" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

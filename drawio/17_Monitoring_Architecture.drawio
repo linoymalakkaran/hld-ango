@@ -1,0 +1,511 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Monitoring Architecture" id="monitoring-architecture">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="Comprehensive Monitoring Architecture for JUL Platform" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- APPLICATION LAYER -->
+        <mxCell id="application-layer" value="🖥️ APPLICATION LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="1300" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jul-portal" value="🌐 JUL\nPortal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="80" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="api-gateway-app" value="🚪 API\nGateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="220" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="auth-service" value="🔐 Auth\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="360" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="declaration-service" value="📋 Declaration\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="500" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="integration-service" value="🔌 Integration\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="640" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-service" value="📄 Document\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="780" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="notification-service" value="📧 Notification\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="920" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="reporting-service" value="📊 Reporting\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="application-layer">
+          <mxGeometry x="1060" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- METRICS COLLECTION LAYER -->
+        <mxCell id="metrics-collection" value="📊 METRICS COLLECTION LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="220" width="1300" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- Application Metrics -->
+        <mxCell id="app-metrics" value="📱 APPLICATION METRICS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="metrics-collection">
+          <mxGeometry x="50" y="40" width="350" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="performance-metrics" value="⚡ Performance\nMetrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;strokeWidth=1;fontSize=9;" vertex="1" parent="app-metrics">
+          <mxGeometry x="20" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="business-metrics" value="💼 Business\nMetrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;strokeWidth=1;fontSize=9;" vertex="1" parent="app-metrics">
+          <mxGeometry x="120" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="custom-metrics" value="⚙️ Custom\nMetrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=9;" vertex="1" parent="app-metrics">
+          <mxGeometry x="220" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Infrastructure Metrics -->
+        <mxCell id="infra-metrics" value="🏗️ INFRASTRUCTURE METRICS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="metrics-collection">
+          <mxGeometry x="430" y="40" width="350" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cpu-memory" value="🔧 CPU &\nMemory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;strokeWidth=1;fontSize=9;" vertex="1" parent="infra-metrics">
+          <mxGeometry x="20" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="network-io" value="🌐 Network\n& I/O" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;strokeWidth=1;fontSize=9;" vertex="1" parent="infra-metrics">
+          <mxGeometry x="110" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="disk-usage" value="💽 Disk\nUsage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;strokeWidth=1;fontSize=9;" vertex="1" parent="infra-metrics">
+          <mxGeometry x="200" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="k8s-metrics" value="☸️ Kubernetes\nMetrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=9;" vertex="1" parent="infra-metrics">
+          <mxGeometry x="290" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Security Metrics -->
+        <mxCell id="security-metrics" value="🔒 SECURITY METRICS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="metrics-collection">
+          <mxGeometry x="810" y="40" width="240" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="auth-metrics" value="🔐 Authentication\nMetrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;strokeWidth=1;fontSize=9;" vertex="1" parent="security-metrics">
+          <mxGeometry x="20" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-events" value="🚨 Security\nEvents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=9;" vertex="1" parent="security-metrics">
+          <mxGeometry x="120" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Collection Tools -->
+        <mxCell id="collection-tools" value="🔍 COLLECTION TOOLS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="metrics-collection">
+          <mxGeometry x="1080" y="40" width="180" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prometheus-agent" value="📊 Prometheus\nAgent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4caf50;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="collection-tools">
+          <mxGeometry x="20" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="otel-collector" value="📡 OpenTelemetry\nCollector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4caf50;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="collection-tools">
+          <mxGeometry x="110" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- LOGGING LAYER -->
+        <mxCell id="logging-layer" value="📝 LOGGING LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="400" width="1300" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="application-logs" value="📱 Application\nLogs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="100" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="access-logs" value="🚪 Access\nLogs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="260" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit-logs" value="🗂️ Audit\nLogs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="420" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-logs" value="🔒 Security\nLogs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="580" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="error-logs" value="❌ Error\nLogs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="740" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="performance-logs" value="⚡ Performance\nLogs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff8f00;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="900" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="log-aggregator" value="🔄 Log\nAggregator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff6f00;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="logging-layer">
+          <mxGeometry x="1060" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- MONITORING STORAGE LAYER -->
+        <mxCell id="storage-layer" value="🗄️ MONITORING STORAGE LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="1300" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prometheus-db" value="📊 Prometheus\nDatabase" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="100" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="elasticsearch" value="🔍 Elasticsearch\nCluster" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#4fc3f7;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="260" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="influxdb" value="📈 InfluxDB\nTime Series" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#29b6f6;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="420" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jaeger-storage" value="🔬 Jaeger\nStorage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#039be5;strokeColor=#0277bd;strokeWidth=1;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="580" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="longterm-storage" value="💾 Long-term\nStorage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#0288d1;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="740" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-storage" value="🔄 Backup\nStorage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#0277bd;strokeColor=#01579b;strokeWidth=2;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="900" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis-cache" value="⚡ Redis\nCache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;strokeWidth=2;fontSize=10;" vertex="1" parent="storage-layer">
+          <mxGeometry x="1060" y="55" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- VISUALIZATION LAYER -->
+        <mxCell id="visualization-layer" value="📊 VISUALIZATION & DASHBOARDS LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="1300" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- Grafana Dashboards -->
+        <mxCell id="grafana-dashboards" value="📈 GRAFANA DASHBOARDS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="visualization-layer">
+          <mxGeometry x="50" y="40" width="400" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="infrastructure-dashboard" value="🏗️ Infrastructure\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="grafana-dashboards">
+          <mxGeometry x="20" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="application-dashboard" value="📱 Application\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="grafana-dashboards">
+          <mxGeometry x="120" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="business-dashboard" value="💼 Business\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="grafana-dashboards">
+          <mxGeometry x="220" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-dashboard" value="🔒 Security\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ad7be9;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="grafana-dashboards">
+          <mxGeometry x="320" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Kibana Dashboards -->
+        <mxCell id="kibana-dashboards" value="🔍 KIBANA DASHBOARDS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="visualization-layer">
+          <mxGeometry x="480" y="40" width="320" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="log-analysis" value="📝 Log\nAnalysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="kibana-dashboards">
+          <mxGeometry x="20" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="error-tracking" value="❌ Error\nTracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="kibana-dashboards">
+          <mxGeometry x="110" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="performance-analysis" value="⚡ Performance\nAnalysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ad7be9;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="kibana-dashboards">
+          <mxGeometry x="200" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Custom Dashboards -->
+        <mxCell id="custom-dashboards" value="⚙️ CUSTOM DASHBOARDS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="visualization-layer">
+          <mxGeometry x="830" y="40" width="240" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="executive-dashboard" value="👔 Executive\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="custom-dashboards">
+          <mxGeometry x="20" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="operational-dashboard" value="🔧 Operational\nDashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" vertex="1" parent="custom-dashboards">
+          <mxGeometry x="110" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Mobile Dashboards -->
+        <mxCell id="mobile-access" value="📱 Mobile\nAccess" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9c27b0;strokeColor=#4a148c;strokeWidth=2;fontSize=10;fontColor=white;" vertex="1" parent="visualization-layer">
+          <mxGeometry x="1100" y="65" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- ALERTING LAYER -->
+        <mxCell id="alerting-layer" value="🚨 ALERTING & NOTIFICATION LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="880" width="1300" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alertmanager" value="🚨 AlertManager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=10;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="100" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="email-alerts" value="📧 Email\nAlerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="260" y="40" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="slack-alerts" value="💬 Slack\nAlerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="390" y="40" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sms-alerts" value="📱 SMS\nAlerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="520" y="40" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="webhook-alerts" value="🔗 Webhook\nAlerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e57373;strokeColor=#c62828;strokeWidth=2;fontSize=10;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="650" y="40" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pagerduty" value="📟 PagerDuty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e57373;strokeColor=#c62828;strokeWidth=2;fontSize=10;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="780" y="40" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="incident-management" value="🚑 Incident\nManagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f44336;strokeColor=#b71c1c;strokeWidth=2;fontSize=10;fontColor=white;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="910" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="escalation-policies" value="📈 Escalation\nPolicies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d32f2f;strokeColor=#b71c1c;strokeWidth=2;fontSize=10;fontColor=white;" vertex="1" parent="alerting-layer">
+          <mxGeometry x="1060" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- MAIN FLOW CONNECTIONS -->
+        
+        <!-- Application to Metrics Collection -->
+        <mxCell id="app-metrics1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="jul-portal" target="performance-metrics">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="200" />
+              <mxPoint x="170" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="app-metrics2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="declaration-service" target="business-metrics">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="200" />
+              <mxPoint x="270" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="app-metrics3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="auth-service" target="auth-metrics">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="200" />
+              <mxPoint x="920" y="200" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Application to Logging -->
+        <mxCell id="app-logs1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="api-gateway-app" target="access-logs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="380" />
+              <mxPoint x="370" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="app-logs2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="integration-service" target="audit-logs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="380" />
+              <mxPoint x="530" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="app-logs3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="auth-service" target="security-logs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="380" />
+              <mxPoint x="690" y="380" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Metrics to Storage -->
+        <mxCell id="metrics-storage1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="prometheus-agent" target="prometheus-db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="530" />
+              <mxPoint x="210" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="metrics-storage2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="custom-metrics" target="influxdb">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="530" />
+              <mxPoint x="530" y="530" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Logs to Storage -->
+        <mxCell id="logs-storage1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="log-aggregator" target="elasticsearch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1170" y="530" />
+              <mxPoint x="370" y="530" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="logs-storage2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="error-logs" target="elasticsearch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="530" />
+              <mxPoint x="370" y="530" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Storage to Visualization -->
+        <mxCell id="storage-viz1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="prometheus-db" target="infrastructure-dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="680" />
+              <mxPoint x="160" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="storage-viz2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="elasticsearch" target="log-analysis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="680" />
+              <mxPoint x="585" y="680" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="storage-viz3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="influxdb" target="application-dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="680" />
+              <mxPoint x="260" y="680" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Caching Connections -->
+        <mxCell id="cache-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57c00;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="redis-cache" target="infrastructure-dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1170" y="680" />
+              <mxPoint x="160" y="680" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Alerting Connections -->
+        <mxCell id="alert-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="security-dashboard" target="alertmanager">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="860" />
+              <mxPoint x="210" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="alert-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="alertmanager" target="email-alerts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alert-conn3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="alertmanager" target="slack-alerts">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="860" />
+              <mxPoint x="490" y="860" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="alert-conn4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="webhook-alerts" target="pagerduty">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alert-conn5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="pagerduty" target="incident-management">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Business Intelligence Connections -->
+        <mxCell id="bi-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="business-dashboard" target="executive-dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="790" />
+              <mxPoint x="905" y="790" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="bi-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="performance-analysis" target="operational-dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="715" y="790" />
+              <mxPoint x="995" y="790" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Mobile Access -->
+        <mxCell id="mobile-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="mobile-access" target="executive-dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Backup and Archival -->
+        <mxCell id="backup-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;strokeStyle=dashed;endArrow=classic;" edge="1" parent="1" source="prometheus-db" target="backup-storage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="680" />
+              <mxPoint x="1010" y="680" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="backup-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;strokeStyle=dashed;endArrow=classic;" edge="1" parent="1" source="elasticsearch" target="longterm-storage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="680" />
+              <mxPoint x="850" y="680" />
+            </Arrays>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Flow Labels -->
+        <mxCell id="flow-label1" value="Metrics Collection" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#4caf50;" vertex="1" parent="1">
+          <mxGeometry x="300" y="180" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow-label2" value="Log Aggregation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="360" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow-label3" value="Real-time Visualization" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="660" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow-label4" value="Incident Response" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#c62828;" vertex="1" parent="1">
+          <mxGeometry x="700" y="840" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,165 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="JUL System Architecture" id="jul-architecture">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- External Actors -->
+        <mxCell id="trader" value="👤 Trader/Broker" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="40" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="broker" value="👤 Customs Broker" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="40" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="forwarder" value="👤 Freight Forwarder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="40" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="officer" value="👤 Customs Officer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="40" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="supervisor" value="👤 Gov Supervisor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="600" width="40" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- JUL System Container -->
+        <mxCell id="jul-container" value="🏛️ JUL System - Angola Logistics Single Window" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=3;fontStyle=1;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="240" y="80" width="520" height="480" as="geometry" />
+        </mxCell>
+        
+        <!-- JUL Components -->
+        <mxCell id="portal" value="🌐 Web Portal&#xa;Angular 17+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontSize=11;" vertex="1" parent="jul-container">
+          <mxGeometry x="40" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gateway" value="🔌 API Gateway&#xa;Kong" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontSize=11;" vertex="1" parent="jul-container">
+          <mxGeometry x="200" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services" value="⚙️ 11 Microservices&#xa;.NET 8.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontSize=11;" vertex="1" parent="jul-container">
+          <mxGeometry x="360" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="database" value="🗃️ PostgreSQL&#xa;Cluster" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=11;" vertex="1" parent="jul-container">
+          <mxGeometry x="60" y="200" width="100" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="storage" value="📦 MinIO&#xa;Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=11;" vertex="1" parent="jul-container">
+          <mxGeometry x="210" y="200" width="100" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="identity" value="🔐 Keycloak&#xa;IAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=11;" vertex="1" parent="jul-container">
+          <mxGeometry x="360" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- External Systems -->
+        <mxCell id="asycuda" value="🏛️ ASYCUDA AGT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="120" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sintece" value="🏛️ SINTECE&#xa;Angola" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="240" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oga" value="🏛️ Other Gov&#xa;Agencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="360" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="banks" value="🏦 Banking&#xa;Systems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="480" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- User to Portal Connections (Dashed) -->
+        <mxCell id="trader-portal" value="Register/Submit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="trader" target="portal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="broker-portal" value="Process DU" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="broker" target="portal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="forwarder-portal" value="Track/Upload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="forwarder" target="portal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="officer-portal" value="Review/Clear" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="officer" target="portal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="supervisor-portal" value="Monitor/Report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#666666;fontSize=10;" edge="1" parent="1" source="supervisor" target="portal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Internal JUL Connections -->
+        <mxCell id="portal-gateway" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#01579b;" edge="1" parent="1" source="portal" target="gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gateway-services" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#01579b;" edge="1" parent="1" source="gateway" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-database" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#01579b;" edge="1" parent="1" source="services" target="database">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-storage" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#01579b;" edge="1" parent="1" source="services" target="storage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-identity" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#01579b;" edge="1" parent="1" source="services" target="identity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- External Integrations (Bidirectional) -->
+        <mxCell id="services-asycuda" value="SOAP CUSDEC" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a148c;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;" edge="1" parent="1" source="services" target="asycuda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-sintece" value="REST License" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a148c;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;" edge="1" parent="1" source="services" target="sintece">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-oga" value="REST Permits" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a148c;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;" edge="1" parent="1" source="services" target="oga">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="services-banks" value="Payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4a148c;startArrow=classic;startFill=1;endArrow=classic;endFill=1;fontSize=10;" edge="1" parent="1" source="services" target="banks">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Flows (Dashed incoming) -->
+        <mxCell id="asycuda-services" value="Master Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#7b1fa2;fontSize=10;" edge="1" parent="1" source="asycuda" target="services">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="200" as="sourcePoint" />
+            <mxPoint x="760" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="sintece-services" value="Certificates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#7b1fa2;fontSize=10;" edge="1" parent="1" source="sintece" target="services">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="280" as="sourcePoint" />
+            <mxPoint x="760" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="oga-services" value="Permit Approvals&#xa;Regulatory Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#7b1fa2;fontSize=9;" edge="1" parent="1" source="oga" target="services">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="950" y="400" as="sourcePoint" />
+            <mxPoint x="760" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Title -->
+        <mxCell id="title" value="JUL System - Angola Logistics Single Window Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#01579b;" vertex="1" parent="1">
+          <mxGeometry x="240" y="20" width="520" height="40" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

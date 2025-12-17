@@ -1,0 +1,468 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Document Management MinIO" id="document-management-minio">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="Document Management with MinIO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- USER INTERFACE LAYER -->
+        <mxCell id="ui-layer" value="🖥️ USER INTERFACE LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="1300" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-upload" value="📤 Document\nUpload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="50" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-viewer" value="👁️ Document\nViewer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="180" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-search" value="🔍 Document\nSearch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="310" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-download" value="📥 Document\nDownload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="440" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="version-control" value="📋 Version\nControl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="570" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="collaboration" value="👥 Collaboration\nTools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="700" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="approval-workflow" value="✅ Approval\nWorkflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="830" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit-trail" value="📝 Audit\nTrail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="960" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="reporting-ui" value="📊 Document\nReporting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1976d2;strokeWidth=2;fontSize=10;" vertex="1" parent="ui-layer">
+          <mxGeometry x="1090" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- API LAYER -->
+        <mxCell id="api-layer" value="🔌 API LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="220" width="1300" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-api" value="📄 Document\nManagement API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=2;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="100" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="upload-api" value="📤 Upload\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="260" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="metadata-api" value="📋 Metadata\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="390" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="search-api" value="🔍 Search\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="520" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="preview-api" value="👁️ Preview\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="650" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="versioning-api" value="📋 Versioning\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="780" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-api" value="🔐 Security\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="910" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="integration-api" value="🔌 Integration\nAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="1040" y="40" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- BUSINESS LOGIC LAYER -->
+        <mxCell id="business-layer" value="⚙️ BUSINESS LOGIC LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="1300" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-service" value="📄 Document\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="50" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="classification-service" value="🏷️ Document\nClassification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="200" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="validation-service" value="✅ Document\nValidation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="350" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ocr-service" value="🔍 OCR\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="500" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="encryption-service" value="🔐 Encryption\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="650" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="compression-service" value="📦 Compression\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="800" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="thumbnail-service" value="🖼️ Thumbnail\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="950" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="notification-service" value="📧 Notification\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="1100" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="workflow-engine" value="🔄 Workflow\nEngine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="200" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="access-control" value="🛡️ Access\nControl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="350" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="retention-policy" value="📅 Retention\nPolicy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="500" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-service" value="💾 Backup\nService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="650" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="disaster-recovery" value="🆘 Disaster\nRecovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;strokeWidth=2;fontSize=10;" vertex="1" parent="business-layer">
+          <mxGeometry x="800" y="100" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- MINIO STORAGE LAYER -->
+        <mxCell id="minio-layer" value="📦 MINIO OBJECT STORAGE LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="1300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- MinIO Cluster -->
+        <mxCell id="minio-cluster" value="🗄️ MINIO CLUSTER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="minio-layer">
+          <mxGeometry x="50" y="40" width="600" height="140" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="minio-node1" value="📦 MinIO\nNode 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="30" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="minio-node2" value="📦 MinIO\nNode 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="130" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="minio-node3" value="📦 MinIO\nNode 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="230" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="minio-node4" value="📦 MinIO\nNode 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="330" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="load-balancer" value="⚖️ Load\nBalancer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;strokeWidth=2;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="450" y="30" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="erasure-coding" value="🔄 Erasure\nCoding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="80" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="data-encryption" value="🔐 Data\nEncryption" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="200" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="versioning" value="📋 Object\nVersioning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="320" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="replication" value="🔄 Cross-Region\nReplication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="minio-cluster">
+          <mxGeometry x="440" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Buckets -->
+        <mxCell id="buckets" value="🗃️ BUCKET ORGANIZATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=1;fontStyle=1;fontSize=10;startSize=25;" vertex="1" parent="minio-layer">
+          <mxGeometry x="680" y="40" width="580" height="140" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="documents-bucket" value="📄 documents" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="30" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="declarations-bucket" value="📋 declarations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="150" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="certificates-bucket" value="📜 certificates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="270" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="invoices-bucket" value="🧾 invoices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="390" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="archive-bucket" value="📁 archive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="30" y="80" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-bucket" value="💾 backup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="150" y="80" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="temp-bucket" value="⏰ temporary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="270" y="80" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="thumbnails-bucket" value="🖼️ thumbnails" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=9;" vertex="1" parent="buckets">
+          <mxGeometry x="390" y="80" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- DATABASE LAYER -->
+        <mxCell id="database-layer" value="🗃️ DATABASE LAYER" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="780" width="1300" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="metadata-db" value="🗃️ Metadata\nPostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="150" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="search-index" value="🔍 Elasticsearch\nSearch Index" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="300" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cache-layer" value="⚡ Redis\nCache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="450" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit-db" value="🗃️ Audit Log\nPostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="600" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="workflow-db" value="🗃️ Workflow\nPostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#81d4fa;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="750" y="40" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="message-queue" value="🐰 RabbitMQ\nMessage Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="900" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="key-vault" value="🗝️ Key\nVault" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=10;" vertex="1" parent="database-layer">
+          <mxGeometry x="1050" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- MAIN FLOW CONNECTIONS -->
+        
+        <!-- UI to API -->
+        <mxCell id="ui-api1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="document-upload" target="upload-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="200" />
+              <mxPoint x="360" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ui-api2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="document-search" target="search-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="200" />
+              <mxPoint x="620" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="ui-api3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="document-viewer" target="preview-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="200" />
+              <mxPoint x="750" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- API to Business Logic -->
+        <mxCell id="api-business1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="document-api" target="document-service">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="350" />
+              <mxPoint x="160" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="api-business2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="upload-api" target="validation-service">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="350" />
+              <mxPoint x="460" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="api-business3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="search-api" target="ocr-service">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="350" />
+              <mxPoint x="610" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Business Logic to MinIO -->
+        <mxCell id="business-minio1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="document-service" target="load-balancer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="530" />
+              <mxPoint x="600" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="business-minio2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="encryption-service" target="data-encryption">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="530" />
+              <mxPoint x="350" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="business-minio3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="thumbnail-service" target="thumbnails-bucket">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1060" y="530" />
+              <mxPoint x="1170" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Database Connections -->
+        <mxCell id="business-db1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="document-service" target="metadata-db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="760" />
+              <mxPoint x="260" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="business-db2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="ocr-service" target="search-index">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="760" />
+              <mxPoint x="410" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="business-db3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f57c00;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="document-service" target="cache-layer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="760" />
+              <mxPoint x="560" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="business-db4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="workflow-engine" target="workflow-db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="760" />
+              <mxPoint x="860" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="business-db5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277bd;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="access-control" target="audit-db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="760" />
+              <mxPoint x="710" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- MinIO Cluster Internal -->
+        <mxCell id="cluster-internal1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=1;endArrow=classic;" edge="1" parent="1" source="load-balancer" target="minio-node1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cluster-internal2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=1;endArrow=classic;" edge="1" parent="1" source="load-balancer" target="minio-node2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cluster-internal3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=1;endArrow=classic;" edge="1" parent="1" source="load-balancer" target="minio-node3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cluster-internal4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=1;endArrow=classic;" edge="1" parent="1" source="load-balancer" target="minio-node4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Bucket Connections -->
+        <mxCell id="bucket-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=classic;" edge="1" parent="1" source="classification-service" target="documents-bucket">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="530" />
+              <mxPoint x="810" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="bucket-conn2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=classic;" edge="1" parent="1" source="backup-service" target="backup-bucket">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="530" />
+              <mxPoint x="930" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Security Connections -->
+        <mxCell id="security-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="encryption-service" target="key-vault">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="760" />
+              <mxPoint x="1160" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Message Queue -->
+        <mxCell id="queue-conn1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="notification-service" target="message-queue">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="760" />
+              <mxPoint x="1010" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Data Flow Labels -->
+        <mxCell id="flow-label1" value="Document Upload Flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="180" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow-label2" value="Metadata Storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="740" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow-label3" value="Object Storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="510" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,447 @@
+<mxfile host="app.diagrams.net" modified="2024-12-17T00:00:00.000Z" agent="Claude" version="22.1.0" etag="infrastructure-v1">
+  <diagram name="Infrastructure Overview" id="infrastructure-overview">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Production Environment -->
+        <mxCell id="prod-container" value="🔴 PRODUCTION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=3;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="700" height="600" as="geometry" />
+        </mxCell>
+        
+        <!-- Prod Load Balancer -->
+        <mxCell id="prod-lb" value="⚖️ Prod LB HA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5ff;strokeColor=#01579b;fontSize=12;" vertex="1" parent="prod-container">
+          <mxGeometry x="280" y="50" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Prod K8s Cluster -->
+        <mxCell id="prod-k8s-container" value="Prod K8s Cluster" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;startSize=25;" vertex="1" parent="prod-container">
+          <mxGeometry x="30" y="130" width="320" height="250" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-master1" value="🎛️ Master1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="20" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-master2" value="🎛️ Master2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="120" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-master3" value="🎛️ Master3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="220" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-worker1" value="💻 Worker1&#xa;32c/128GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="20" y="100" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-worker2" value="💻 Worker2&#xa;32c/128GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="120" y="100" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-worker3" value="💻 Worker3&#xa;32c/128GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="220" y="100" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-workerN" value="💻 WorkerN&#xa;32c/128GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="prod-k8s-container">
+          <mxGeometry x="120" y="170" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Prod Data Tier -->
+        <mxCell id="prod-data-container" value="Prod Data Tier" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=11;startSize=25;" vertex="1" parent="prod-container">
+          <mxGeometry x="370" y="130" width="300" height="250" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-db1" value="🗃️ PG Primary" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#b39ddb;strokeColor=#4527a0;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="20" y="40" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-db2" value="🗃️ PG Replica1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="120" y="40" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-db3" value="🗃️ PG Replica2" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="210" y="40" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-minio1" value="📦 MinIO1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#bf360c;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="20" y="120" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-minio2" value="📦 MinIO2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#bf360c;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="110" y="120" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-minioN" value="📦 MinIO6+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#bf360c;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="200" y="120" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-redis" value="⚡ Redis Cluster" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffab91;strokeColor=#d84315;fontSize=10;" vertex="1" parent="prod-data-container">
+          <mxGeometry x="80" y="180" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Prod Internal Connections -->
+        <mxCell id="prod-lb-to-k8s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;" edge="1" parent="prod-container" source="prod-lb" target="prod-k8s-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-k8s-to-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="prod-container" source="prod-k8s-container" target="prod-data-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Staging Environment -->
+        <mxCell id="stage-container" value="🟡 STAGING ENVIRONMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f57c00;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="800" y="40" width="700" height="600" as="geometry" />
+        </mxCell>
+        
+        <!-- Stage Load Balancer -->
+        <mxCell id="stage-lb" value="⚖️ Staging Load Balancer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5ff;strokeColor=#01579b;fontSize=12;" vertex="1" parent="stage-container">
+          <mxGeometry x="250" y="50" width="180" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Stage K8s Cluster -->
+        <mxCell id="stage-k8s-container" value="Staging K8s Cluster" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;startSize=25;" vertex="1" parent="stage-container">
+          <mxGeometry x="30" y="130" width="330" height="250" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-master1" value="🎛️ Master 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="20" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-master2" value="🎛️ Master 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="125" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-master3" value="🎛️ Master 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="230" y="40" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-worker1" value="💻 Worker 1&#xa;16vCPU, 64GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="20" y="100" width="85" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-worker2" value="💻 Worker 2&#xa;16vCPU, 64GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="125" y="100" width="85" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-worker3" value="💻 Worker 3&#xa;16vCPU, 64GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="230" y="100" width="85" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-worker4" value="💻 Worker 4&#xa;16vCPU, 64GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="70" y="170" width="85" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-worker5" value="💻 Worker 5&#xa;16vCPU, 64GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="stage-k8s-container">
+          <mxGeometry x="175" y="170" width="85" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Stage Data Tier -->
+        <mxCell id="stage-data-container" value="Staging Data Tier" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=11;startSize=25;" vertex="1" parent="stage-container">
+          <mxGeometry x="380" y="130" width="290" height="250" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-db1" value="🗃️ PostgreSQL&#xa;Primary" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#b39ddb;strokeColor=#4527a0;fontSize=10;" vertex="1" parent="stage-data-container">
+          <mxGeometry x="30" y="40" width="90" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-db2" value="🗃️ PostgreSQL&#xa;Replica" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="stage-data-container">
+          <mxGeometry x="160" y="40" width="90" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-minio" value="📦 MinIO&#xa;3-Node Distributed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#bf360c;fontSize=10;" vertex="1" parent="stage-data-container">
+          <mxGeometry x="30" y="140" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-redis" value="⚡ Redis Cluster&#xa;3 Nodes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffab91;strokeColor=#d84315;fontSize=10;" vertex="1" parent="stage-data-container">
+          <mxGeometry x="160" y="140" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Stage Internal Connections -->
+        <mxCell id="stage-lb-to-k8s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;" edge="1" parent="stage-container" source="stage-lb" target="stage-k8s-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="stage-k8s-to-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="stage-container" source="stage-k8s-container" target="stage-data-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Development Environment -->
+        <mxCell id="dev-container" value="🟢 DEVELOPMENT ENVIRONMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="40" width="700" height="600" as="geometry" />
+        </mxCell>
+        
+        <!-- Dev Load Balancer -->
+        <mxCell id="dev-lb" value="⚖️ Dev Load Balancer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5ff;strokeColor=#01579b;fontSize=12;" vertex="1" parent="dev-container">
+          <mxGeometry x="270" y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Dev K8s Cluster -->
+        <mxCell id="dev-k8s-container" value="Development K8s Cluster" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;startSize=25;" vertex="1" parent="dev-container">
+          <mxGeometry x="30" y="130" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-master" value="🎛️ Master Node&#xa;Single Master" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;fontSize=10;" vertex="1" parent="dev-k8s-container">
+          <mxGeometry x="90" y="40" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-worker1" value="💻 Worker 1&#xa;8vCPU, 32GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="dev-k8s-container">
+          <mxGeometry x="20" y="120" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-worker2" value="💻 Worker 2&#xa;8vCPU, 32GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="dev-k8s-container">
+          <mxGeometry x="110" y="120" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-worker3" value="💻 Worker 3&#xa;8vCPU, 32GB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="dev-k8s-container">
+          <mxGeometry x="200" y="120" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Dev Data Tier -->
+        <mxCell id="dev-data-container" value="Development Data Tier" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=11;startSize=25;" vertex="1" parent="dev-container">
+          <mxGeometry x="360" y="130" width="310" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-db" value="🗃️ PostgreSQL&#xa;Single Instance" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#b39ddb;strokeColor=#4527a0;fontSize=10;" vertex="1" parent="dev-data-container">
+          <mxGeometry x="30" y="40" width="90" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-minio" value="📦 MinIO&#xa;Single Node" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#bf360c;fontSize=10;" vertex="1" parent="dev-data-container">
+          <mxGeometry x="150" y="40" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-redis" value="⚡ Redis&#xa;Single Instance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffab91;strokeColor=#d84315;fontSize=10;" vertex="1" parent="dev-data-container">
+          <mxGeometry x="150" y="110" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Dev Tools -->
+        <mxCell id="dev-tools-container" value="Development Tools" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ede7f6;strokeColor=#512da8;fontSize=11;startSize=25;" vertex="1" parent="dev-container">
+          <mxGeometry x="30" y="360" width="640" height="210" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-gitlab" value="📚 GitLab CE&#xa;Source Control&#xa;&amp; CI/CD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1c4e9;strokeColor=#311b92;fontSize=10;" vertex="1" parent="dev-tools-container">
+          <mxGeometry x="40" y="50" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-harbor" value="🐳 Harbor Registry&#xa;Container Images" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1c4e9;strokeColor=#311b92;fontSize=10;" vertex="1" parent="dev-tools-container">
+          <mxGeometry x="240" y="50" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-sonarqube" value="🔍 SonarQube&#xa;Code Quality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1c4e9;strokeColor=#311b92;fontSize=10;" vertex="1" parent="dev-tools-container">
+          <mxGeometry x="440" y="50" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Dev Internal Connections -->
+        <mxCell id="dev-lb-to-k8s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;" edge="1" parent="dev-container" source="dev-lb" target="dev-k8s-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dev-k8s-to-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="dev-container" source="dev-k8s-container" target="dev-data-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring & Management -->
+        <mxCell id="monitor-container" value="📊 MONITORING &amp; MANAGEMENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="1000" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring Stack -->
+        <mxCell id="monitor-stack-container" value="Monitoring Stack" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;fontSize=11;startSize=25;" vertex="1" parent="monitor-container">
+          <mxGeometry x="30" y="50" width="290" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prometheus" value="📈 Prometheus&#xa;Metrics Collection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;" vertex="1" parent="monitor-stack-container">
+          <mxGeometry x="60" y="50" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grafana" value="📊 Grafana&#xa;Dashboards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;" vertex="1" parent="monitor-stack-container">
+          <mxGeometry x="60" y="140" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alertmanager" value="🚨 AlertManager&#xa;Alerting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;" vertex="1" parent="monitor-stack-container">
+          <mxGeometry x="60" y="230" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Logging Stack -->
+        <mxCell id="logging-stack-container" value="Logging Stack" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e0f2f1;strokeColor=#00695c;fontSize=11;startSize=25;" vertex="1" parent="monitor-container">
+          <mxGeometry x="350" y="50" width="290" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="elasticsearch" value="🔍 Elasticsearch&#xa;Log Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;fontSize=10;" vertex="1" parent="logging-stack-container">
+          <mxGeometry x="60" y="50" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="logstash" value="📋 Logstash&#xa;Log Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;fontSize=10;" vertex="1" parent="logging-stack-container">
+          <mxGeometry x="60" y="140" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="kibana" value="📊 Kibana&#xa;Log Visualization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;fontSize=10;" vertex="1" parent="logging-stack-container">
+          <mxGeometry x="60" y="230" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Tracing Stack -->
+        <mxCell id="tracing-stack-container" value="Tracing Stack" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=11;startSize=25;" vertex="1" parent="monitor-container">
+          <mxGeometry x="670" y="50" width="290" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="jaeger" value="🔍 Jaeger&#xa;Distributed Tracing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="tracing-stack-container">
+          <mxGeometry x="60" y="50" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Security & Network -->
+        <mxCell id="security-container" value="🛡️ SECURITY &amp; NETWORK" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="700" width="640" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Network Infrastructure -->
+        <mxCell id="network-container" value="Network Infrastructure" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ede7f6;strokeColor=#512da8;fontSize=11;startSize=25;" vertex="1" parent="security-container">
+          <mxGeometry x="30" y="50" width="280" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="firewall" value="🔥 Firewall&#xa;iptables/pfSense" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1c4e9;strokeColor=#311b92;fontSize=10;" vertex="1" parent="network-container">
+          <mxGeometry x="55" y="50" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vpn" value="🔒 VPN Gateway&#xa;Admin Access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1c4e9;strokeColor=#311b92;fontSize=10;" vertex="1" parent="network-container">
+          <mxGeometry x="55" y="140" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dns" value="🌐 DNS Server&#xa;Internal Resolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1c4e9;strokeColor=#311b92;fontSize=10;" vertex="1" parent="network-container">
+          <mxGeometry x="55" y="230" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Security Tools -->
+        <mxCell id="security-tools-container" value="Security Tools" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;fontSize=11;startSize=25;" vertex="1" parent="security-container">
+          <mxGeometry x="330" y="50" width="280" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="waf" value="🛡️ WAF&#xa;ModSecurity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;" vertex="1" parent="security-tools-container">
+          <mxGeometry x="55" y="50" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ids" value="👁️ IDS/IPS&#xa;Intrusion Detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;" vertex="1" parent="security-tools-container">
+          <mxGeometry x="55" y="140" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vault" value="🔐 HashiCorp Vault&#xa;Secrets Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;" vertex="1" parent="security-tools-container">
+          <mxGeometry x="55" y="230" width="170" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Backup & Disaster Recovery -->
+        <mxCell id="backup-container" value="💾 BACKUP &amp; DISASTER RECOVERY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e0f2f1;strokeColor=#00695c;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="700" width="460" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Backup Systems -->
+        <mxCell id="backup-sys-container" value="Backup Systems" style="swimlane;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;fontSize=11;startSize=25;" vertex="1" parent="backup-container">
+          <mxGeometry x="30" y="50" width="400" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-primary" value="💾 Primary Backup&#xa;Daily Full + Incremental" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#80cbc4;strokeColor=#00695c;fontSize=10;" vertex="1" parent="backup-sys-container">
+          <mxGeometry x="30" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-offsite" value="🌍 Offsite Backup&#xa;Cross-site Replication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#80cbc4;strokeColor=#00695c;fontSize=10;" vertex="1" parent="backup-sys-container">
+          <mxGeometry x="220" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- DR Site -->
+        <mxCell id="dr-site-container" value="Disaster Recovery Site" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;fontSize=11;startSize=25;" vertex="1" parent="backup-container">
+          <mxGeometry x="30" y="230" width="400" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dr-cluster" value="☁️ DR Kubernetes Cluster&#xa;Cold Standby" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#01579b;fontSize=10;" vertex="1" parent="dr-site-container">
+          <mxGeometry x="30" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dr-storage" value="💾 DR Storage&#xa;Synchronized" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#01579b;fontSize=10;" vertex="1" parent="dr-site-container">
+          <mxGeometry x="220" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- External Systems -->
+        <mxCell id="external-container" value="🌐 EXTERNAL SYSTEMS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1160" width="900" height="300" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="internet" value="🌍 Internet&#xa;Public Access" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;fontStyle=1;" vertex="1" parent="external-container">
+          <mxGeometry x="60" y="90" width="120" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="asycuda" value="🏛️ ASYCUDA&#xa;AGT Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="external-container">
+          <mxGeometry x="240" y="70" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sintece" value="🏛️ SINTECE&#xa;Government Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="external-container">
+          <mxGeometry x="240" y="160" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oga" value="🏛️ OGA Systems&#xa;Agency Networks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="external-container">
+          <mxGeometry x="440" y="70" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="banks" value="🏦 Banking Networks&#xa;Payment Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="external-container">
+          <mxGeometry x="440" y="160" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Cross-Environment Connections -->
+        <mxCell id="internet-to-security" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#c2185b;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="internet" target="security-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-to-prod" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="1" source="security-container" target="prod-lb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-to-stage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="1" source="security-container" target="stage-lb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="security-to-dev" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="1" source="security-container" target="dev-lb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="monitor-to-prod" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#1565c0;dashed=1;dashPattern=5 5;" edge="1" parent="1" source="monitor-container" target="prod-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="monitor-to-stage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#1565c0;dashed=1;dashPattern=5 5;" edge="1" parent="1" source="monitor-container" target="stage-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="monitor-to-dev" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#1565c0;dashed=1;dashPattern=5 5;" edge="1" parent="1" source="monitor-container" target="dev-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-to-backup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695c;" edge="1" parent="1" source="prod-data-container" target="backup-primary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="backup-to-offsite" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695c;" edge="1" parent="1" source="backup-primary" target="backup-offsite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="offsite-to-dr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00695c;dashed=1;" edge="1" parent="1" source="backup-offsite" target="dr-site-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-to-asycuda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c2185b;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="prod-container" target="asycuda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-to-sintece" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c2185b;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="prod-container" target="sintece">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-to-oga" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c2185b;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="prod-container" target="oga">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prod-to-banks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c2185b;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="prod-container" target="banks">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,360 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="SINTECE Integration Flow" id="sintece-integration">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="SINTECE Integration Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- ACTORS -->
+        <mxCell id="actors" value="👤 ACTORS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="200" height="1000" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inspector" value="👮‍♂️ Customs\nInspector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="actors">
+          <mxGeometry x="30" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="supervisor" value="👨‍💼 Customs\nSupervisor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="actors">
+          <mxGeometry x="30" y="120" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="laboratory" value="🔬 Laboratory\nTechnician" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="actors">
+          <mxGeometry x="30" y="190" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="officer" value="👮‍♂️ Assessment\nOfficer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=1;fontSize=10;" vertex="1" parent="actors">
+          <mxGeometry x="30" y="260" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- JUL SYSTEM -->
+        <mxCell id="jul-system" value="⚙️ JUL SYSTEM" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="300" y="70" width="300" height="1000" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inspection-module" value="🔍 Inspection\nManagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="50" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sample-tracking" value="🧪 Sample\nTracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inspection-results" value="📋 Inspection\nResults" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="190" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="assessment-module" value="💰 Assessment\nModule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="260" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sintece-integration" value="🔌 SINTECE\nIntegration Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;strokeWidth=2;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="330" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="clearance-module" value="✅ Clearance\nModule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="410" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="status-tracking" value="📊 Status\nTracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="480" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="notification-module" value="📧 Notification\nModule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-system">
+          <mxGeometry x="50" y="550" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- SINTECE SYSTEM -->
+        <mxCell id="sintece-system" value="🏛️ SINTECE SYSTEM" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="650" y="70" width="300" height="1000" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sintece-gateway" value="🚪 SINTECE\nGateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="50" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="inspection-scheduler" value="🕐 Inspection\nScheduler" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="facility-management" value="🏭 Facility\nManagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="190" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="equipment-tracking" value="📱 Equipment\nTracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="260" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lab-integration" value="🔬 Laboratory\nIntegration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="330" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="result-management" value="📋 Result\nManagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="400" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="compliance-tracking" value="✅ Compliance\nTracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="470" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="reporting-module" value="📊 Reporting\nModule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=1;fontSize=10;" vertex="1" parent="sintece-system">
+          <mxGeometry x="50" y="540" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- EXTERNAL SYSTEMS -->
+        <mxCell id="external-systems" value="🌐 EXTERNAL" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="70" width="250" height="1000" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lab-systems" value="🔬 Laboratory\nSystems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
+          <mxGeometry x="50" y="150" width="150" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="scanner-systems" value="📱 Scanner\nSystems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
+          <mxGeometry x="50" y="220" width="150" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="warehouse-systems" value="🏭 Warehouse\nSystems" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
+          <mxGeometry x="50" y="290" width="150" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="asycuda-sintece" value="🏛️ ASYCUDA\nWorld" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="external-systems">
+          <mxGeometry x="50" y="360" width="150" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- FLOW ANNOTATIONS -->
+        <mxCell id="flow1" value="1. Schedule Inspection" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="120" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow2" value="2. Conduct Physical Inspection" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="160" width="200" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow3" value="3. Sample Collection" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="200" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow4" value="4. Laboratory Analysis" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="240" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow5" value="5. Result Recording" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="280" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow6" value="6. Compliance Verification" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="320" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow7" value="7. Assessment Update" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="360" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow8" value="8. Final Clearance" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="400" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- SEQUENCE ARROWS -->
+        
+        <!-- 1. Schedule Inspection -->
+        <mxCell id="seq1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="inspector" target="inspection-module">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="140" />
+              <mxPoint x="400" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 2. Submit to SINTECE -->
+        <mxCell id="seq2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;startArrow=none;" edge="1" parent="1" source="sintece-integration" target="sintece-gateway">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="380" />
+              <mxPoint x="750" y="380" />
+              <mxPoint x="750" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 3. SINTECE Processing -->
+        <mxCell id="seq3a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="sintece-gateway" target="inspection-scheduler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="seq3b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="inspection-scheduler" target="facility-management">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="seq3c" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="facility-management" target="equipment-tracking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 4. Physical Inspection -->
+        <mxCell id="seq4a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="inspector" target="sample-tracking">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="170" />
+              <mxPoint x="400" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 5. Sample Collection & Lab Analysis -->
+        <mxCell id="seq5a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="laboratory" target="sample-tracking">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="240" />
+              <mxPoint x="400" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="seq5b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;startArrow=none;" edge="1" parent="1" source="sintece-integration" target="lab-integration">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="400" />
+              <mxPoint x="750" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 6. Laboratory Results -->
+        <mxCell id="seq6a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="lab-integration" target="result-management">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="seq6b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;startArrow=none;" edge="1" parent="1" source="result-management" target="sintece-integration">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="470" />
+              <mxPoint x="500" y="470" />
+              <mxPoint x="500" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 7. Update JUL System -->
+        <mxCell id="seq7a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="sintece-integration" target="inspection-results">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="380" />
+              <mxPoint x="450" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="seq7b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="inspection-results" target="assessment-module">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 8. Assessment and Clearance -->
+        <mxCell id="seq8a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="officer" target="assessment-module">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="310" />
+              <mxPoint x="400" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="seq8b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="assessment-module" target="clearance-module">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 9. Compliance Verification -->
+        <mxCell id="seq9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=3;endArrow=classic;startArrow=none;" edge="1" parent="1" source="sintece-integration" target="compliance-tracking">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="430" />
+              <mxPoint x="750" y="430" />
+              <mxPoint x="750" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 10. Status Updates -->
+        <mxCell id="seq10a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="clearance-module" target="status-tracking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="seq10b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4caf50;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="status-tracking" target="notification-module">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 11. Notifications -->
+        <mxCell id="seq11a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="notification-module" target="inspector">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="600" />
+              <mxPoint x="130" y="600" />
+              <mxPoint x="130" y="145" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="seq11b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976d2;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="notification-module" target="supervisor">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="620" />
+              <mxPoint x="130" y="620" />
+              <mxPoint x="130" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- External System Integrations -->
+        <mxCell id="lab-flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="lab-integration" target="lab-systems">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="400" />
+              <mxPoint x="1125" y="400" />
+              <mxPoint x="1125" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="scanner-flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="equipment-tracking" target="scanner-systems">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="330" />
+              <mxPoint x="1125" y="330" />
+              <mxPoint x="1125" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="warehouse-flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=2;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="facility-management" target="warehouse-systems">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="260" />
+              <mxPoint x="1125" y="260" />
+              <mxPoint x="1125" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="asycuda-flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=3;strokeStyle=dashed;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="compliance-tracking" target="asycuda-sintece">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="520" />
+              <mxPoint x="1125" y="520" />
+              <mxPoint x="1125" y="455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Reporting Integration -->
+        <mxCell id="report-flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;endArrow=classic;startArrow=none;" edge="1" parent="1" source="compliance-tracking" target="reporting-module">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

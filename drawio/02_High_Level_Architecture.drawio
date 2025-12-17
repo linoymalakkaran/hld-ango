@@ -1,0 +1,308 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="High Level Architecture" id="high-level-architecture">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- CLIENT LAYER -->
+        <mxCell id="client-layer" value="🖥️ CLIENT" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="300" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="web-browser" value="🌐 Web Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="client-layer">
+          <mxGeometry x="20" y="35" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mobile-pwa" value="📱 Mobile PWA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="client-layer">
+          <mxGeometry x="170" y="35" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- EDGE LAYER -->
+        <mxCell id="edge-layer" value="🌍 EDGE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="160" width="300" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="load-balancer" value="⚖️ Load Balancer&#xa;NGINX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="edge-layer">
+          <mxGeometry x="20" y="35" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="waf" value="🛡️ WAF&#xa;ModSecurity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="edge-layer">
+          <mxGeometry x="170" y="35" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- PRESENTATION LAYER -->
+        <mxCell id="presentation-layer" value="🎨 PRESENTATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="270" width="400" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="frontend-container" value="Angular 17+ Modules" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff6f00;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="presentation-layer">
+          <mxGeometry x="20" y="35" width="360" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="company-app" value="🏢 Company Mgmt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="frontend-container">
+          <mxGeometry x="10" y="30" width="80" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="declaration-app" value="📋 Declaration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="frontend-container">
+          <mxGeometry x="100" y="30" width="80" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-app" value="📄 Document Mgmt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="frontend-container">
+          <mxGeometry x="190" y="30" width="80" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="report-app" value="📊 Reporting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=1;fontSize=9;" vertex="1" parent="frontend-container">
+          <mxGeometry x="280" y="30" width="70" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- API GATEWAY LAYER -->
+        <mxCell id="api-layer" value="🔌 API GATEWAY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e0f2f1;strokeColor=#00695c;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="420" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="kong-gateway" value="🦍 Kong Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontSize=10;" vertex="1" parent="api-layer">
+          <mxGeometry x="50" y="35" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+        <!-- SECURITY LAYER -->
+        <mxCell id="security-layer" value="🔐 SECURITY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="280" y="420" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="keycloak" value="🔑 Keycloak 23+&#xa;OAuth/SAML/MFA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#bf360c;strokeWidth=1;fontSize=9;" vertex="1" parent="security-layer">
+          <mxGeometry x="40" y="30" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- APPLICATION LAYER -->
+        <mxCell id="application-layer" value="⚙️ APPLICATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#33691e;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="800" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Core Services -->
+        <mxCell id="core-services" value="Core Services" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="application-layer">
+          <mxGeometry x="20" y="35" width="240" height="155" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="company-service" value="🏢 Company:8081" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" vertex="1" parent="core-services">
+          <mxGeometry x="10" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="license-service" value="📜 License:8082" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" vertex="1" parent="core-services">
+          <mxGeometry x="120" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="agent-service" value="👥 Agent:8083" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" vertex="1" parent="core-services">
+          <mxGeometry x="10" y="70" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="declaration-service" value="📋 Declaration:8084" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" vertex="1" parent="core-services">
+          <mxGeometry x="120" y="70" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-service" value="📄 Document:8085" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" vertex="1" parent="core-services">
+          <mxGeometry x="10" y="110" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="masterdata-service" value="🗂️ MasterData:8086" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" vertex="1" parent="core-services">
+          <mxGeometry x="120" y="110" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Integration Services -->
+        <mxCell id="integration-services" value="Integration" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="application-layer">
+          <mxGeometry x="280" y="35" width="160" height="155" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="asycuda-service" value="🏛️ ASYCUDA:9081" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="integration-services">
+          <mxGeometry x="20" y="30" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sintece-service" value="🏛️ SINTECE:9082" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="integration-services">
+          <mxGeometry x="20" y="70" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oga-service" value="🏛️ OGA:9083" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=9;" vertex="1" parent="integration-services">
+          <mxGeometry x="20" y="110" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Cross-Cutting Services -->
+        <mxCell id="crosscutting-services" value="Cross-Cutting" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#4a148c;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="application-layer">
+          <mxGeometry x="460" y="35" width="320" height="155" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="iam-service" value="🔐 IAM:8080" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" vertex="1" parent="crosscutting-services">
+          <mxGeometry x="10" y="30" width="90" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="notification-service" value="📧 Notification:8089" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" vertex="1" parent="crosscutting-services">
+          <mxGeometry x="110" y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="workflow-service" value="🔄 Workflow:8090" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" vertex="1" parent="crosscutting-services">
+          <mxGeometry x="220" y="30" width="90" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="audit-service" value="📝 Audit:8091" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" vertex="1" parent="crosscutting-services">
+          <mxGeometry x="10" y="70" width="90" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="reporting-service" value="📊 Reporting:8092" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" vertex="1" parent="crosscutting-services">
+          <mxGeometry x="110" y="70" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- DATA LAYER -->
+        <mxCell id="data-layer" value="🗃️ DATA" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="760" width="800" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- Databases -->
+        <mxCell id="databases-container" value="PostgreSQL Cluster" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="data-layer">
+          <mxGeometry x="20" y="35" width="360" height="105" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="company-db" value="company_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=1;fontSize=8;" vertex="1" parent="databases-container">
+          <mxGeometry x="10" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="license-db" value="license_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=1;fontSize=8;" vertex="1" parent="databases-container">
+          <mxGeometry x="70" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="declaration-db" value="declaration_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=1;fontSize=8;" vertex="1" parent="databases-container">
+          <mxGeometry x="130" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="document-db" value="doc_meta_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=1;fontSize=8;" vertex="1" parent="databases-container">
+          <mxGeometry x="190" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="master-db" value="master_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=1;fontSize=8;" vertex="1" parent="databases-container">
+          <mxGeometry x="250" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="keycloak-db" value="keycloak_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=1;fontSize=8;" vertex="1" parent="databases-container">
+          <mxGeometry x="310" y="30" width="50" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Storage & Cache -->
+        <mxCell id="storage-container" value="Storage &amp; Cache" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff6f00;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="data-layer">
+          <mxGeometry x="400" y="35" width="180" height="105" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="minio-storage" value="📦 MinIO Docs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#d84315;strokeWidth=1;fontSize=9;" vertex="1" parent="storage-container">
+          <mxGeometry x="20" y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="redis-cache" value="⚡ Redis Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#d84315;strokeWidth=1;fontSize=9;" vertex="1" parent="storage-container">
+          <mxGeometry x="100" y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Messaging -->
+        <mxCell id="messaging-container" value="Queue" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="data-layer">
+          <mxGeometry x="600" y="35" width="120" height="105" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rabbitmq" value="🐰 RabbitMQ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;strokeWidth=1;fontSize=9;" vertex="1" parent="messaging-container">
+          <mxGeometry x="25" y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- INFRASTRUCTURE LAYER -->
+        <mxCell id="infrastructure-layer" value="☁️ INFRASTRUCTURE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#424242;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="900" y="530" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Kubernetes -->
+        <mxCell id="k8s-container" value="Kubernetes" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#616161;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="infrastructure-layer">
+          <mxGeometry x="20" y="35" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ingress" value="🚪 NGINX Ingress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#424242;strokeWidth=1;fontSize=8;" vertex="1" parent="k8s-container">
+          <mxGeometry x="10" y="30" width="100" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pods" value="📦 Pods" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#424242;strokeWidth=1;fontSize=8;" vertex="1" parent="k8s-container">
+          <mxGeometry x="10" y="55" width="100" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring -->
+        <mxCell id="monitoring-container" value="Monitor" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#616161;strokeWidth=1;fontSize=10;startSize=25;" vertex="1" parent="infrastructure-layer">
+          <mxGeometry x="160" y="35" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prometheus" value="📈 Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#424242;strokeWidth=1;fontSize=8;" vertex="1" parent="monitoring-container">
+          <mxGeometry x="10" y="30" width="100" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grafana" value="📊 Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#424242;strokeWidth=1;fontSize=8;" vertex="1" parent="monitoring-container">
+          <mxGeometry x="10" y="55" width="100" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- EXTERNAL SYSTEMS -->
+        <mxCell id="external-layer" value="🌐 EXTERNAL" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="900" y="50" width="200" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="agt-external" value="🏛️ ASYCUDA AGT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-layer">
+          <mxGeometry x="40" y="35" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sintece-external" value="🏛️ SINTECE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-layer">
+          <mxGeometry x="40" y="75" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ogas-external" value="🏛️ Gov Agencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-layer">
+          <mxGeometry x="40" y="115" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- CONNECTIONS -->
+        <!-- Client to Edge -->
+        <mxCell id="web-to-lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565c0;strokeWidth=2;" edge="1" parent="1" source="web-browser" target="load-balancer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mobile-to-lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565c0;strokeWidth=2;" edge="1" parent="1" source="mobile-pwa" target="load-balancer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Edge to Presentation -->
+        <mxCell id="lb-to-waf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4a148c;strokeWidth=2;" edge="1" parent="1" source="load-balancer" target="waf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="waf-to-frontend" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ad1457;strokeWidth=2;" edge="1" parent="1" source="waf" target="frontend-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Presentation to API Gateway -->
+        <mxCell id="frontend-to-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00695c;strokeWidth=2;" edge="1" parent="1" source="frontend-container" target="kong-gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- API Gateway to Security -->
+        <mxCell id="kong-to-keycloak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=2;" edge="1" parent="1" source="kong-gateway" target="keycloak">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- API Gateway to Application -->
+        <mxCell id="kong-to-core" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#33691e;strokeWidth=2;" edge="1" parent="1" source="kong-gateway" target="core-services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="kong-to-integration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#33691e;strokeWidth=2;" edge="1" parent="1" source="kong-gateway" target="integration-services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Application to Data -->
+        <mxCell id="core-to-db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#01579b;strokeWidth=2;" edge="1" parent="1" source="core-services" target="databases-container">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Integration to External -->
+        <mxCell id="integration-to-external" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;" edge="1" parent="1" source="integration-services" target="external-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
