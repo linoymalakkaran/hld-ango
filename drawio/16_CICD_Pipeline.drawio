@@ -1,386 +1,336 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2025-12-17T12:00:00.000Z" agent="5.0" etag="xxx" version="24.7.17" type="device">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
   <diagram name="CI/CD Pipeline" id="cicd-pipeline">
-    <mxGraphModel dx="2074" dy="1194" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1500" math="0" shadow="0">
+    <mxGraphModel dx="1665" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1500" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
-        <!-- Developer Workflow -->
-        <mxCell id="developer-group" value="👨‍💻 DEVELOPER" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="50" y="50" width="200" height="120" as="geometry" />
+        <mxCell id="developer-group" value="👨‍💻 DEVELOPER" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="50" y="50" width="190" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="developer1" value="👨‍💻 Developer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="developer-group">
-          <mxGeometry x="10" y="40" width="180" height="30" as="geometry" />
+        <mxCell id="developer1" value="👨‍💻 Developer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="developer-group" vertex="1">
+          <mxGeometry y="30" width="190" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="local-dev" value="💻 Local Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="developer-group">
-          <mxGeometry x="10" y="80" width="180" height="30" as="geometry" />
+        <mxCell id="local-dev" value="💻 Local Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="developer-group" vertex="1">
+          <mxGeometry y="60" width="190" height="30" as="geometry" />
         </mxCell>
-        
-        <!-- Source Control -->
-        <mxCell id="source-control-group" value="📚 SOURCE CONTROL" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="300" y="50" width="200" height="150" as="geometry" />
+        <mxCell id="source-control-group" value="📚 SOURCE CONTROL" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="300" y="50" width="200" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="gitlab" value="📚 GitLab Enterprise" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
-          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
+        <mxCell id="gitlab" value="📚 GitLab Enterprise" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="source-control-group" vertex="1">
+          <mxGeometry y="30" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="main-branch" value="🌟 main branch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
-          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
+        <mxCell id="main-branch" value="🌟 main branch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="source-control-group" vertex="1">
+          <mxGeometry y="55" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="develop-branch" value="🔧 develop branch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
-          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
+        <mxCell id="develop-branch" value="🔧 develop branch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="source-control-group" vertex="1">
+          <mxGeometry y="80" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="feature-branches" value="🚀 feature/* branches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="source-control-group">
-          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
+        <mxCell id="feature-branches" value="🚀 feature/* branches" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="source-control-group" vertex="1">
+          <mxGeometry y="105" width="200" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Pipeline Triggers -->
-        <mxCell id="triggers-group" value="🔄 TRIGGERS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="550" y="50" width="180" height="150" as="geometry" />
+        <mxCell id="triggers-group" value="🔄 TRIGGERS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="550" y="50" width="180" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="commit-trigger" value="📝 Code Commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="commit-trigger" value="📝 Code Commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="triggers-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="mr-trigger" value="🔀 Merge Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="mr-trigger" value="🔀 Merge Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="triggers-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="tag-trigger" value="🏷️ Git Tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="tag-trigger" value="🏷️ Git Tag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="triggers-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="scheduled-trigger" value="⏰ Scheduled" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="triggers-group">
-          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
+        <mxCell id="scheduled-trigger" value="⏰ Scheduled" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="triggers-group" vertex="1">
+          <mxGeometry y="105" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- CI Pipeline -->
-        <mxCell id="ci-pipeline-group" value="🔨 CI PIPELINE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f0f0f0;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="780" y="50" width="200" height="280" as="geometry" />
+        <mxCell id="ci-pipeline-group" value="🔨 CI PIPELINE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f0f0f0;strokeColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="780" y="50" width="200" height="255" as="geometry" />
         </mxCell>
-        <mxCell id="checkout-code" value="📥 Checkout Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
+        <mxCell id="checkout-code" value="📥 Checkout Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="30" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="dependency-install" value="📦 Install Dependencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
+        <mxCell id="dependency-install" value="📦 Install Dependencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="55" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="compile-code" value="🔨 Compile Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
+        <mxCell id="compile-code" value="🔨 Compile Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="80" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="unit-tests" value="🧪 Unit Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
+        <mxCell id="unit-tests" value="🧪 Unit Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="105" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="code-analysis" value="🔍 Code Analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="160" width="180" height="25" as="geometry" />
+        <mxCell id="code-analysis" value="🔍 Code Analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="130" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="security-scan" value="🔒 Security Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="190" width="180" height="25" as="geometry" />
+        <mxCell id="security-scan" value="🔒 Security Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="155" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="integration-tests" value="🔗 Integration Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="220" width="180" height="25" as="geometry" />
+        <mxCell id="integration-tests" value="🔗 Integration Tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="180" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="docker-build" value="🐳 Docker Build" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="10" y="250" width="85" height="25" as="geometry" />
+        <mxCell id="docker-build" value="🐳 Docker Build" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="205" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="image-scan" value="🔍 Image Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" vertex="1" parent="ci-pipeline-group">
-          <mxGeometry x="100" y="250" width="85" height="25" as="geometry" />
+        <mxCell id="image-scan" value="🔍 Image Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#4d4d4d;" parent="ci-pipeline-group" vertex="1">
+          <mxGeometry y="230" width="200" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Artifact Repository -->
-        <mxCell id="artifact-repo-group" value="📦 ARTIFACTS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="1">
-          <mxGeometry x="1030" y="50" width="180" height="150" as="geometry" />
+        <mxCell id="artifact-repo-group" value="📦 ARTIFACTS" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffeaa7;strokeColor=#fdcb6e;" parent="1" vertex="1">
+          <mxGeometry x="1030" y="50" width="180" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="harbor-registry" value="🐳 Harbor Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="harbor-registry" value="🐳 Harbor Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" parent="artifact-repo-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="helm-repository" value="⚙️ Helm Repository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="helm-repository" value="⚙️ Helm Repository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" parent="artifact-repo-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="nuget-feed" value="📦 NuGet Feed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="nuget-feed" value="📦 NuGet Feed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" parent="artifact-repo-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="npm-registry" value="📦 NPM Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" vertex="1" parent="artifact-repo-group">
-          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
+        <mxCell id="npm-registry" value="📦 NPM Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd93d;strokeColor=#e6ac00;" parent="artifact-repo-group" vertex="1">
+          <mxGeometry y="105" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- CD Pipeline -->
-        <mxCell id="cd-pipeline-group" value="🚀 CD PIPELINE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="1">
-          <mxGeometry x="1250" y="50" width="180" height="200" as="geometry" />
+        <mxCell id="cd-pipeline-group" value="🚀 CD PIPELINE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fab1a0;strokeColor=#e17055;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="50" width="180" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="dev-deploy" value="🟢 Dev Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="dev-deploy" value="🟢 Dev Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="cd-pipeline-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="staging-deploy" value="🟡 Staging Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="staging-deploy" value="🟡 Staging Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="cd-pipeline-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="prod-deploy" value="🔴 Prod Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="prod-deploy" value="🔴 Prod Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="cd-pipeline-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="blue-green" value="🔄 Blue-Green" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
-          <mxGeometry x="10" y="130" width="75" height="25" as="geometry" />
+        <mxCell id="blue-green" value="🔄 Blue-Green" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="cd-pipeline-group" vertex="1">
+          <mxGeometry y="105" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="rolling-update" value="📈 Rolling Update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
-          <mxGeometry x="90" y="130" width="80" height="25" as="geometry" />
+        <mxCell id="rolling-update" value="📈 Rolling Update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="cd-pipeline-group" vertex="1">
+          <mxGeometry y="130" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="canary-deploy" value="🐤 Canary Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="cd-pipeline-group">
-          <mxGeometry x="10" y="160" width="160" height="25" as="geometry" />
+        <mxCell id="canary-deploy" value="🐤 Canary Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="cd-pipeline-group" vertex="1">
+          <mxGeometry y="155" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Kubernetes Environments -->
-        <mxCell id="k8s-environments-group" value="☸️ KUBERNETES" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#a29bfe;strokeColor=#6c5ce7;" vertex="1" parent="1">
-          <mxGeometry x="1470" y="50" width="180" height="120" as="geometry" />
+        <mxCell id="k8s-environments-group" value="☸️ KUBERNETES" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#a29bfe;strokeColor=#6c5ce7;" parent="1" vertex="1">
+          <mxGeometry x="1470" y="50" width="180" height="105" as="geometry" />
         </mxCell>
-        <mxCell id="dev-environment" value="🟢 Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="k8s-environments-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="dev-environment" value="🟢 Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" parent="k8s-environments-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="staging-environment" value="🟡 Staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="k8s-environments-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="staging-environment" value="🟡 Staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" parent="k8s-environments-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="production-environment" value="🔴 Production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="k8s-environments-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="production-environment" value="🔴 Production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#74b9ff;strokeColor=#0984e3;" parent="k8s-environments-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Infrastructure as Code -->
-        <mxCell id="iac-group" value="🏗️ INFRASTRUCTURE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#55a3ff;strokeColor=#2d8cff;" vertex="1" parent="1">
-          <mxGeometry x="50" y="250" width="200" height="150" as="geometry" />
+        <mxCell id="iac-group" value="🏗️ INFRASTRUCTURE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#55a3ff;strokeColor=#2d8cff;" parent="1" vertex="1">
+          <mxGeometry x="50" y="250" width="200" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="terraform-modules" value="🏗️ Terraform Modules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
-          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
+        <mxCell id="terraform-modules" value="🏗️ Terraform Modules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" parent="iac-group" vertex="1">
+          <mxGeometry y="30" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="application-charts" value="⚙️ Application Charts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
-          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
+        <mxCell id="application-charts" value="⚙️ Application Charts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" parent="iac-group" vertex="1">
+          <mxGeometry y="55" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="configmaps" value="⚙️ ConfigMaps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
-          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
+        <mxCell id="configmaps" value="⚙️ ConfigMaps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" parent="iac-group" vertex="1">
+          <mxGeometry y="80" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="secrets" value="🔐 Secrets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" vertex="1" parent="iac-group">
-          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
+        <mxCell id="secrets" value="🔐 Secrets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81ecec;strokeColor=#00b894;" parent="iac-group" vertex="1">
+          <mxGeometry y="105" width="200" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Monitoring -->
-        <mxCell id="monitoring-group" value="📊 MONITORING" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff7675;strokeColor=#d63031;" vertex="1" parent="1">
-          <mxGeometry x="300" y="250" width="180" height="150" as="geometry" />
+        <mxCell id="monitoring-group" value="📊 MONITORING" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff7675;strokeColor=#d63031;" parent="1" vertex="1">
+          <mxGeometry x="300" y="250" width="180" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="gitlab-ci" value="📊 GitLab CI Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="gitlab-ci" value="📊 GitLab CI Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" parent="monitoring-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="quality-metrics" value="📈 Quality Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="quality-metrics" value="📈 Quality Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" parent="monitoring-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="deployment-status" value="🚀 Deployment Status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="deployment-status" value="🚀 Deployment Status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" parent="monitoring-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="application-metrics" value="📊 App Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" vertex="1" parent="monitoring-group">
-          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
+        <mxCell id="application-metrics" value="📊 App Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fab1a0;strokeColor=#e17055;" parent="monitoring-group" vertex="1">
+          <mxGeometry y="105" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Security -->
-        <mxCell id="security-group" value="🔒 SECURITY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff6b9d;strokeColor=#e84393;" vertex="1" parent="1">
+        <mxCell id="security-group" value="🔒 SECURITY" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff6b9d;strokeColor=#e84393;" parent="1" vertex="1">
           <mxGeometry x="520" y="250" width="180" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="sast" value="🔍 SAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="sast" value="🔍 SAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="security-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="dast" value="🕸️ DAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="dast" value="🕸️ DAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="security-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="dependency-check" value="📦 Dependency Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="dependency-check" value="📦 Dependency Check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="security-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="container-scan" value="🐳 Container Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
-          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
+        <mxCell id="container-scan" value="🐳 Container Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="security-group" vertex="1">
+          <mxGeometry y="105" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="policy-validation" value="📋 Policy Validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
-          <mxGeometry x="10" y="160" width="75" height="25" as="geometry" />
+        <mxCell id="policy-validation" value="📋 Policy Validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="security-group" vertex="1">
+          <mxGeometry y="130" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="audit-logging" value="📝 Audit Logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" vertex="1" parent="security-group">
-          <mxGeometry x="90" y="160" width="80" height="25" as="geometry" />
+        <mxCell id="audit-logging" value="📝 Audit Logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fd79a8;strokeColor=#e84393;" parent="security-group" vertex="1">
+          <mxGeometry y="155" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Testing Strategy -->
-        <mxCell id="testing-strategy-group" value="🧪 TESTING" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#74b9ff;strokeColor=#0984e3;" vertex="1" parent="1">
-          <mxGeometry x="750" y="250" width="200" height="150" as="geometry" />
+        <mxCell id="testing-strategy-group" value="🧪 TESTING" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#74b9ff;strokeColor=#0984e3;" parent="1" vertex="1">
+          <mxGeometry x="770" y="360" width="200" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="unit-test-layer" value="🧪 Unit Tests 70%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
-          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
+        <mxCell id="unit-test-layer" value="🧪 Unit Tests 70%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" parent="testing-strategy-group" vertex="1">
+          <mxGeometry y="30" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="integration-test-layer" value="🔗 Integration Tests 20%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
-          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
+        <mxCell id="integration-test-layer" value="🔗 Integration Tests 20%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" parent="testing-strategy-group" vertex="1">
+          <mxGeometry y="55" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="e2e-test-layer" value="🎭 E2E Tests 10%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
-          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
+        <mxCell id="e2e-test-layer" value="🎭 E2E Tests 10%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" parent="testing-strategy-group" vertex="1">
+          <mxGeometry y="80" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="test-data-management" value="🗃️ Test Data Mgmt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" vertex="1" parent="testing-strategy-group">
-          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
+        <mxCell id="test-data-management" value="🗃️ Test Data Mgmt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ddd;strokeColor=#999;" parent="testing-strategy-group" vertex="1">
+          <mxGeometry y="105" width="200" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Release Management -->
-        <mxCell id="release-management-group" value="🏷️ RELEASE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fdcb6e;strokeColor=#e17055;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="250" width="200" height="150" as="geometry" />
+        <mxCell id="release-management-group" value="🏷️ RELEASE" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fdcb6e;strokeColor=#e17055;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="250" width="200" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="git-flow" value="🌊 Git Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
-          <mxGeometry x="10" y="40" width="180" height="25" as="geometry" />
+        <mxCell id="git-flow" value="🌊 Git Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" parent="release-management-group" vertex="1">
+          <mxGeometry y="30" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="semantic-versioning" value="🔢 Semantic Versioning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
-          <mxGeometry x="10" y="70" width="180" height="25" as="geometry" />
+        <mxCell id="semantic-versioning" value="🔢 Semantic Versioning" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" parent="release-management-group" vertex="1">
+          <mxGeometry y="55" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="release-notes" value="📝 Release Notes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
-          <mxGeometry x="10" y="100" width="180" height="25" as="geometry" />
+        <mxCell id="release-notes" value="📝 Release Notes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" parent="release-management-group" vertex="1">
+          <mxGeometry y="80" width="200" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="rollback-procedures" value="↩️ Rollback Procedures" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" vertex="1" parent="release-management-group">
-          <mxGeometry x="10" y="130" width="180" height="25" as="geometry" />
+        <mxCell id="rollback-procedures" value="↩️ Rollback Procedures" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeaa7;strokeColor=#fdcb6e;" parent="release-management-group" vertex="1">
+          <mxGeometry y="105" width="200" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Pipeline Flow -->
-        <mxCell id="pipeline-flow-group" value="🔄 PIPELINE FLOW" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#636e72;strokeColor=#2d3436;" vertex="1" parent="1">
-          <mxGeometry x="1250" y="280" width="180" height="200" as="geometry" />
+        <mxCell id="pipeline-flow-group" value="🔄 PIPELINE FLOW" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#636e72;strokeColor=#2d3436;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="280" width="180" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="step1" value="1️⃣ Code Commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
-          <mxGeometry x="10" y="40" width="160" height="25" as="geometry" />
+        <mxCell id="step1" value="1️⃣ Code Commit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" parent="pipeline-flow-group" vertex="1">
+          <mxGeometry y="30" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="step2" value="2️⃣ Build &amp; Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
-          <mxGeometry x="10" y="70" width="160" height="25" as="geometry" />
+        <mxCell id="step2" value="2️⃣ Build &amp; Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" parent="pipeline-flow-group" vertex="1">
+          <mxGeometry y="55" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="step3" value="3️⃣ Quality Gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
-          <mxGeometry x="10" y="100" width="160" height="25" as="geometry" />
+        <mxCell id="step3" value="3️⃣ Quality Gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" parent="pipeline-flow-group" vertex="1">
+          <mxGeometry y="80" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="step4" value="4️⃣ Security Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
-          <mxGeometry x="10" y="130" width="160" height="25" as="geometry" />
+        <mxCell id="step4" value="4️⃣ Security Scan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" parent="pipeline-flow-group" vertex="1">
+          <mxGeometry y="105" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="step5" value="5️⃣ Package" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
-          <mxGeometry x="10" y="160" width="160" height="25" as="geometry" />
+        <mxCell id="step5" value="5️⃣ Package" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" parent="pipeline-flow-group" vertex="1">
+          <mxGeometry y="130" width="180" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="step6" value="6️⃣ Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" vertex="1" parent="pipeline-flow-group">
-          <mxGeometry x="10" y="190" width="160" height="25" as="geometry" />
+        <mxCell id="step6" value="6️⃣ Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2bec3;strokeColor=#636e72;" parent="pipeline-flow-group" vertex="1">
+          <mxGeometry y="155" width="180" height="25" as="geometry" />
         </mxCell>
-        
-        <!-- Main Flow Arrows -->
-        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="developer-group" target="source-control-group">
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="developer-group" target="source-control-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="260" y="130" as="sourcePoint" />
             <mxPoint x="310" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="source-control-group" target="triggers-group">
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="source-control-group" target="triggers-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="510" y="130" as="sourcePoint" />
             <mxPoint x="560" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="triggers-group" target="ci-pipeline-group">
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="triggers-group" target="ci-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="740" y="130" as="sourcePoint" />
             <mxPoint x="790" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ci-pipeline-group" target="artifact-repo-group">
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ci-pipeline-group" target="artifact-repo-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="990" y="130" as="sourcePoint" />
             <mxPoint x="1040" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="artifact-repo-group" target="cd-pipeline-group">
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="artifact-repo-group" target="cd-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1220" y="130" as="sourcePoint" />
             <mxPoint x="1270" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cd-pipeline-group" target="k8s-environments-group">
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cd-pipeline-group" target="k8s-environments-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1440" y="130" as="sourcePoint" />
             <mxPoint x="1490" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <!-- Supporting Arrows -->
-        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="iac-group" target="k8s-environments-group">
+        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" parent="1" source="iac-group" target="k8s-environments-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="150" y="240" as="sourcePoint" />
             <mxPoint x="1560" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="security-group" target="ci-pipeline-group">
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" parent="1" source="security-group" target="ci-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="610" y="240" as="sourcePoint" />
             <mxPoint x="880" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="testing-strategy-group" target="ci-pipeline-group">
+        <mxCell id="arrow9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" parent="1" source="testing-strategy-group" target="ci-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="850" y="240" as="sourcePoint" />
             <mxPoint x="880" y="340" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="monitoring-group" target="ci-pipeline-group">
+        <mxCell id="arrow10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;dashed=1;" parent="1" source="monitoring-group" target="ci-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="490" y="290" as="sourcePoint" />
             <mxPoint x="780" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="monitoring-group" target="cd-pipeline-group">
+        <mxCell id="arrow11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;dashed=1;" parent="1" source="monitoring-group" target="cd-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="490" y="360" as="sourcePoint" />
             <mxPoint x="1250" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="arrow12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="release-management-group" target="cd-pipeline-group">
+        <mxCell id="arrow12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="release-management-group" target="cd-pipeline-group" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1100" y="240" as="sourcePoint" />
             <mxPoint x="1340" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <!-- Pipeline Flow Internal Arrows -->
-        <mxCell id="flow-arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step1" target="step2">
+        <mxCell id="flow-arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step1" target="step2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1330" y="370" as="sourcePoint" />
             <mxPoint x="1330" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="flow-arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step2" target="step3">
+        <mxCell id="flow-arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step2" target="step3" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1330" y="400" as="sourcePoint" />
             <mxPoint x="1330" y="430" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="flow-arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step3" target="step4">
+        <mxCell id="flow-arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step3" target="step4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1330" y="430" as="sourcePoint" />
             <mxPoint x="1330" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="flow-arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step4" target="step5">
+        <mxCell id="flow-arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step4" target="step5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1330" y="460" as="sourcePoint" />
             <mxPoint x="1330" y="490" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <mxCell id="flow-arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="step5" target="step6">
+        <mxCell id="flow-arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step5" target="step6" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1330" y="490" as="sourcePoint" />
             <mxPoint x="1330" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
-        <!-- Internal connections -->
-        <mxCell id="dev-connection" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="local-dev" target="main-branch">
+        <mxCell id="dev-connection" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="local-dev" target="main-branch" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="200" y="110" as="sourcePoint" />
             <mxPoint x="300" y="95" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        
       </root>
     </mxGraphModel>
   </diagram>
