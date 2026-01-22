@@ -1,322 +1,238 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="Integration Architecture" id="integration-architecture">
-    <mxGraphModel dx="827" dy="1169" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        
-        <!-- CLIENTS -->
-        <mxCell id="clients" value="👥 CLIENTS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="50" width="300" height="100" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="web-portal" value="🌐 JUL Portal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=10;" vertex="1" parent="clients">
-          <mxGeometry x="20" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="mobile-app" value="📱 Mobile App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=10;" vertex="1" parent="clients">
-          <mxGeometry x="110" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="api-clients" value="🔌 API Clients" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=10;" vertex="1" parent="clients">
-          <mxGeometry x="200" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- GATEWAY -->
-        <mxCell id="gateway" value="🚪 GATEWAY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8eaf6;strokeColor=#3f51b5;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="400" y="50" width="150" height="100" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kong" value="🦍 Kong Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5cae9;strokeColor=#3f51b5;strokeWidth=1;fontSize=10;" vertex="1" parent="gateway">
-          <mxGeometry x="25" y="40" width="100" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- AUTH -->
-        <mxCell id="auth" value="🔐 AUTH" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="600" y="50" width="150" height="100" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="keycloak" value="🔐 Keycloak" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#bf360c;strokeWidth=1;fontSize=10;" vertex="1" parent="auth">
-          <mxGeometry x="35" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- JUL SERVICES -->
-        <mxCell id="jul-services" value="⚙️ JUL SERVICES" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="200" width="700" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="company-mgmt" value="🏢 Company" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="20" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="license-permit" value="📜 License" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="120" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="agent-nomination" value="👥 Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="220" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="declaration-mgmt" value="📋 Declaration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="320" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="document-mgmt" value="📄 Document" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="420" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="master-data" value="🗂️ Master Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="520" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="notification" value="📧 Notification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="20" y="100" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="workflow" value="🔄 Workflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="120" y="100" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="audit" value="📝 Audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="220" y="100" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="reporting" value="📊 Reporting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=10;" vertex="1" parent="jul-services">
-          <mxGeometry x="320" y="100" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- INTEGRATION LAYER -->
-        <mxCell id="integration-layer" value="🔌 INTEGRATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="800" y="200" width="500" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="asycuda-integration" value="🏛️ ASYCUDA Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="integration-layer">
-          <mxGeometry x="20" y="40" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="sintece-integration" value="🏛️ SINTECE Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="integration-layer">
-          <mxGeometry x="160" y="40" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="oga-integration" value="🏛️ OGA Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="integration-layer">
-          <mxGeometry x="300" y="40" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="payment-integration" value="💳 Payment Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=10;" vertex="1" parent="integration-layer">
-          <mxGeometry x="100" y="100" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- EXTERNAL SYSTEMS -->
-        <mxCell id="external-systems" value="🌐 EXTERNAL" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="800" y="450" width="500" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="asycuda" value="🏛️ ASYCUDA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
-          <mxGeometry x="20" y="40" width="100" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="sintece" value="🏛️ SINTECE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
-          <mxGeometry x="140" y="40" width="100" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ogas" value="🏛️ Gov Agencies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
-          <mxGeometry x="260" y="40" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="banks" value="🏦 Banks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
-          <mxGeometry x="400" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="currency-api" value="💱 Currency APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
-          <mxGeometry x="20" y="100" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="hscode-api" value="📊 HS Code APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="external-systems">
-          <mxGeometry x="160" y="100" width="120" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- DATA STORAGE -->
-        <mxCell id="data-storage" value="🗃️ DATA" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="50" y="450" width="400" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="postgresql" value="🗃️ PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=2;fontSize=10;" vertex="1" parent="data-storage">
-          <mxGeometry x="30" y="50" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="minio" value="📦 MinIO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#388e3c;strokeWidth=2;fontSize=10;" vertex="1" parent="data-storage">
-          <mxGeometry x="130" y="50" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="redis" value="⚡ Redis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;strokeWidth=2;fontSize=10;" vertex="1" parent="data-storage">
-          <mxGeometry x="230" y="50" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="rabbitmq" value="🐰 RabbitMQ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="data-storage">
-          <mxGeometry x="130" y="120" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- MONITORING -->
-        <mxCell id="monitoring" value="📊 MONITORING" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontStyle=1;fontSize=12;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="500" y="450" width="250" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="prometheus" value="📈 Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring">
-          <mxGeometry x="20" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="grafana" value="📊 Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring">
-          <mxGeometry x="120" y="40" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="elk" value="📋 ELK Stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=10;" vertex="1" parent="monitoring">
-          <mxGeometry x="70" y="100" width="80" height="40" as="geometry" />
-        </mxCell>
-        
-        <!-- MAIN CONNECTIONS -->
-        <mxCell id="client-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3f51b5;strokeWidth=2;" edge="1" parent="1" source="clients" target="kong">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kong-keycloak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="kong" target="keycloak">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kong-jul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;" edge="1" parent="1" source="kong" target="jul-services">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="475" y="170" />
-              <mxPoint x="400" y="170" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="kong-integration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;" edge="1" parent="1" source="kong" target="integration-layer">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="475" y="170" />
-              <mxPoint x="1050" y="170" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- DATA CONNECTIONS -->
-        <mxCell id="jul-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#01579b;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="jul-services" target="data-storage">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="integration-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#01579b;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="integration-layer" target="data-storage">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1050" y="410" />
-              <mxPoint x="250" y="410" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- EXTERNAL INTEGRATION -->
-        <mxCell id="asycuda-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="asycuda-integration" target="asycuda">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="sintece-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="sintece-integration" target="sintece">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="oga-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="oga-integration" target="ogas">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="payment-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="payment-integration" target="banks">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <!-- DATA SOURCES -->
-        <mxCell id="currency-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="master-data" target="currency-api">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="570" y="280" />
-              <mxPoint x="570" y="420" />
-              <mxPoint x="880" y="420" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="hscode-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" edge="1" parent="1" source="master-data" target="hscode-api">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="570" y="280" />
-              <mxPoint x="570" y="420" />
-              <mxPoint x="1020" y="420" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- AUTHENTICATION -->
-        <mxCell id="jul-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="jul-services" target="keycloak">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="750" y="300" />
-              <mxPoint x="750" y="170" />
-              <mxPoint x="675" y="170" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="integration-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="integration-layer" target="keycloak">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="800" y="300" />
-              <mxPoint x="800" y="170" />
-              <mxPoint x="675" y="170" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- MONITORING -->
-        <mxCell id="monitor-jul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="monitoring" target="jul-services">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="monitor-integration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="monitoring" target="integration-layer">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="625" y="430" />
-              <mxPoint x="1050" y="430" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="monitor-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="monitoring" target="kong">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="625" y="430" />
-              <mxPoint x="475" y="430" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- EVENT PROCESSING -->
-        <mxCell id="jul-events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="jul-services" target="rabbitmq">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="250" y="400" />
-              <mxPoint x="250" y="590" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="integration-events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" edge="1" parent="1" source="integration-layer" target="rabbitmq">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="800" y="400" />
-              <mxPoint x="250" y="400" />
-              <mxPoint x="250" y="590" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="Integration Architecture" id="integration-architecture">
+        <mxGraphModel dx="890" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="clients" value="👥 CLIENTS" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="45" width="300" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="web-portal" value="🌐 JUL Portal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" parent="clients" vertex="1">
+                    <mxGeometry x="20" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="mobile-app" value="📱 Mobile App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" parent="clients" vertex="1">
+                    <mxGeometry x="110" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="api-clients" value="🔌 API Clients" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#ad1457;strokeWidth=1;fontSize=9;" parent="clients" vertex="1">
+                    <mxGeometry x="200" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway" value="🚪 GATEWAY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8eaf6;strokeColor=#3f51b5;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="45" width="150" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="kong" value="🦍 Kong Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5cae9;strokeColor=#3f51b5;strokeWidth=1;fontSize=9;" parent="gateway" vertex="1">
+                    <mxGeometry x="25" y="35" width="100" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth" value="🔐 AUTH" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="45" width="150" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="keycloak" value="🔐 Keycloak" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#bf360c;strokeWidth=1;fontSize=9;" parent="auth" vertex="1">
+                    <mxGeometry x="35" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="jul-services" value="⚙️ JUL SERVICES" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="150" width="700" height="165" as="geometry"/>
+                </mxCell>
+                <mxCell id="company-mgmt" value="🏢 Company" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="20" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="license-permit" value="📜 License" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="120" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="agent-nomination" value="👥 Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="220" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="declaration-mgmt" value="📋 Declaration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="320" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="document-mgmt" value="📄 Document" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="420" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="master-data" value="🗂️ Master Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="520" y="35" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="notification" value="📧 Notification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="20" y="85" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="workflow" value="🔄 Workflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="120" y="85" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="audit" value="📝 Audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="220" y="85" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="reporting" value="📊 Reporting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=1;fontSize=9;" parent="jul-services" vertex="1">
+                    <mxGeometry x="320" y="85" width="80" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="integration-layer" value="🔌 INTEGRATION" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="200" width="500" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="asycuda-integration" value="🏛️ DU-ASYCUDA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=9;" parent="integration-layer" vertex="1">
+                    <mxGeometry x="20" y="35" width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="sintece-integration" value="🏛️ CNCA-SINTECE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=9;" parent="integration-layer" vertex="1">
+                    <mxGeometry x="145" y="35" width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="oga-integration" value="🏛️ DUP-SICOEX" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;strokeWidth=1;fontSize=9;" parent="integration-layer" vertex="1">
+                    <mxGeometry x="270" y="35" width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="external-systems" value="🌐 EXTERNAL" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="390" width="500" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="asycuda" value="DU - ASYCUDA\n(AGT - Customs Authority)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" parent="external-systems" vertex="1">
+                    <mxGeometry x="20" y="35" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sintece" value="CNCA - SINTECE\n(ARCALA)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" parent="external-systems" vertex="1">
+                    <mxGeometry x="180" y="35" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ogas" value="DUP - SICOEX\n(MINDCOM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" parent="external-systems" vertex="1">
+                    <mxGeometry x="340" y="35" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="currency-api" value="💱 Currency APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" parent="external-systems" vertex="1">
+                    <mxGeometry x="20" y="90" width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="hscode-api" value="📊 HS Code APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=9;" parent="external-systems" vertex="1">
+                    <mxGeometry x="150" y="90" width="110" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="data-storage" value="🗃️ DATA" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="340" width="400" height="145" as="geometry"/>
+                </mxCell>
+                <mxCell id="postgresql" value="🗃️ PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#90caf9;strokeColor=#1565c0;strokeWidth=2;fontSize=9;" parent="data-storage" vertex="1">
+                    <mxGeometry x="30" y="35" width="75" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="minio" value="📦 MinIO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#388e3c;strokeWidth=2;fontSize=9;" parent="data-storage" vertex="1">
+                    <mxGeometry x="125" y="35" width="75" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis" value="⚡ Redis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;strokeWidth=2;fontSize=9;" parent="data-storage" vertex="1">
+                    <mxGeometry x="220" y="35" width="75" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="rabbitmq" value="🐰 RabbitMQ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=9;" parent="data-storage" vertex="1">
+                    <mxGeometry x="125" y="85" width="75" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="monitoring" value="📊 MONITORING" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontStyle=1;fontSize=11;startSize=28;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="340" width="250" height="145" as="geometry"/>
+                </mxCell>
+                <mxCell id="prometheus" value="📈 Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" parent="monitoring" vertex="1">
+                    <mxGeometry x="20" y="35" width="75" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="grafana" value="📊 Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" parent="monitoring" vertex="1">
+                    <mxGeometry x="115" y="35" width="75" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="elk" value="📋 ELK Stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4a148c;strokeWidth=1;fontSize=9;" parent="monitoring" vertex="1">
+                    <mxGeometry x="68" y="85" width="75" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="client-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3f51b5;strokeWidth=2;" parent="1" source="clients" target="kong" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="kong-keycloak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="kong" target="keycloak" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="kong-jul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2e7d32;strokeWidth=2;" parent="1" source="kong" target="jul-services" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="475" y="170"/>
+                            <mxPoint x="400" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="kong-integration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef6c00;strokeWidth=2;" parent="1" source="kong" target="integration-layer" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="475" y="170"/>
+                            <mxPoint x="1050" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="jul-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#01579b;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="jul-services" target="data-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="integration-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#01579b;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="integration-layer" target="data-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1050" y="410"/>
+                            <mxPoint x="250" y="410"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="asycuda-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="asycuda-integration" target="asycuda" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="sintece-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="sintece-integration" target="sintece" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="oga-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="oga-integration" target="ogas" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="currency-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="master-data" target="currency-api" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="570" y="230"/>
+                            <mxPoint x="570" y="370"/>
+                            <mxPoint x="875" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="hscode-conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#c62828;strokeWidth=2;endArrow=oval;startArrow=oval;" parent="1" source="master-data" target="hscode-api" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="570" y="230"/>
+                            <mxPoint x="570" y="370"/>
+                            <mxPoint x="1005" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="jul-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=1;strokeStyle=dashed;" parent="1" source="jul-services" target="keycloak" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="750" y="300"/>
+                            <mxPoint x="750" y="170"/>
+                            <mxPoint x="675" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="integration-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#e65100;strokeWidth=1;strokeStyle=dashed;" parent="1" source="integration-layer" target="keycloak" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="800" y="300"/>
+                            <mxPoint x="800" y="170"/>
+                            <mxPoint x="675" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="monitor-jul" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" parent="1" source="monitoring" target="jul-services" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="monitor-integration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" parent="1" source="monitoring" target="integration-layer" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="625" y="430"/>
+                            <mxPoint x="1050" y="430"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="monitor-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" parent="1" source="monitoring" target="kong" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="625" y="430"/>
+                            <mxPoint x="475" y="430"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="jul-events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" parent="1" source="jul-services" target="rabbitmq" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="162" y="315"/>
+                            <mxPoint x="162" y="442"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="integration-events" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7b1fa2;strokeWidth=1;strokeStyle=dashed;" parent="1" source="integration-layer" target="rabbitmq" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="800" y="325"/>
+                            <mxPoint x="162" y="325"/>
+                            <mxPoint x="162" y="442"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

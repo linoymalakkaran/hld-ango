@@ -1,533 +1,389 @@
-<mxfile host="app.diagrams.net" modified="2024-12-17T00:00:00.000Z" agent="Claude" version="22.1.0" etag="network-architecture-v1">
-  <diagram name="Network Architecture" id="network-architecture">
-    <mxGraphModel dx="827" dy="1169" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        
-        <!-- Internet/External Network -->
-        <mxCell id="internet-container" value="🌍 INTERNET" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="40" y="40" width="800" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="users" value="👥 External Users&lt;br&gt;Traders, Brokers, Officers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;" vertex="1" parent="internet-container">
-          <mxGeometry x="50" y="60" width="180" height="80" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="external-systems" value="🏛️ External Systems&lt;br&gt;ASYCUDA, SINTECE, OGAs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;" vertex="1" parent="internet-container">
-          <mxGeometry x="310" y="60" width="180" height="80" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="admins" value="👨‍💻 System Administrators&lt;br&gt;Remote Access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;" vertex="1" parent="internet-container">
-          <mxGeometry x="570" y="60" width="180" height="80" as="geometry" />
-        </mxCell>
-        
-        <!-- DMZ Zone -->
-        <mxCell id="dmz-container" value="🔥 DMZ ZONE - 172.16.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=3;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="40" y="280" width="800" height="520" as="geometry" />
-        </mxCell>
-        
-        <!-- Edge Security -->
-        <mxCell id="edge-security-container" value="Edge Security" style="swimlane;whiteSpace=wrap;html=1;fillColor:#ffcdd2;strokeColor=#d32f2f;fontSize=12;startSize=25;" vertex="1" parent="dmz-container">
-          <mxGeometry x="30" y="50" width="230" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="firewall" value="🔥 Firewall&lt;br&gt;iptables/pfSense&lt;br&gt;172.16.1.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="edge-security-container">
-          <mxGeometry x="40" y="40" width="150" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="waf-dmz" value="🛡️ Web Application Firewall&lt;br&gt;ModSecurity&lt;br&gt;172.16.1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="edge-security-container">
-          <mxGeometry x="15" y="100" width="200" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ddos-protection" value="🚫 DDoS Protection&lt;br&gt;Rate Limiting&lt;br&gt;172.16.1.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="edge-security-container">
-          <mxGeometry x="40" y="160" width="150" height="50" as="geometry" />
-        </mxCell>
-        
-        <!-- Load Balancers -->
-        <mxCell id="load-balancers-container" value="Load Balancers" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#d32f2f;fontSize=12;startSize=25;" vertex="1" parent="dmz-container">
-          <mxGeometry x="290" y="50" width="230" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="external-lb" value="⚖️ External Load Balancer&lt;br&gt;HAProxy/NGINX&lt;br&gt;172.16.1.20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="load-balancers-container">
-          <mxGeometry x="20" y="50" width="190" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ssl-tls" value="🔒 SSL/TLS Termination&lt;br&gt;TLS 1.3&lt;br&gt;172.16.1.21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="load-balancers-container">
-          <mxGeometry x="30" y="130" width="170" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- VPN Gateway -->
-        <mxCell id="vpn-gateway-container" value="VPN Access" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#d32f2f;fontSize=12;startSize=25;" vertex="1" parent="dmz-container">
-          <mxGeometry x="550" y="50" width="220" height="200" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="vpn-server" value="🔒 VPN Gateway&lt;br&gt;Admin Access&lt;br&gt;172.16.1.30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="vpn-gateway-container">
-          <mxGeometry x="30" y="50" width="160" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="bastion-host" value="🏰 Bastion Host&lt;br&gt;Jump Server&lt;br&gt;172.16.1.31" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" vertex="1" parent="vpn-gateway-container">
-          <mxGeometry x="30" y="130" width="160" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Application Zone -->
-        <mxCell id="app-zone-container" value="⚙️ APPLICATION ZONE - 10.10.0.0/16" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="920" y="40" width="880" height="760" as="geometry" />
-        </mxCell>
-        
-        <!-- K8s Cluster Network -->
-        <mxCell id="k8s-cluster-container" value="Kubernetes Cluster Network" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=12;startSize=25;" vertex="1" parent="app-zone-container">
-          <mxGeometry x="30" y="50" width="820" height="300" as="geometry" />
-        </mxCell>
-        
-        <!-- Master Nodes -->
-        <mxCell id="master-nodes-container" value="Master Nodes - 10.10.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor:#a5d6a7;strokeColor=#2e7d32;fontSize=11;startSize=25;" vertex="1" parent="k8s-cluster-container">
-          <mxGeometry x="30" y="40" width="350" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="master1" value="🎛️ K8s Master 1&lt;br&gt;10.10.1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="master-nodes-container">
-          <mxGeometry x="20" y="40" width="90" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="master2" value="🎛️ K8s Master 2&lt;br&gt;10.10.1.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="master-nodes-container">
-          <mxGeometry x="130" y="40" width="90" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="master3" value="🎛️ K8s Master 3&lt;br&gt;10.10.1.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="master-nodes-container">
-          <mxGeometry x="240" y="40" width="90" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Worker Nodes -->
-        <mxCell id="worker-nodes-container" value="Worker Nodes - 10.10.2.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=11;startSize=25;" vertex="1" parent="k8s-cluster-container">
-          <mxGeometry x="410" y="40" width="380" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="worker1" value="💻 K8s Worker 1&lt;br&gt;10.10.2.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="worker-nodes-container">
-          <mxGeometry x="20" y="40" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="worker2" value="💻 K8s Worker 2&lt;br&gt;10.10.2.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="worker-nodes-container">
-          <mxGeometry x="115" y="40" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="worker3" value="💻 K8s Worker 3&lt;br&gt;10.10.2.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="worker-nodes-container">
-          <mxGeometry x="210" y="40" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="workerN" value="💻 K8s Worker N&lt;br&gt;10.10.2.20+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="worker-nodes-container">
-          <mxGeometry x="305" y="40" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Pod Network -->
-        <mxCell id="pod-network-container" value="Pod Network - 10.10.100.0/22" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=11;startSize=25;" vertex="1" parent="k8s-cluster-container">
-          <mxGeometry x="30" y="180" width="760" height="100" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kong-pods" value="🦍 Kong API Gateway&lt;br&gt;10.10.100.10-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="pod-network-container">
-          <mxGeometry x="30" y="40" width="150" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="service-pods" value="⚙️ Microservice Pods&lt;br&gt;10.10.101.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="pod-network-container">
-          <mxGeometry x="230" y="40" width="150" height="50" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="keycloak-pods" value="🔐 Keycloak Pods&lt;br&gt;10.10.102.10-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="pod-network-container">
-          <mxGeometry x="430" y="40" width="150" height="50" as="geometry" />
-        </mxCell>
-        
-        <!-- Service Network -->
-        <mxCell id="service-network-container" value="Service Network - 10.10.200.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=11;startSize=25;" vertex="1" parent="app-zone-container">
-          <mxGeometry x="30" y="380" width="820" height="140" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kong-service" value="🦍 Kong Service&lt;br&gt;ClusterIP: 10.10.200.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="service-network-container">
-          <mxGeometry x="50" y="50" width="180" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="core-services" value="⚙️ Core Services&lt;br&gt;ClusterIP: 10.10.200.20-30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="service-network-container">
-          <mxGeometry x="280" y="50" width="180" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="integration-services" value="🔌 Integration Services&lt;br&gt;ClusterIP: 10.10.200.40-50" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;" vertex="1" parent="service-network-container">
-          <mxGeometry x="510" y="50" width="180" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- CNI and Service Mesh -->
-        <mxCell id="cni-container" value="🕸️ CONTAINER NETWORK INTERFACE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=11;startSize=25;" vertex="1" parent="app-zone-container">
-          <mxGeometry x="30" y="550" width="820" height="180" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="pod-networking-container" value="Pod Networking (CNI)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;startSize=20;" vertex="1" parent="cni-container">
-          <mxGeometry x="30" y="40" width="360" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="calico" value="🕸️ Calico CNI&lt;br&gt;Network Policies&lt;br&gt;BGP Routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="pod-networking-container">
-          <mxGeometry x="20" y="35" width="140" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="network-policies" value="📋 Network Policies&lt;br&gt;Ingress/Egress Rules&lt;br&gt;Pod-to-Pod Security" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="pod-networking-container">
-          <mxGeometry x="185" y="35" width="150" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="service-mesh-container" value="Service Mesh (Optional)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;startSize=20;" vertex="1" parent="cni-container">
-          <mxGeometry x="420" y="40" width="370" height="120" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="istio" value="🕸️ Istio Service Mesh&lt;br&gt;mTLS Encryption&lt;br&gt;Traffic Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="service-mesh-container">
-          <mxGeometry x="20" y="35" width="150" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="envoy" value="🔄 Envoy Proxy&lt;br&gt;Sidecar Pattern&lt;br&gt;Load Balancing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="service-mesh-container">
-          <mxGeometry x="195" y="35" width="150" height="70" as="geometry" />
-        </mxCell>
-        
-        <!-- Data Zone -->
-        <mxCell id="data-zone-container" value="🗃️ DATA ZONE - 10.20.0.0/16" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="40" y="860" width="1760" height="500" as="geometry" />
-        </mxCell>
-        
-        <!-- Database Network -->
-        <mxCell id="database-network-container" value="Database Network - 10.20.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" vertex="1" parent="data-zone-container">
-          <mxGeometry x="30" y="50" width="400" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="pg-master" value="🗃️ PostgreSQL Master&lt;br&gt;10.20.1.10" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="database-network-container">
-          <mxGeometry x="30" y="45" width="110" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="pg-replica1" value="🗃️ PostgreSQL Replica 1&lt;br&gt;10.20.1.11" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="database-network-container">
-          <mxGeometry x="160" y="45" width="110" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="pg-replica2" value="🗃️ PostgreSQL Replica 2&lt;br&gt;10.20.1.12" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="database-network-container">
-          <mxGeometry x="290" y="45" width="110" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="pg-backup" value="💾 PostgreSQL Backup&lt;br&gt;10.20.1.20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#e65100;fontSize=10;" vertex="1" parent="database-network-container">
-          <mxGeometry x="130" y="130" width="140" height="50" as="geometry" />
-        </mxCell>
-        
-        <!-- Storage Network -->
-        <mxCell id="storage-network-container" value="Storage Network - 10.20.2.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" vertex="1" parent="data-zone-container">
-          <mxGeometry x="460" y="50" width="380" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="minio-node1" value="📦 MinIO Node 1&lt;br&gt;10.20.2.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="storage-network-container">
-          <mxGeometry x="30" y="45" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="minio-node2" value="📦 MinIO Node 2&lt;br&gt;10.20.2.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="storage-network-container">
-          <mxGeometry x="130" y="45" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="minio-node3" value="📦 MinIO Node 3&lt;br&gt;10.20.2.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="storage-network-container">
-          <mxGeometry x="230" y="45" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="minio-nodeN" value="📦 MinIO Node N&lt;br&gt;10.20.2.20+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="storage-network-container">
-          <mxGeometry x="130" y="120" width="80" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Cache Network -->
-        <mxCell id="cache-network-container" value="Cache Network - 10.20.3.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" vertex="1" parent="data-zone-container">
-          <mxGeometry x="870" y="50" width="400" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="redis-master" value="⚡ Redis Master&lt;br&gt;10.20.3.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="cache-network-container">
-          <mxGeometry x="30" y="45" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="redis-sentinel" value="🔍 Redis Sentinel&lt;br&gt;10.20.3.11-13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="cache-network-container">
-          <mxGeometry x="160" y="45" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="redis-replicas" value="⚡ Redis Replicas&lt;br&gt;10.20.3.20-22" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="cache-network-container">
-          <mxGeometry x="290" y="45" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Message Queue Network -->
-        <mxCell id="message-network-container" value="Message Queue Network - 10.20.4.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" vertex="1" parent="data-zone-container">
-          <mxGeometry x="1300" y="50" width="420" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="rabbitmq-node1" value="🐰 RabbitMQ Node 1&lt;br&gt;10.20.4.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="message-network-container">
-          <mxGeometry x="40" y="60" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="rabbitmq-node2" value="🐰 RabbitMQ Node 2&lt;br&gt;10.20.4.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="message-network-container">
-          <mxGeometry x="170" y="60" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="rabbitmq-node3" value="🐰 RabbitMQ Node 3&lt;br&gt;10.20.4.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" vertex="1" parent="message-network-container">
-          <mxGeometry x="300" y="60" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Management Zone -->
-        <mxCell id="mgmt-zone-container" value="📊 MANAGEMENT ZONE - 10.30.0.0/16" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1420" width="1760" height="500" as="geometry" />
-        </mxCell>
-        
-        <!-- Monitoring Network -->
-        <mxCell id="monitoring-network-container" value="Monitoring Network - 10.30.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" vertex="1" parent="mgmt-zone-container">
-          <mxGeometry x="30" y="50" width="400" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="prometheus-mgmt" value="📈 Prometheus&lt;br&gt;10.30.1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="monitoring-network-container">
-          <mxGeometry x="40" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="grafana-mgmt" value="📊 Grafana&lt;br&gt;10.30.1.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="monitoring-network-container">
-          <mxGeometry x="180" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="alertmanager-mgmt" value="🚨 AlertManager&lt;br&gt;10.30.1.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="monitoring-network-container">
-          <mxGeometry x="110" y="125" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Logging Network -->
-        <mxCell id="logging-network-container" value="Logging Network - 10.30.2.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" vertex="1" parent="mgmt-zone-container">
-          <mxGeometry x="460" y="50" width="400" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="elasticsearch-mgmt" value="🔍 Elasticsearch&lt;br&gt;10.30.2.10-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="logging-network-container">
-          <mxGeometry x="40" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="logstash-mgmt" value="📋 Logstash&lt;br&gt;10.30.2.20-21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="logging-network-container">
-          <mxGeometry x="180" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kibana-mgmt" value="📊 Kibana&lt;br&gt;10.30.2.30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="logging-network-container">
-          <mxGeometry x="110" y="125" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Backup Network -->
-        <mxCell id="backup-network-container" value="Backup Network - 10.30.3.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" vertex="1" parent="mgmt-zone-container">
-          <mxGeometry x="890" y="50" width="400" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="backup-server" value="💾 Backup Server&lt;br&gt;10.30.3.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="backup-network-container">
-          <mxGeometry x="70" y="65" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="backup-storage" value="💾 Backup Storage&lt;br&gt;10.30.3.11-15" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="backup-network-container">
-          <mxGeometry x="220" y="65" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Config Network -->
-        <mxCell id="config-network-container" value="Configuration Management - 10.30.4.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" vertex="1" parent="mgmt-zone-container">
-          <mxGeometry x="1320" y="50" width="400" height="190" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="config-server" value="⚙️ Configuration Server&lt;br&gt;10.30.4.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="config-network-container">
-          <mxGeometry x="30" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="secrets-manager" value="🔐 Secrets Manager&lt;br&gt;10.30.4.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="config-network-container">
-          <mxGeometry x="160" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="cert-manager" value="📜 Certificate Manager&lt;br&gt;10.30.4.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" vertex="1" parent="config-network-container">
-          <mxGeometry x="290" y="50" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Network Security & Routing -->
-        <mxCell id="network-security-container" value="🛡️ NETWORK SECURITY &amp; ROUTING" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1980" width="1200" height="600" as="geometry" />
-        </mxCell>
-        
-        <!-- VLAN Segmentation -->
-        <mxCell id="vlan-container" value="VLAN Segmentation" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;fontSize=12;startSize=25;" vertex="1" parent="network-security-container">
-          <mxGeometry x="30" y="50" width="540" height="220" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="dmz-vlan" value="🔥 DMZ VLAN 100&lt;br&gt;172.16.1.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="vlan-container">
-          <mxGeometry x="40" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="app-vlan" value="⚙️ Application VLAN 200&lt;br&gt;10.10.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="vlan-container">
-          <mxGeometry x="210" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="data-vlan" value="🗃️ Data VLAN 300&lt;br&gt;10.20.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="vlan-container">
-          <mxGeometry x="380" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="mgmt-vlan" value="📊 Management VLAN 400&lt;br&gt;10.30.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" vertex="1" parent="vlan-container">
-          <mxGeometry x="210" y="130" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Routing Rules -->
-        <mxCell id="routing-container" value="Routing Rules" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;fontSize=12;startSize=25;" vertex="1" parent="network-security-container">
-          <mxGeometry x="600" y="50" width="570" height="220" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="dmz-to-app" value="🔥→⚙️ DMZ to App&lt;br&gt;Port 80,443,8080" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" vertex="1" parent="routing-container">
-          <mxGeometry x="30" y="40" width="100" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="app-to-data" value="⚙️→🗃️ App to Data&lt;br&gt;Port 5432,9000,6379,5672" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" vertex="1" parent="routing-container">
-          <mxGeometry x="150" y="40" width="120" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="app-to-mgmt" value="⚙️→📊 App to Mgmt&lt;br&gt;Port 9090,3000,9093" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" vertex="1" parent="routing-container">
-          <mxGeometry x="290" y="40" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="mgmt-to-all" value="📊→🌍 Mgmt to All&lt;br&gt;Monitoring Ports" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" vertex="1" parent="routing-container">
-          <mxGeometry x="420" y="40" width="110" height="60" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="no-direct-data" value="🚫 No Direct Data Access&lt;br&gt;External → Data Blocked" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ab47bc;strokeColor=#6a1b9a;fontSize=9;" vertex="1" parent="routing-container">
-          <mxGeometry x="180" y="130" width="150" height="60" as="geometry" />
-        </mxCell>
-        
-        <!-- Firewall Rules -->
-        <mxCell id="firewall-rules-container" value="Firewall Rules" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;fontSize=12;startSize=25;" vertex="1" parent="network-security-container">
-          <mxGeometry x="30" y="300" width="1140" height="270" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="allow-https" value="✅ Allow HTTPS&lt;br&gt;Port 443&lt;br&gt;Internet → DMZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="firewall-rules-container">
-          <mxGeometry x="50" y="50" width="110" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="allow-http" value="✅ Allow HTTP&lt;br&gt;Port 80&lt;br&gt;Internet → DMZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="firewall-rules-container">
-          <mxGeometry x="200" y="50" width="110" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="allow-vpn" value="✅ Allow VPN&lt;br&gt;Port 1194&lt;br&gt;Internet → DMZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="firewall-rules-container">
-          <mxGeometry x="350" y="50" width="110" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="allow-ssh" value="✅ Allow SSH&lt;br&gt;Port 22&lt;br&gt;VPN → Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" vertex="1" parent="firewall-rules-container">
-          <mxGeometry x="500" y="50" width="120" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="deny-direct" value="❌ Deny Direct&lt;br&gt;Internet → Internal Networks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e57373;strokeColor=#c62828;fontSize=9;" vertex="1" parent="firewall-rules-container">
-          <mxGeometry x="440" y="160" width="150" height="70" as="geometry" />
-        </mxCell>
-        
-        <!-- External Connectivity -->
-        <mxCell id="external-connectivity-container" value="🌐 EXTERNAL CONNECTIVITY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" vertex="1" parent="1">
-          <mxGeometry x="1300" y="1980" width="500" height="600" as="geometry" />
-        </mxCell>
-        
-        <!-- Government Networks -->
-        <mxCell id="gov-networks-container" value="Government Networks" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=12;startSize=25;" vertex="1" parent="external-connectivity-container">
-          <mxGeometry x="30" y="50" width="440" height="240" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="agt-network" value="🏛️ AGT Network&lt;br&gt;ASYCUDA Integration&lt;br&gt;Dedicated Line" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="gov-networks-container">
-          <mxGeometry x="40" y="40" width="150" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="sintece-network" value="🏛️ SINTECE Network&lt;br&gt;Government Backbone&lt;br&gt;VPN Tunnel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="gov-networks-container">
-          <mxGeometry x="230" y="40" width="150" height="70" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="oga-networks" value="🏛️ OGA Networks&lt;br&gt;Multiple Agencies&lt;br&gt;Internet/VPN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="gov-networks-container">
-          <mxGeometry x="120" y="140" width="160" height="70" as="geometry" />
-        </mxCell>
-        
-        <!-- Banking Networks -->
-        <mxCell id="banking-networks-container" value="Banking Networks" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=12;startSize=25;" vertex="1" parent="external-connectivity-container">
-          <mxGeometry x="30" y="320" width="440" height="150" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="bank-connections" value="🏦 Banking Networks&lt;br&gt;Payment Processing&lt;br&gt;Secure Channels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" vertex="1" parent="banking-networks-container">
-          <mxGeometry x="120" y="50" width="180" height="70" as="geometry" />
-        </mxCell>
-        
-        <!-- Major Connections -->
-        <mxCell id="users-to-firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="users" target="firewall">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="external-to-firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="external-systems" target="firewall">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="admins-to-vpn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="1" source="admins" target="vpn-server">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="firewall-to-waf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="firewall" target="waf-dmz">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="waf-to-ddos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="waf-dmz" target="ddos-protection">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ddos-to-lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="ddos-protection" target="external-lb">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="lb-to-ssl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="external-lb" target="ssl-tls">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="ssl-to-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#2e7d32;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssl-tls" target="kong-service">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="vpn-to-bastion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" edge="1" parent="1" source="vpn-server" target="bastion-host">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="bastion-to-mgmt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="bastion-host" target="mgmt-zone-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="kong-to-services" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2e7d32;dashed=1;" edge="1" parent="1" source="kong-service" target="service-pods">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="services-to-db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="service-pods" target="database-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="services-to-storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="service-pods" target="storage-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="services-to-cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="service-pods" target="cache-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="services-to-mq" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="service-pods" target="message-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="services-to-monitoring" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#1565c0;dashed=1;dashPattern=5 5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="service-pods" target="monitoring-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="db-to-backup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="database-network-container" target="backup-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="storage-to-backup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="storage-network-container" target="backup-network-container">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="integration-to-agt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="integration-services" target="agt-network">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="integration-to-sintece" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="integration-services" target="sintece-network">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="integration-to-oga" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="integration-services" target="oga-networks">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="services-to-banks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="service-pods" target="bank-connections">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="Network Architecture" id="network-architecture">
+        <mxGraphModel dx="1626" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="internet-container" value="🌍 INTERNET" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="800" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="users" value="👥 External Users&lt;br&gt;Traders, Brokers, Officers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;" parent="internet-container" vertex="1">
+                    <mxGeometry x="50" y="60" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="external-systems" value="🏛️ External Systems&lt;br&gt;ASYCUDA, SINTECE, OGAs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;" parent="internet-container" vertex="1">
+                    <mxGeometry x="310" y="60" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="admins" value="👨‍💻 System Administrators&lt;br&gt;Remote Access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=11;" parent="internet-container" vertex="1">
+                    <mxGeometry x="570" y="60" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="dmz-container" value="🔥 DMZ ZONE - 172.16.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#c62828;strokeWidth=3;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="280" width="800" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-security-container" value="Edge Security" style="swimlane;whiteSpace=wrap;html=1;fillColor:#ffcdd2;strokeColor=#d32f2f;fontSize=12;startSize=25;" parent="dmz-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="230" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="firewall" value="🔥 Firewall&lt;br&gt;iptables/pfSense&lt;br&gt;172.16.1.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="edge-security-container" vertex="1">
+                    <mxGeometry x="40" y="40" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf-dmz" value="🛡️ Web Application Firewall&lt;br&gt;ModSecurity&lt;br&gt;172.16.1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="edge-security-container" vertex="1">
+                    <mxGeometry x="15" y="100" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="ddos-protection" value="🚫 DDoS Protection&lt;br&gt;Rate Limiting&lt;br&gt;172.16.1.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="edge-security-container" vertex="1">
+                    <mxGeometry x="40" y="160" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="load-balancers-container" value="Load Balancers" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#d32f2f;fontSize=12;startSize=25;" parent="dmz-container" vertex="1">
+                    <mxGeometry x="290" y="50" width="230" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="external-lb" value="⚖️ External Load Balancer&lt;br&gt;HAProxy/NGINX&lt;br&gt;172.16.1.20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="load-balancers-container" vertex="1">
+                    <mxGeometry x="20" y="50" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ssl-tls" value="🔒 SSL/TLS Termination&lt;br&gt;TLS 1.3&lt;br&gt;172.16.1.21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="load-balancers-container" vertex="1">
+                    <mxGeometry x="30" y="130" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpn-gateway-container" value="VPN Access" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#d32f2f;fontSize=12;startSize=25;" parent="dmz-container" vertex="1">
+                    <mxGeometry x="550" y="50" width="220" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpn-server" value="🔒 VPN Gateway&lt;br&gt;Admin Access&lt;br&gt;172.16.1.30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="vpn-gateway-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bastion-host" value="🏰 Bastion Host&lt;br&gt;Jump Server&lt;br&gt;172.16.1.31" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ef9a9a;strokeColor=#c62828;fontSize=10;" parent="vpn-gateway-container" vertex="1">
+                    <mxGeometry x="30" y="130" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="app-zone-container" value="⚙️ APPLICATION ZONE - 10.10.0.0/16" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="40" width="880" height="760" as="geometry"/>
+                </mxCell>
+                <mxCell id="k8s-cluster-container" value="Kubernetes Cluster Network" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=12;startSize=25;" parent="app-zone-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="820" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="master-nodes-container" value="Master Nodes - 10.10.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor:#a5d6a7;strokeColor=#2e7d32;fontSize=11;startSize=25;" parent="k8s-cluster-container" vertex="1">
+                    <mxGeometry x="30" y="40" width="350" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="master1" value="🎛️ K8s Master 1&lt;br&gt;10.10.1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" parent="master-nodes-container" vertex="1">
+                    <mxGeometry x="20" y="40" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="master2" value="🎛️ K8s Master 2&lt;br&gt;10.10.1.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" parent="master-nodes-container" vertex="1">
+                    <mxGeometry x="130" y="40" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="master3" value="🎛️ K8s Master 3&lt;br&gt;10.10.1.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" parent="master-nodes-container" vertex="1">
+                    <mxGeometry x="240" y="40" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="worker-nodes-container" value="Worker Nodes - 10.10.2.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=11;startSize=25;" parent="k8s-cluster-container" vertex="1">
+                    <mxGeometry x="410" y="40" width="380" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="worker1" value="💻 K8s Worker 1&lt;br&gt;10.10.2.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" parent="worker-nodes-container" vertex="1">
+                    <mxGeometry x="20" y="40" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="worker2" value="💻 K8s Worker 2&lt;br&gt;10.10.2.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" parent="worker-nodes-container" vertex="1">
+                    <mxGeometry x="115" y="40" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="worker3" value="💻 K8s Worker 3&lt;br&gt;10.10.2.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" parent="worker-nodes-container" vertex="1">
+                    <mxGeometry x="210" y="40" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="workerN" value="💻 K8s Worker N&lt;br&gt;10.10.2.20+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#2e7d32;fontSize=10;" parent="worker-nodes-container" vertex="1">
+                    <mxGeometry x="305" y="40" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="pod-network-container" value="Pod Network - 10.10.100.0/22" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=11;startSize=25;" parent="k8s-cluster-container" vertex="1">
+                    <mxGeometry x="30" y="180" width="760" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="kong-pods" value="🦍 Kong API Gateway&lt;br&gt;10.10.100.10-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" parent="pod-network-container" vertex="1">
+                    <mxGeometry x="30" y="40" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="service-pods" value="⚙️ Microservice Pods&lt;br&gt;10.10.101.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" parent="pod-network-container" vertex="1">
+                    <mxGeometry x="230" y="40" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="keycloak-pods" value="🔐 Keycloak Pods&lt;br&gt;10.10.102.10-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=10;" parent="pod-network-container" vertex="1">
+                    <mxGeometry x="430" y="40" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="service-network-container" value="Service Network - 10.10.200.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=11;startSize=25;" parent="app-zone-container" vertex="1">
+                    <mxGeometry x="30" y="380" width="820" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="kong-service" value="🦍 Kong Service&lt;br&gt;ClusterIP: 10.10.200.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;" parent="service-network-container" vertex="1">
+                    <mxGeometry x="50" y="50" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="core-services" value="⚙️ Core Services&lt;br&gt;ClusterIP: 10.10.200.20-30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;" parent="service-network-container" vertex="1">
+                    <mxGeometry x="280" y="50" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="integration-services" value="🔌 Integration Services&lt;br&gt;ClusterIP: 10.10.200.40-50" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;" parent="service-network-container" vertex="1">
+                    <mxGeometry x="510" y="50" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="cni-container" value="🕸️ CONTAINER NETWORK INTERFACE" style="swimlane;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;fontSize=11;startSize=25;" parent="app-zone-container" vertex="1">
+                    <mxGeometry x="30" y="550" width="820" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="pod-networking-container" value="Pod Networking (CNI)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;startSize=20;" parent="cni-container" vertex="1">
+                    <mxGeometry x="30" y="40" width="360" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="calico" value="🕸️ Calico CNI&lt;br&gt;Network Policies&lt;br&gt;BGP Routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="pod-networking-container" vertex="1">
+                    <mxGeometry x="20" y="35" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="network-policies" value="📋 Network Policies&lt;br&gt;Ingress/Egress Rules&lt;br&gt;Pod-to-Pod Security" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="pod-networking-container" vertex="1">
+                    <mxGeometry x="185" y="35" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="service-mesh-container" value="Service Mesh (Optional)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=10;startSize=20;" parent="cni-container" vertex="1">
+                    <mxGeometry x="420" y="40" width="370" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="istio" value="🕸️ Istio Service Mesh&lt;br&gt;mTLS Encryption&lt;br&gt;Traffic Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="service-mesh-container" vertex="1">
+                    <mxGeometry x="20" y="35" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="envoy" value="🔄 Envoy Proxy&lt;br&gt;Sidecar Pattern&lt;br&gt;Load Balancing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="service-mesh-container" vertex="1">
+                    <mxGeometry x="195" y="35" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="data-zone-container" value="🗃️ DATA ZONE - 10.20.0.0/16" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="860" width="1760" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="database-network-container" value="Database Network - 10.20.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" parent="data-zone-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="pg-master" value="🗃️ PostgreSQL Master&lt;br&gt;10.20.1.10" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="database-network-container" vertex="1">
+                    <mxGeometry x="30" y="45" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="pg-replica1" value="🗃️ PostgreSQL Replica 1&lt;br&gt;10.20.1.11" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="database-network-container" vertex="1">
+                    <mxGeometry x="160" y="45" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="pg-replica2" value="🗃️ PostgreSQL Replica 2&lt;br&gt;10.20.1.12" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="database-network-container" vertex="1">
+                    <mxGeometry x="290" y="45" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="pg-backup" value="💾 PostgreSQL Backup&lt;br&gt;10.20.1.20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#e65100;fontSize=10;" parent="database-network-container" vertex="1">
+                    <mxGeometry x="130" y="130" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="storage-network-container" value="Storage Network - 10.20.2.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" parent="data-zone-container" vertex="1">
+                    <mxGeometry x="460" y="50" width="380" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="minio-node1" value="📦 MinIO Node 1&lt;br&gt;10.20.2.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="storage-network-container" vertex="1">
+                    <mxGeometry x="30" y="45" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="minio-node2" value="📦 MinIO Node 2&lt;br&gt;10.20.2.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="storage-network-container" vertex="1">
+                    <mxGeometry x="130" y="45" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="minio-node3" value="📦 MinIO Node 3&lt;br&gt;10.20.2.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="storage-network-container" vertex="1">
+                    <mxGeometry x="230" y="45" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="minio-nodeN" value="📦 MinIO Node N&lt;br&gt;10.20.2.20+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="storage-network-container" vertex="1">
+                    <mxGeometry x="130" y="120" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="cache-network-container" value="Cache Network - 10.20.3.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" parent="data-zone-container" vertex="1">
+                    <mxGeometry x="870" y="50" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis-master" value="⚡ Redis Master&lt;br&gt;10.20.3.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="cache-network-container" vertex="1">
+                    <mxGeometry x="30" y="45" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis-sentinel" value="🔍 Redis Sentinel&lt;br&gt;10.20.3.11-13" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="cache-network-container" vertex="1">
+                    <mxGeometry x="160" y="45" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis-replicas" value="⚡ Redis Replicas&lt;br&gt;10.20.3.20-22" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="cache-network-container" vertex="1">
+                    <mxGeometry x="290" y="45" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="message-network-container" value="Message Queue Network - 10.20.4.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=11;startSize=25;" parent="data-zone-container" vertex="1">
+                    <mxGeometry x="1300" y="50" width="420" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="rabbitmq-node1" value="🐰 RabbitMQ Node 1&lt;br&gt;10.20.4.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="message-network-container" vertex="1">
+                    <mxGeometry x="40" y="60" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="rabbitmq-node2" value="🐰 RabbitMQ Node 2&lt;br&gt;10.20.4.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="message-network-container" vertex="1">
+                    <mxGeometry x="170" y="60" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="rabbitmq-node3" value="🐰 RabbitMQ Node 3&lt;br&gt;10.20.4.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#e65100;fontSize=10;" parent="message-network-container" vertex="1">
+                    <mxGeometry x="300" y="60" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="mgmt-zone-container" value="📊 MANAGEMENT ZONE - 10.30.0.0/16" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="1260" width="1760" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="monitoring-network-container" value="Monitoring Network - 10.30.1.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" parent="mgmt-zone-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="prometheus-mgmt" value="📈 Prometheus&lt;br&gt;10.30.1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="monitoring-network-container" vertex="1">
+                    <mxGeometry x="40" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="grafana-mgmt" value="📊 Grafana&lt;br&gt;10.30.1.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="monitoring-network-container" vertex="1">
+                    <mxGeometry x="180" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="alertmanager-mgmt" value="🚨 AlertManager&lt;br&gt;10.30.1.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="monitoring-network-container" vertex="1">
+                    <mxGeometry x="110" y="125" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="logging-network-container" value="Logging Network - 10.30.2.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" parent="mgmt-zone-container" vertex="1">
+                    <mxGeometry x="460" y="50" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="elasticsearch-mgmt" value="🔍 Elasticsearch&lt;br&gt;10.30.2.10-12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="logging-network-container" vertex="1">
+                    <mxGeometry x="40" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="logstash-mgmt" value="📋 Logstash&lt;br&gt;10.30.2.20-21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="logging-network-container" vertex="1">
+                    <mxGeometry x="180" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="kibana-mgmt" value="📊 Kibana&lt;br&gt;10.30.2.30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="logging-network-container" vertex="1">
+                    <mxGeometry x="110" y="125" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="backup-network-container" value="Backup Network - 10.30.3.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" parent="mgmt-zone-container" vertex="1">
+                    <mxGeometry x="890" y="50" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="backup-server" value="💾 Backup Server&lt;br&gt;10.30.3.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="backup-network-container" vertex="1">
+                    <mxGeometry x="70" y="65" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="backup-storage" value="💾 Backup Storage&lt;br&gt;10.30.3.11-15" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="backup-network-container" vertex="1">
+                    <mxGeometry x="220" y="65" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="config-network-container" value="Configuration Management - 10.30.4.0/24" style="swimlane;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#0d47a1;fontSize=11;startSize=25;" parent="mgmt-zone-container" vertex="1">
+                    <mxGeometry x="1320" y="50" width="400" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="config-server" value="⚙️ Configuration Server&lt;br&gt;10.30.4.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="config-network-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="secrets-manager" value="🔐 Secrets Manager&lt;br&gt;10.30.4.11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="config-network-container" vertex="1">
+                    <mxGeometry x="160" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="cert-manager" value="📜 Certificate Manager&lt;br&gt;10.30.4.12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=10;" parent="config-network-container" vertex="1">
+                    <mxGeometry x="290" y="50" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="network-security-container" value="🛡️ NETWORK SECURITY &amp; ROUTING" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="1570" width="1200" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="vlan-container" value="VLAN Segmentation" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;fontSize=12;startSize=25;" parent="network-security-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="540" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="dmz-vlan" value="🔥 DMZ VLAN 100&lt;br&gt;172.16.1.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" parent="vlan-container" vertex="1">
+                    <mxGeometry x="40" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="app-vlan" value="⚙️ Application VLAN 200&lt;br&gt;10.10.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" parent="vlan-container" vertex="1">
+                    <mxGeometry x="210" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="data-vlan" value="🗃️ Data VLAN 300&lt;br&gt;10.20.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" parent="vlan-container" vertex="1">
+                    <mxGeometry x="380" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="mgmt-vlan" value="📊 Management VLAN 400&lt;br&gt;10.30.0.0/16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#6a1b9a;fontSize=10;" parent="vlan-container" vertex="1">
+                    <mxGeometry x="210" y="130" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="routing-container" value="Routing Rules" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;fontSize=12;startSize=25;" parent="network-security-container" vertex="1">
+                    <mxGeometry x="600" y="50" width="570" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="dmz-to-app" value="🔥→⚙️ DMZ to App&lt;br&gt;Port 80,443,8080" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" parent="routing-container" vertex="1">
+                    <mxGeometry x="30" y="40" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="app-to-data" value="⚙️→🗃️ App to Data&lt;br&gt;Port 5432,9000,6379,5672" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" parent="routing-container" vertex="1">
+                    <mxGeometry x="150" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="app-to-mgmt" value="⚙️→📊 App to Mgmt&lt;br&gt;Port 9090,3000,9093" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" parent="routing-container" vertex="1">
+                    <mxGeometry x="290" y="40" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="mgmt-to-all" value="📊→🌍 Mgmt to All&lt;br&gt;Monitoring Ports" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#6a1b9a;fontSize=9;" parent="routing-container" vertex="1">
+                    <mxGeometry x="420" y="40" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="no-direct-data" value="🚫 No Direct Data Access&lt;br&gt;External → Data Blocked" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ab47bc;strokeColor=#6a1b9a;fontSize=9;" parent="routing-container" vertex="1">
+                    <mxGeometry x="180" y="130" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="firewall-rules-container" value="Firewall Rules" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;fontSize=12;startSize=25;" parent="network-security-container" vertex="1">
+                    <mxGeometry x="30" y="300" width="1140" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="allow-https" value="✅ Allow HTTPS&lt;br&gt;Port 443&lt;br&gt;Internet → DMZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="firewall-rules-container" vertex="1">
+                    <mxGeometry x="50" y="50" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="allow-http" value="✅ Allow HTTP&lt;br&gt;Port 80&lt;br&gt;Internet → DMZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="firewall-rules-container" vertex="1">
+                    <mxGeometry x="200" y="50" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="allow-vpn" value="✅ Allow VPN&lt;br&gt;Port 1194&lt;br&gt;Internet → DMZ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="firewall-rules-container" vertex="1">
+                    <mxGeometry x="350" y="50" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="allow-ssh" value="✅ Allow SSH&lt;br&gt;Port 22&lt;br&gt;VPN → Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#2e7d32;fontSize=9;" parent="firewall-rules-container" vertex="1">
+                    <mxGeometry x="500" y="50" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="deny-direct" value="❌ Deny Direct&lt;br&gt;Internet → Internal Networks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e57373;strokeColor=#c62828;fontSize=9;" parent="firewall-rules-container" vertex="1">
+                    <mxGeometry x="440" y="160" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="external-connectivity-container" value="🌐 EXTERNAL CONNECTIVITY" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#ad1457;strokeWidth=2;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="1570" width="500" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="gov-networks-container" value="Government Networks" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=12;startSize=25;" parent="external-connectivity-container" vertex="1">
+                    <mxGeometry x="30" y="50" width="440" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="agt-network" value="🏛️ AGT Network&lt;br&gt;ASYCUDA Integration&lt;br&gt;Dedicated Line" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" parent="gov-networks-container" vertex="1">
+                    <mxGeometry x="40" y="40" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="sintece-network" value="🏛️ SINTECE Network&lt;br&gt;Government Backbone&lt;br&gt;VPN Tunnel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" parent="gov-networks-container" vertex="1">
+                    <mxGeometry x="230" y="40" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="oga-networks" value="🏛️ OGA Networks&lt;br&gt;Multiple Agencies&lt;br&gt;Internet/VPN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" parent="gov-networks-container" vertex="1">
+                    <mxGeometry x="120" y="140" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="banking-networks-container" value="Banking Networks" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;fontSize=12;startSize=25;" parent="external-connectivity-container" vertex="1">
+                    <mxGeometry x="30" y="320" width="440" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="bank-connections" value="🏦 Banking Networks&lt;br&gt;Payment Processing&lt;br&gt;Secure Channels" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontSize=10;" parent="banking-networks-container" vertex="1">
+                    <mxGeometry x="120" y="50" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="users-to-firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" parent="1" source="users" target="firewall" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="external-to-firewall" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" parent="1" source="external-systems" target="firewall" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="admins-to-vpn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" parent="1" source="admins" target="vpn-server" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="firewall-to-waf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" parent="1" source="firewall" target="waf-dmz" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf-to-ddos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" parent="1" source="waf-dmz" target="ddos-protection" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ddos-to-lb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" parent="1" source="ddos-protection" target="external-lb" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="lb-to-ssl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c62828;" parent="1" source="external-lb" target="ssl-tls" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ssl-to-kong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#2e7d32;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ssl-tls" target="kong-service" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="vpn-to-bastion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;dashed=1;" parent="1" source="vpn-server" target="bastion-host" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bastion-to-mgmt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="bastion-host" target="mgmt-zone-container" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="kong-to-services" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2e7d32;dashed=1;" parent="1" source="kong-service" target="service-pods" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="services-to-db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="service-pods" target="database-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="services-to-storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="service-pods" target="storage-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="services-to-cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="service-pods" target="cache-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="services-to-mq" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ef6c00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="service-pods" target="message-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="services-to-monitoring" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#1565c0;dashed=1;dashPattern=5 5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="service-pods" target="monitoring-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="db-to-backup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="database-network-container" target="backup-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="270" y="1200"/>
+                            <mxPoint x="1130" y="1200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="storage-to-backup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1565c0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="storage-network-container" target="backup-network-container" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="690" y="1180"/>
+                            <mxPoint x="1130" y="1180"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="integration-to-agt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="integration-services" target="agt-network" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="integration-to-sintece" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="integration-services" target="sintece-network" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="integration-to-oga" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="integration-services" target="oga-networks" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="services-to-banks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ad1457;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="service-pods" target="bank-connections" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
