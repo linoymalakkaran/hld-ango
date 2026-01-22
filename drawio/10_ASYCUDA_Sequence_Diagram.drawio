@@ -1,0 +1,380 @@
+<mxfile host="app.diagrams.net" modified="2026-01-22T12:00:00.000Z" agent="Claude" version="22.1.16">
+  <diagram name="ASYCUDA Process with Boundaries" id="asycuda-sequence">
+    <mxGraphModel dx="1434" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Customs Clearance (ASYCUDA) - Sequence Diagram with System Boundaries" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="64" y="20" width="700" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Boundary Headers -->
+        <mxCell id="boundary-jul" value="JUL PLATFORM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="300" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="boundary-integration" value="INTEGRATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="340" y="60" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="boundary-external" value="THIRD-PARTY SYSTEMS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="440" y="60" width="350" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Participants - JUL Platform -->
+        <mxCell id="participant-trader" value="Trader" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="110" width="70" height="1040" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="participant-broker" value="Customs&#xa;Broker" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="140" y="110" width="70" height="1040" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="participant-jul-backend" value="JUL&#xa;Backend" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="110" width="70" height="1040" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="participant-ff" value="Freight&#xa;Forwarder" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="110" width="70" height="1040" as="geometry" />
+        </mxCell>
+        
+        <!-- Integration Layer -->
+        <mxCell id="participant-integration" value="Integration&#xa;Adapter" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="410" y="110" width="80" height="1040" as="geometry" />
+        </mxCell>
+        
+        <!-- External Systems -->
+        <mxCell id="participant-asycuda" value="ASYCUDA&#xa;World&#xa;(AGT)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="510" y="110" width="80" height="1040" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="participant-jup" value="JUP II&#xa;(Port)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="610" y="110" width="70" height="1040" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="participant-terminal" value="Terminal&#xa;TOS" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="110" width="70" height="1040" as="geometry" />
+        </mxCell>
+        
+        <!-- Activation boxes -->
+        <mxCell id="activation-trader" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="participant-trader">
+          <mxGeometry x="30" y="80" width="10" height="920" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-broker" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="participant-broker">
+          <mxGeometry x="30" y="100" width="10" height="900" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-jul-backend" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="participant-jul-backend">
+          <mxGeometry x="30" y="120" width="10" height="880" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-ff" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="participant-ff">
+          <mxGeometry x="30" y="800" width="10" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-integration" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="participant-integration">
+          <mxGeometry x="35" y="280" width="10" height="720" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-asycuda" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="participant-asycuda">
+          <mxGeometry x="35" y="300" width="10" height="650" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-jup" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="participant-jup">
+          <mxGeometry x="30" y="200" width="10" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="activation-terminal" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="participant-terminal">
+          <mxGeometry x="30" y="850" width="10" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Message Flow -->
+        
+        <!-- Prerequisites -->
+        <mxCell id="note-prereq" value="Prerequisites: Trader has CNCA, DUP, and manifest data&#xa;available in JUL" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 1. Nominate Broker -->
+        <mxCell id="msg-1" value="01: Nominate&#xa;Customs Broker" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="85" y="240" as="sourcePoint" />
+            <mxPoint x="260" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 2. JUL to Broker -->
+        <mxCell id="msg-2" value="02: Nomination Request" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="270" y="260" as="sourcePoint" />
+            <mxPoint x="175" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 3. Broker Access Manifest -->
+        <mxCell id="msg-3" value="03: Request Manifest Data" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="290" as="sourcePoint" />
+            <mxPoint x="260" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 4. JUL retrieves from JUP -->
+        <mxCell id="msg-4" value="04: Fetch Manifest" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#9673a6;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="270" y="310" as="sourcePoint" />
+            <mxPoint x="640" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-4-return" value="Return Manifest Data" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="640" y="330" as="sourcePoint" />
+            <mxPoint x="270" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 5. Return to Broker -->
+        <mxCell id="msg-5" value="Display Manifest" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;fontSize=9;strokeColor=#82b366;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="350" as="sourcePoint" />
+            <mxPoint x="180" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 6. Create DU -->
+        <mxCell id="msg-6" value="05: Create DU Declaration&#xa;(Declaração Única)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="380" as="sourcePoint" />
+            <mxPoint x="260" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 7. Upload Documents -->
+        <mxCell id="msg-7" value="06: Upload Supporting Docs&#xa;(CNCA, DUP, BL, Invoice, etc.)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="410" as="sourcePoint" />
+            <mxPoint x="260" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 8. Submit to Integration -->
+        <mxCell id="msg-8" value="07: Submit DU&#xa;for Clearance" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="270" y="450" as="sourcePoint" />
+            <mxPoint x="445" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="boundary-note-1" value="JUL → Integration" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="330" y="420" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 9. Integration to ASYCUDA -->
+        <mxCell id="msg-9" value="08: API - Submit DU" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#9673a6;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="455" y="480" as="sourcePoint" />
+            <mxPoint x="545" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="boundary-note-2" value="Integration → ASYCUDA" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="470" y="455" width="60" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 10. ASYCUDA Validation -->
+        <mxCell id="msg-10" value="Validate DU&#xa;(Document Check)" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="510" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="590" y="510" />
+              <mxPoint x="590" y="540" />
+            </Array>
+            <mxPoint x="555" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 11. Risk Assessment -->
+        <mxCell id="msg-11" value="Risk Assessment&#xa;&amp; Selectivity" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="560" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="590" y="560" />
+              <mxPoint x="590" y="590" />
+            </Array>
+            <mxPoint x="555" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ALT Frame -->
+        <mxCell id="alt-frame" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=10;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="730" height="330" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alt-green" value="[Green Channel - No Inspection Required]" style="text;html=1;align=left;verticalAlign=top;spacingLeft=4;fontSize=9;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="45" y="625" width="220" height="15" as="geometry" />
+        </mxCell>
+        
+        <!-- 12. Auto Release -->
+        <mxCell id="msg-12" value="Issue Cargo Release Note" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="655" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="590" y="655" />
+              <mxPoint x="590" y="680" />
+            </Array>
+            <mxPoint x="555" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Alt separator 1 -->
+        <mxCell id="alt-separator1" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="730" height="8" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alt-yellow" value="[Yellow Channel - Physical Inspection Required]" style="text;html=1;align=left;verticalAlign=top;spacingLeft=4;fontSize=9;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="45" y="710" width="240" height="15" as="geometry" />
+        </mxCell>
+        
+        <!-- 13. Schedule Inspection -->
+        <mxCell id="msg-13" value="Schedule Physical Inspection" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="740" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="590" y="740" />
+              <mxPoint x="590" y="765" />
+            </Array>
+            <mxPoint x="555" y="765" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 14. Notify via JUL -->
+        <mxCell id="msg-14" value="Sync Inspection Required" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;fontSize=9;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="545" y="785" as="sourcePoint" />
+            <mxPoint x="270" y="785" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-15" value="Notify: Inspection Required" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="805" as="sourcePoint" />
+            <mxPoint x="180" y="805" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 16. Inspection Completed -->
+        <mxCell id="msg-16" value="Inspection Completed" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="835" as="sourcePoint" />
+            <mxPoint x="545" y="835" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-17" value="Issue Cargo Release Note" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;fontSize=9;strokeColor=#9673a6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="860" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="590" y="860" />
+              <mxPoint x="590" y="885" />
+            </Array>
+            <mxPoint x="555" y="885" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Alt separator 2 -->
+        <mxCell id="alt-separator2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="905" width="730" height="8" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="alt-red" value="[Red Channel - Document Audit Required]" style="text;html=1;align=left;verticalAlign=top;spacingLeft=4;fontSize=9;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="45" y="915" width="220" height="15" as="geometry" />
+        </mxCell>
+        
+        <!-- Red channel flow (similar to yellow but document based) -->
+        
+        <!-- Continue common path after ALT -->
+        
+        <!-- 18. Return Release Note -->
+        <mxCell id="msg-18" value="09: Return Cargo Release Note" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;fontSize=9;strokeColor=#9673a6;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="545" y="970" as="sourcePoint" />
+            <mxPoint x="455" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 19. Sync to JUL -->
+        <mxCell id="msg-19" value="10: Sync Release Status" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;fontSize=9;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="445" y="990" as="sourcePoint" />
+            <mxPoint x="270" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 20. Notify all parties -->
+        <mxCell id="msg-20a" value="11: Notify - Cargo Released" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="1010" as="sourcePoint" />
+            <mxPoint x="180" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-20b" value="12: Notify - Cargo Released" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="1030" as="sourcePoint" />
+            <mxPoint x="85" y="1030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Cargo Delivery Section -->
+        <mxCell id="note-delivery" value="CARGO DELIVERY PHASE" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="1050" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 21. Nominate Freight Forwarder -->
+        <mxCell id="msg-21" value="13: Nominate Freight&#xa;Forwarder for Delivery" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="85" y="1090" as="sourcePoint" />
+            <mxPoint x="260" y="1090" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="msg-22" value="14: Forward Release Documents" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#82b366;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="270" y="1110" as="sourcePoint" />
+            <mxPoint x="350" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 23. Terminal Gate-Out -->
+        <mxCell id="msg-23" value="15: Truck Gate-Out Event" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=9;strokeColor=#9673a6;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="730" y="1140" as="sourcePoint" />
+            <mxPoint x="545" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="note-gateout" value="LEGALLY REQUIRED:&#xa;Terminal must notify&#xa;ASYCUDA of gate-out" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f8cecc;strokeColor=#b85450;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="630" y="1115" width="90" height="55" as="geometry" />
+        </mxCell>
+        
+        <!-- Summary Notes -->
+        <mxCell id="note-jul" value="JUL Platform:&#xa;• Broker nomination&#xa;• Document repository&#xa;• Status tracking&#xa;• Manifest integration&#xa;• Multi-party notifications" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=8;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="110" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note-integration" value="Integration:&#xa;• ASYCUDA adapter&#xa;• JUP adapter&#xa;• TOS adapters&#xa;• Data mapping" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=8;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="395" y="1075" width="100" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note-external" value="External Systems:&#xa;• ASYCUDA: DU processing,&#xa;  risk assessment, release&#xa;• JUP: Manifest data&#xa;• TOS: Gate operations&#xa;• All unchanged" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=8;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1060" width="120" height="90" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
